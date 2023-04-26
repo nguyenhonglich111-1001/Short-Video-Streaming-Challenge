@@ -1,0 +1,1328 @@
+------------trace  0 --------------
+
+User stopped watching Video  0 (  17000.0  ms ) :
+User watched: 17000.0  ms, downloaded  17000.0  sec.
+Rebuf:  [0, 297.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  1100
+QoE:  28.70055
+QoE_all: [28.70055] , 28.70055
+
+User stopped watching Video  1 (  26000.0  ms ) :
+User watched: 26000.0  ms, downloaded  26000.0  sec.
+Rebuf:  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  48.1
+QoE_all: [28.70055, 48.1] , 76.80055
+
+User stopped watching Video  2 (  37000.0  ms ) :
+User watched: 1924  ms, downloaded  14000.0  sec.
+Rebuf:  [0, 0, 0]
+chunk versions:  [2, 2] , smooth penalty:  0
+QoE:  3.7
+QoE_all: [28.70055, 48.1, 3.7] , 80.50055
+Extra chunk downloaded for Video  2  which the user already finished watching.
+
+
+User stopped watching Video  3 (  40000.0  ms ) :
+User watched: 5617  ms, downloaded  10000.0  sec.
+Rebuf:  [382.0, 398.0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  9.657
+QoE_all: [28.70055, 48.1, 3.7, 9.657] , 90.15755
+Extra chunk downloaded for Video  3  which the user already finished watching.
+
+
+User stopped watching Video  4 (  47000.0  ms ) :
+User watched: 2888  ms, downloaded  5000.0  sec.
+Rebuf:  [419.0, 255.0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2] , smooth penalty:  0
+QoE:  4.3031
+QoE_all: [28.70055, 48.1, 3.7, 9.657, 4.3031] , 94.46065
+Extra chunk downloaded for Video  4  which the user already finished watching.
+
+
+User stopped watching Video  5 (  6000.0  ms ) :
+User watched: 5381  ms, downloaded  6000.0  sec.
+Rebuf:  [299.0, 636.0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  9.37025
+QoE_all: [28.70055, 48.1, 3.7, 9.657, 4.3031, 9.37025] , 103.8309
+
+User stopped watching Video  6 (  125000.0  ms ) :
+User watched: 414  ms, downloaded  4000.0  sec.
+Rebuf:  [0]
+chunk versions:  [2] , smooth penalty:  0
+QoE:  1.85
+QoE_all: [28.70055, 48.1, 3.7, 9.657, 4.3031, 9.37025, 1.85] , 105.6809
+Extra chunk downloaded for Video  6  which the user already finished watching.
+
+The user leaves.
+Your score is:  19.495259999999902
+Your QoE is:  105.68089999999991
+Your sum of wasted bytes is:  7072322.0
+Your download/watch ratio (downloaded time / total watch time) is:  1.4521140078346617
+---------------------------------------
+
+
+------------trace  1 --------------
+
+User stopped watching Video  0 (  17000.0  ms ) :
+User watched: 17000.0  ms, downloaded  17000.0  sec.
+Rebuf:  [0, 226.0, 0, 0, 0, 0, 0, 0, 76.0, 659.0, 273.0, 16.0, 343.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  1100
+QoE:  26.30295
+QoE_all: [26.30295] , 26.30295
+
+User stopped watching Video  1 (  26000.0  ms ) :
+User watched: 26000.0  ms, downloaded  26000.0  sec.
+Rebuf:  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  48.1
+QoE_all: [26.30295, 48.1] , 74.40295
+
+User stopped watching Video  2 (  37000.0  ms ) :
+User watched: 1924  ms, downloaded  21000.0  sec.
+Rebuf:  [0, 0]
+chunk versions:  [2, 2] , smooth penalty:  0
+QoE:  3.7
+QoE_all: [26.30295, 48.1, 3.7] , 78.10295
+Extra chunk downloaded for Video  2  which the user already finished watching.
+
+
+User stopped watching Video  3 (  40000.0  ms ) :
+User watched: 5617  ms, downloaded  10000.0  sec.
+Rebuf:  [874.0, 503.0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  8.55255
+QoE_all: [26.30295, 48.1, 3.7, 8.55255] , 86.6555
+Extra chunk downloaded for Video  3  which the user already finished watching.
+
+
+User stopped watching Video  4 (  47000.0  ms ) :
+User watched: 2888  ms, downloaded  4000.0  sec.
+Rebuf:  [65.0, 566.0, 0, 0, 0]
+chunk versions:  [2, 2, 2] , smooth penalty:  0
+QoE:  4.38265
+QoE_all: [26.30295, 48.1, 3.7, 8.55255, 4.38265] , 91.03815
+Extra chunk downloaded for Video  4  which the user already finished watching.
+
+
+User stopped watching Video  5 (  6000.0  ms ) :
+User watched: 5381  ms, downloaded  6000.0  sec.
+Rebuf:  [156.0, 371.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  10.12505
+QoE_all: [26.30295, 48.1, 3.7, 8.55255, 4.38265, 10.12505] , 101.1632
+
+User stopped watching Video  6 (  125000.0  ms ) :
+User watched: 414  ms, downloaded  7000.0  sec.
+Rebuf:  [0]
+chunk versions:  [2] , smooth penalty:  0
+QoE:  1.85
+QoE_all: [26.30295, 48.1, 3.7, 8.55255, 4.38265, 10.12505, 1.85] , 103.0132
+Extra chunk downloaded for Video  6  which the user already finished watching.
+
+The user leaves.
+Your score is:  8.34583999999991
+Your QoE is:  103.01319999999991
+Your sum of wasted bytes is:  9074658.0
+Your download/watch ratio (downloaded time / total watch time) is:  1.6040794272592191
+---------------------------------------
+
+
+------------trace  2 --------------
+
+User stopped watching Video  0 (  17000.0  ms ) :
+User watched: 17000.0  ms, downloaded  17000.0  sec.
+Rebuf:  [0, 273.0, 0, 0, 0, 0, 0, 0, 0, 818.0, 0, 316.0, 0, 175.0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  1100
+QoE:  26.3233
+QoE_all: [26.3233] , 26.3233
+
+User stopped watching Video  1 (  26000.0  ms ) :
+User watched: 26000.0  ms, downloaded  26000.0  sec.
+Rebuf:  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  48.1
+QoE_all: [26.3233, 48.1] , 74.4233
+
+User stopped watching Video  2 (  37000.0  ms ) :
+User watched: 1924  ms, downloaded  26000.0  sec.
+Rebuf:  [0, 0, 0]
+chunk versions:  [2, 2] , smooth penalty:  0
+QoE:  3.7
+QoE_all: [26.3233, 48.1, 3.7] , 78.1233
+Extra chunk downloaded for Video  2  which the user already finished watching.
+
+
+User stopped watching Video  3 (  40000.0  ms ) :
+User watched: 5617  ms, downloaded  11000.0  sec.
+Rebuf:  [15.0, 685.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  9.805
+QoE_all: [26.3233, 48.1, 3.7, 9.805] , 87.92830000000001
+Extra chunk downloaded for Video  3  which the user already finished watching.
+
+
+User stopped watching Video  4 (  47000.0  ms ) :
+User watched: 2888  ms, downloaded  6000.0  sec.
+Rebuf:  [389.0, 422.0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2] , smooth penalty:  0
+QoE:  4.04965
+QoE_all: [26.3233, 48.1, 3.7, 9.805, 4.04965] , 91.97795
+Extra chunk downloaded for Video  4  which the user already finished watching.
+
+
+User stopped watching Video  5 (  6000.0  ms ) :
+User watched: 5381  ms, downloaded  6000.0  sec.
+Rebuf:  [16.0, 334.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  10.4525
+QoE_all: [26.3233, 48.1, 3.7, 9.805, 4.04965, 10.4525] , 102.43045000000001
+
+User stopped watching Video  6 (  125000.0  ms ) :
+User watched: 414  ms, downloaded  7000.0  sec.
+Rebuf:  [0]
+chunk versions:  [2] , smooth penalty:  0
+QoE:  1.85
+QoE_all: [26.3233, 48.1, 3.7, 9.805, 4.04965, 10.4525, 1.85] , 104.28045
+Extra chunk downloaded for Video  6  which the user already finished watching.
+
+The user leaves.
+Your score is:  1.323461999999921
+Your QoE is:  104.28044999999992
+Your sum of wasted bytes is:  11266545.0
+Your download/watch ratio (downloaded time / total watch time) is:  1.7391598000810482
+---------------------------------------
+
+
+------------trace  3 --------------
+
+User stopped watching Video  0 (  17000.0  ms ) :
+User watched: 17000.0  ms, downloaded  17000.0  sec.
+Rebuf:  [0, 325.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  1100
+QoE:  28.64875
+QoE_all: [28.64875] , 28.64875
+
+User stopped watching Video  1 (  26000.0  ms ) :
+User watched: 26000.0  ms, downloaded  26000.0  sec.
+Rebuf:  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  48.1
+QoE_all: [28.64875, 48.1] , 76.74875
+
+User stopped watching Video  2 (  37000.0  ms ) :
+User watched: 1924  ms, downloaded  17000.0  sec.
+Rebuf:  [0, 0, 0, 0]
+chunk versions:  [2, 2] , smooth penalty:  0
+QoE:  3.7
+QoE_all: [28.64875, 48.1, 3.7] , 80.44875
+Extra chunk downloaded for Video  2  which the user already finished watching.
+
+
+User stopped watching Video  3 (  40000.0  ms ) :
+User watched: 5617  ms, downloaded  11000.0  sec.
+Rebuf:  [573.0, 992.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  8.20475
+QoE_all: [28.64875, 48.1, 3.7, 8.20475] , 88.65350000000001
+Extra chunk downloaded for Video  3  which the user already finished watching.
+
+
+User stopped watching Video  4 (  47000.0  ms ) :
+User watched: 2888  ms, downloaded  4000.0  sec.
+Rebuf:  [416.0, 428.0, 0, 0, 0]
+chunk versions:  [2, 2, 2] , smooth penalty:  0
+QoE:  3.9886
+QoE_all: [28.64875, 48.1, 3.7, 8.20475, 3.9886] , 92.64210000000001
+Extra chunk downloaded for Video  4  which the user already finished watching.
+
+
+User stopped watching Video  5 (  6000.0  ms ) :
+User watched: 5381  ms, downloaded  6000.0  sec.
+Rebuf:  [455.0, 817.0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  8.7468
+QoE_all: [28.64875, 48.1, 3.7, 8.20475, 3.9886, 8.7468] , 101.3889
+
+User stopped watching Video  6 (  125000.0  ms ) :
+User watched: 414  ms, downloaded  2000.0  sec.
+Rebuf:  []
+chunk versions:  [2] , smooth penalty:  0
+QoE:  1.85
+QoE_all: [28.64875, 48.1, 3.7, 8.20475, 3.9886, 8.7468, 1.85] , 103.2389
+Extra chunk downloaded for Video  6  which the user already finished watching.
+
+The user leaves.
+Your score is:  15.836879999999908
+Your QoE is:  103.2388999999999
+Your sum of wasted bytes is:  7357408.0
+Your download/watch ratio (downloaded time / total watch time) is:  1.4689990544373903
+---------------------------------------
+
+
+------------trace  4 --------------
+
+User stopped watching Video  0 (  17000.0  ms ) :
+User watched: 17000.0  ms, downloaded  17000.0  sec.
+Rebuf:  [0, 175.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  1100
+QoE:  28.92625
+QoE_all: [28.92625] , 28.92625
+
+User stopped watching Video  1 (  26000.0  ms ) :
+User watched: 26000.0  ms, downloaded  26000.0  sec.
+Rebuf:  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  48.1
+QoE_all: [28.92625, 48.1] , 77.02625
+
+User stopped watching Video  2 (  37000.0  ms ) :
+User watched: 1924  ms, downloaded  16000.0  sec.
+Rebuf:  [0, 0]
+chunk versions:  [2, 2] , smooth penalty:  0
+QoE:  3.7
+QoE_all: [28.92625, 48.1, 3.7] , 80.72625000000001
+Extra chunk downloaded for Video  2  which the user already finished watching.
+
+
+User stopped watching Video  3 (  40000.0  ms ) :
+User watched: 5617  ms, downloaded  10000.0  sec.
+Rebuf:  [135.0, 464.0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  9.99185
+QoE_all: [28.92625, 48.1, 3.7, 9.99185] , 90.7181
+Extra chunk downloaded for Video  3  which the user already finished watching.
+
+
+User stopped watching Video  4 (  47000.0  ms ) :
+User watched: 2888  ms, downloaded  4000.0  sec.
+Rebuf:  [541.0, 544.0, 30.0, 0, 0]
+chunk versions:  [2, 2, 2] , smooth penalty:  0
+QoE:  3.48725
+QoE_all: [28.92625, 48.1, 3.7, 9.99185, 3.48725] , 94.20535000000001
+Extra chunk downloaded for Video  4  which the user already finished watching.
+
+
+User stopped watching Video  5 (  6000.0  ms ) :
+User watched: 5381  ms, downloaded  6000.0  sec.
+Rebuf:  [1435.0, 648.0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  7.246449999999999
+QoE_all: [28.92625, 48.1, 3.7, 9.99185, 3.48725, 7.246449999999999] , 101.4518
+
+User stopped watching Video  6 (  125000.0  ms ) :
+User watched: 414  ms, downloaded  3000.0  sec.
+Rebuf:  []
+chunk versions:  [2] , smooth penalty:  0
+QoE:  1.85
+QoE_all: [28.92625, 48.1, 3.7, 9.99185, 3.48725, 7.246449999999999, 1.85] , 103.3018
+Extra chunk downloaded for Video  6  which the user already finished watching.
+
+The user leaves.
+Your score is:  16.894851999999915
+Your QoE is:  103.30179999999991
+Your sum of wasted bytes is:  7108768.0
+Your download/watch ratio (downloaded time / total watch time) is:  1.4521140078346617
+---------------------------------------
+
+
+------------trace  5 --------------
+
+User stopped watching Video  0 (  17000.0  ms ) :
+User watched: 17000.0  ms, downloaded  17000.0  sec.
+Rebuf:  [0, 288.0, 0, 0, 0, 0, 301.0, 726.0, 121.0, 657.0, 1027.0, 30.0, 346.0, 303.0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  1100
+QoE:  22.22185
+QoE_all: [22.22185] , 22.22185
+
+User stopped watching Video  1 (  26000.0  ms ) :
+User watched: 26000.0  ms, downloaded  26000.0  sec.
+Rebuf:  [0, 1559.0, 443.0, 311.0, 392.0, 34.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  43.03285
+QoE_all: [22.22185, 43.03285] , 65.2547
+
+User stopped watching Video  2 (  37000.0  ms ) :
+User watched: 1924  ms, downloaded  14000.0  sec.
+Rebuf:  [0, 0, 0]
+chunk versions:  [2, 2] , smooth penalty:  0
+QoE:  3.7
+QoE_all: [22.22185, 43.03285, 3.7] , 68.9547
+Extra chunk downloaded for Video  2  which the user already finished watching.
+
+
+User stopped watching Video  3 (  40000.0  ms ) :
+User watched: 5617  ms, downloaded  8000.0  sec.
+Rebuf:  [347.0, 408.0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  9.70325
+QoE_all: [22.22185, 43.03285, 3.7, 9.70325] , 78.65795
+Extra chunk downloaded for Video  3  which the user already finished watching.
+
+
+User stopped watching Video  4 (  47000.0  ms ) :
+User watched: 2888  ms, downloaded  4000.0  sec.
+Rebuf:  [167.0, 747.0, 0, 0, 0]
+chunk versions:  [2, 2, 2] , smooth penalty:  0
+QoE:  3.8590999999999998
+QoE_all: [22.22185, 43.03285, 3.7, 9.70325, 3.8590999999999998] , 82.51705
+Extra chunk downloaded for Video  4  which the user already finished watching.
+
+
+User stopped watching Video  5 (  6000.0  ms ) :
+User watched: 5381  ms, downloaded  6000.0  sec.
+Rebuf:  [1151.0, 327.0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  8.3657
+QoE_all: [22.22185, 43.03285, 3.7, 9.70325, 3.8590999999999998, 8.3657] , 90.88275
+
+User stopped watching Video  6 (  125000.0  ms ) :
+User watched: 414  ms, downloaded  2000.0  sec.
+Rebuf:  []
+chunk versions:  [2] , smooth penalty:  0
+QoE:  1.85
+QoE_all: [22.22185, 43.03285, 3.7, 9.70325, 3.8590999999999998, 8.3657, 1.85] , 92.73275
+Extra chunk downloaded for Video  6  which the user already finished watching.
+
+The user leaves.
+Your score is:  12.230289999999982
+Your QoE is:  92.73274999999998
+Your sum of wasted bytes is:  5634406.0
+Your download/watch ratio (downloaded time / total watch time) is:  1.3676887748210185
+---------------------------------------
+
+
+------------trace  6 --------------
+
+User stopped watching Video  0 (  17000.0  ms ) :
+User watched: 17000.0  ms, downloaded  17000.0  sec.
+Rebuf:  [0, 439.0, 0, 0, 0, 0, 33.0, 35.0, 112.0, 370.0, 111.0, 123.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  1100
+QoE:  26.98745
+QoE_all: [26.98745] , 26.98745
+
+User stopped watching Video  1 (  26000.0  ms ) :
+User watched: 26000.0  ms, downloaded  26000.0  sec.
+Rebuf:  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  48.1
+QoE_all: [26.98745, 48.1] , 75.08745
+
+User stopped watching Video  2 (  37000.0  ms ) :
+User watched: 1924  ms, downloaded  15000.0  sec.
+Rebuf:  [0, 0, 0]
+chunk versions:  [2, 2] , smooth penalty:  0
+QoE:  3.7
+QoE_all: [26.98745, 48.1, 3.7] , 78.78745
+Extra chunk downloaded for Video  2  which the user already finished watching.
+
+
+User stopped watching Video  3 (  40000.0  ms ) :
+User watched: 5617  ms, downloaded  10000.0  sec.
+Rebuf:  [472.0, 636.0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  9.0502
+QoE_all: [26.98745, 48.1, 3.7, 9.0502] , 87.83765000000001
+Extra chunk downloaded for Video  3  which the user already finished watching.
+
+
+User stopped watching Video  4 (  47000.0  ms ) :
+User watched: 2888  ms, downloaded  6000.0  sec.
+Rebuf:  [153.0, 352.0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2] , smooth penalty:  0
+QoE:  4.61575
+QoE_all: [26.98745, 48.1, 3.7, 9.0502, 4.61575] , 92.45340000000002
+Extra chunk downloaded for Video  4  which the user already finished watching.
+
+
+User stopped watching Video  5 (  6000.0  ms ) :
+User watched: 5381  ms, downloaded  6000.0  sec.
+Rebuf:  [364.0, 437.0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  9.61815
+QoE_all: [26.98745, 48.1, 3.7, 9.0502, 4.61575, 9.61815] , 102.07155000000002
+
+User stopped watching Video  6 (  125000.0  ms ) :
+User watched: 414  ms, downloaded  5000.0  sec.
+Rebuf:  [0]
+chunk versions:  [2] , smooth penalty:  0
+QoE:  1.85
+QoE_all: [26.98745, 48.1, 3.7, 9.0502, 4.61575, 9.61815, 1.85] , 103.92155000000001
+Extra chunk downloaded for Video  6  which the user already finished watching.
+
+The user leaves.
+Your score is:  14.291597999999922
+Your QoE is:  103.92154999999993
+Your sum of wasted bytes is:  8027694.0
+Your download/watch ratio (downloaded time / total watch time) is:  1.5027691476428475
+---------------------------------------
+
+
+------------trace  7 --------------
+
+User stopped watching Video  0 (  17000.0  ms ) :
+User watched: 17000.0  ms, downloaded  17000.0  sec.
+Rebuf:  [0, 180.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  1100
+QoE:  28.917
+QoE_all: [28.917] , 28.917
+
+User stopped watching Video  1 (  26000.0  ms ) :
+User watched: 26000.0  ms, downloaded  26000.0  sec.
+Rebuf:  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  48.1
+QoE_all: [28.917, 48.1] , 77.017
+
+User stopped watching Video  2 (  37000.0  ms ) :
+User watched: 1924  ms, downloaded  26000.0  sec.
+Rebuf:  [0, 0]
+chunk versions:  [2, 2] , smooth penalty:  0
+QoE:  3.7
+QoE_all: [28.917, 48.1, 3.7] , 80.717
+Extra chunk downloaded for Video  2  which the user already finished watching.
+
+
+User stopped watching Video  3 (  40000.0  ms ) :
+User watched: 5617  ms, downloaded  8000.0  sec.
+Rebuf:  [1043.0, 530.0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  8.18995
+QoE_all: [28.917, 48.1, 3.7, 8.18995] , 88.90695
+Extra chunk downloaded for Video  3  which the user already finished watching.
+
+
+User stopped watching Video  4 (  47000.0  ms ) :
+User watched: 2888  ms, downloaded  3000.0  sec.
+Rebuf:  [40.0, 517.0, 0, 0]
+chunk versions:  [2, 2, 2] , smooth penalty:  0
+QoE:  4.51955
+QoE_all: [28.917, 48.1, 3.7, 8.18995, 4.51955] , 93.42649999999999
+Extra chunk downloaded for Video  4  which the user already finished watching.
+
+
+User stopped watching Video  5 (  6000.0  ms ) :
+User watched: 5381  ms, downloaded  6000.0  sec.
+Rebuf:  [145.0, 544.0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  9.82535
+QoE_all: [28.917, 48.1, 3.7, 8.18995, 4.51955, 9.82535] , 103.25184999999999
+
+User stopped watching Video  6 (  125000.0  ms ) :
+User watched: 414  ms, downloaded  4000.0  sec.
+Rebuf:  [0]
+chunk versions:  [2] , smooth penalty:  0
+QoE:  1.85
+QoE_all: [28.917, 48.1, 3.7, 8.18995, 4.51955, 9.82535, 1.85] , 105.10184999999998
+Extra chunk downloaded for Video  6  which the user already finished watching.
+
+The user leaves.
+Your score is:  11.295025999999908
+Your QoE is:  105.10184999999991
+Your sum of wasted bytes is:  9080113.0
+Your download/watch ratio (downloaded time / total watch time) is:  1.5871943806564905
+---------------------------------------
+
+
+------------trace  8 --------------
+
+User stopped watching Video  0 (  17000.0  ms ) :
+User watched: 17000.0  ms, downloaded  17000.0  sec.
+Rebuf:  [0, 196.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  1100
+QoE:  28.8874
+QoE_all: [28.8874] , 28.8874
+
+User stopped watching Video  1 (  26000.0  ms ) :
+User watched: 26000.0  ms, downloaded  26000.0  sec.
+Rebuf:  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  48.1
+QoE_all: [28.8874, 48.1] , 76.98740000000001
+
+User stopped watching Video  2 (  37000.0  ms ) :
+User watched: 1924  ms, downloaded  23000.0  sec.
+Rebuf:  [0, 0, 0, 0]
+chunk versions:  [2, 2] , smooth penalty:  0
+QoE:  3.7
+QoE_all: [28.8874, 48.1, 3.7] , 80.68740000000001
+Extra chunk downloaded for Video  2  which the user already finished watching.
+
+
+User stopped watching Video  3 (  40000.0  ms ) :
+User watched: 5617  ms, downloaded  9000.0  sec.
+Rebuf:  [147.0, 343.0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  10.1935
+QoE_all: [28.8874, 48.1, 3.7, 10.1935] , 90.88090000000001
+Extra chunk downloaded for Video  3  which the user already finished watching.
+
+
+User stopped watching Video  4 (  47000.0  ms ) :
+User watched: 2888  ms, downloaded  5000.0  sec.
+Rebuf:  [398.0, 1246.0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2] , smooth penalty:  0
+QoE:  2.5086
+QoE_all: [28.8874, 48.1, 3.7, 10.1935, 2.5086] , 93.38950000000001
+Extra chunk downloaded for Video  4  which the user already finished watching.
+
+
+User stopped watching Video  5 (  6000.0  ms ) :
+User watched: 5381  ms, downloaded  6000.0  sec.
+Rebuf:  [541.0, 416.0, 0, 122.0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  9.10385
+QoE_all: [28.8874, 48.1, 3.7, 10.1935, 2.5086, 9.10385] , 102.49335
+
+User stopped watching Video  6 (  125000.0  ms ) :
+User watched: 414  ms, downloaded  2000.0  sec.
+Rebuf:  [0]
+chunk versions:  [2] , smooth penalty:  0
+QoE:  1.85
+QoE_all: [28.8874, 48.1, 3.7, 10.1935, 2.5086, 9.10385, 1.85] , 104.34335
+Extra chunk downloaded for Video  6  which the user already finished watching.
+
+The user leaves.
+Your score is:  12.511165999999918
+Your QoE is:  104.34334999999992
+Your sum of wasted bytes is:  8507108.0
+Your download/watch ratio (downloaded time / total watch time) is:  1.5534242874510333
+---------------------------------------
+
+
+------------trace  9 --------------
+
+User stopped watching Video  0 (  17000.0  ms ) :
+User watched: 17000.0  ms, downloaded  17000.0  sec.
+Rebuf:  [0, 258.0, 0, 0, 0, 0, 0, 0, 0, 184.0, 252.0, 118.0, 21.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  1100
+QoE:  27.70895
+QoE_all: [27.70895] , 27.70895
+
+User stopped watching Video  1 (  26000.0  ms ) :
+User watched: 26000.0  ms, downloaded  26000.0  sec.
+Rebuf:  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  48.1
+QoE_all: [27.70895, 48.1] , 75.80895000000001
+
+User stopped watching Video  2 (  37000.0  ms ) :
+User watched: 1924  ms, downloaded  25000.0  sec.
+Rebuf:  [0, 0, 0, 0]
+chunk versions:  [2, 2] , smooth penalty:  0
+QoE:  3.7
+QoE_all: [27.70895, 48.1, 3.7] , 79.50895000000001
+Extra chunk downloaded for Video  2  which the user already finished watching.
+
+
+User stopped watching Video  3 (  40000.0  ms ) :
+User watched: 5617  ms, downloaded  10000.0  sec.
+Rebuf:  [187.0, 362.0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  10.084349999999999
+QoE_all: [27.70895, 48.1, 3.7, 10.084349999999999] , 89.59330000000001
+Extra chunk downloaded for Video  3  which the user already finished watching.
+
+
+User stopped watching Video  4 (  47000.0  ms ) :
+User watched: 2888  ms, downloaded  4000.0  sec.
+Rebuf:  [66.0, 341.0, 0, 0, 0]
+chunk versions:  [2, 2, 2] , smooth penalty:  0
+QoE:  4.79705
+QoE_all: [27.70895, 48.1, 3.7, 10.084349999999999, 4.79705] , 94.39035000000001
+Extra chunk downloaded for Video  4  which the user already finished watching.
+
+
+User stopped watching Video  5 (  6000.0  ms ) :
+User watched: 5381  ms, downloaded  6000.0  sec.
+Rebuf:  [416.0, 792.0, 61.0, 0, 60.0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  8.64135
+QoE_all: [27.70895, 48.1, 3.7, 10.084349999999999, 4.79705, 8.64135] , 103.03170000000001
+
+User stopped watching Video  6 (  125000.0  ms ) :
+User watched: 414  ms, downloaded  2000.0  sec.
+Rebuf:  []
+chunk versions:  [2] , smooth penalty:  0
+QoE:  1.85
+QoE_all: [27.70895, 48.1, 3.7, 10.084349999999999, 4.79705, 8.64135, 1.85] , 104.88170000000001
+Extra chunk downloaded for Video  6  which the user already finished watching.
+
+The user leaves.
+Your score is:  11.128135999999927
+Your QoE is:  104.88169999999992
+Your sum of wasted bytes is:  8932486.0
+Your download/watch ratio (downloaded time / total watch time) is:  1.5871943806564905
+---------------------------------------
+
+
+------------trace  10 --------------
+
+User stopped watching Video  0 (  17000.0  ms ) :
+User watched: 17000.0  ms, downloaded  17000.0  sec.
+Rebuf:  [0, 214.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  1100
+QoE:  28.8541
+QoE_all: [28.8541] , 28.8541
+
+User stopped watching Video  1 (  26000.0  ms ) :
+User watched: 26000.0  ms, downloaded  26000.0  sec.
+Rebuf:  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  48.1
+QoE_all: [28.8541, 48.1] , 76.9541
+
+User stopped watching Video  2 (  37000.0  ms ) :
+User watched: 1924  ms, downloaded  22000.0  sec.
+Rebuf:  [0, 0, 0, 0]
+chunk versions:  [2, 2] , smooth penalty:  0
+QoE:  3.7
+QoE_all: [28.8541, 48.1, 3.7] , 80.6541
+Extra chunk downloaded for Video  2  which the user already finished watching.
+
+
+User stopped watching Video  3 (  40000.0  ms ) :
+User watched: 5617  ms, downloaded  10000.0  sec.
+Rebuf:  [359.0, 394.0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  9.706949999999999
+QoE_all: [28.8541, 48.1, 3.7, 9.706949999999999] , 90.36105
+Extra chunk downloaded for Video  3  which the user already finished watching.
+
+
+User stopped watching Video  4 (  47000.0  ms ) :
+User watched: 2888  ms, downloaded  5000.0  sec.
+Rebuf:  [209.0, 610.0, 240.0, 0, 0, 0]
+chunk versions:  [2, 2, 2] , smooth penalty:  0
+QoE:  3.5908499999999997
+QoE_all: [28.8541, 48.1, 3.7, 9.706949999999999, 3.5908499999999997] , 93.95190000000001
+Extra chunk downloaded for Video  4  which the user already finished watching.
+
+
+User stopped watching Video  5 (  6000.0  ms ) :
+User watched: 5381  ms, downloaded  6000.0  sec.
+Rebuf:  [67.0, 321.0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  10.3822
+QoE_all: [28.8541, 48.1, 3.7, 9.706949999999999, 3.5908499999999997, 10.3822] , 104.3341
+
+User stopped watching Video  6 (  125000.0  ms ) :
+User watched: 414  ms, downloaded  3000.0  sec.
+Rebuf:  []
+chunk versions:  [2] , smooth penalty:  0
+QoE:  1.85
+QoE_all: [28.8541, 48.1, 3.7, 9.706949999999999, 3.5908499999999997, 10.3822, 1.85] , 106.1841
+Extra chunk downloaded for Video  6  which the user already finished watching.
+
+The user leaves.
+Your score is:  12.995255999999912
+Your QoE is:  106.18409999999992
+Your sum of wasted bytes is:  8798353.0
+Your download/watch ratio (downloaded time / total watch time) is:  1.570309334053762
+---------------------------------------
+
+
+------------trace  11 --------------
+
+User stopped watching Video  0 (  17000.0  ms ) :
+User watched: 17000.0  ms, downloaded  17000.0  sec.
+Rebuf:  [0, 434.0, 169.0, 0, 0, 0, 345.0, 58.0, 545.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  1100
+QoE:  26.38065
+QoE_all: [26.38065] , 26.38065
+
+User stopped watching Video  1 (  26000.0  ms ) :
+User watched: 26000.0  ms, downloaded  26000.0  sec.
+Rebuf:  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  48.1
+QoE_all: [26.38065, 48.1] , 74.48065
+
+User stopped watching Video  2 (  37000.0  ms ) :
+User watched: 1924  ms, downloaded  31000.0  sec.
+Rebuf:  [0, 0, 0, 0]
+chunk versions:  [2, 2] , smooth penalty:  0
+QoE:  3.7
+QoE_all: [26.38065, 48.1, 3.7] , 78.18065
+Extra chunk downloaded for Video  2  which the user already finished watching.
+
+
+User stopped watching Video  3 (  40000.0  ms ) :
+User watched: 5617  ms, downloaded  11000.0  sec.
+Rebuf:  [580.0, 351.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  9.37765
+QoE_all: [26.38065, 48.1, 3.7, 9.37765] , 87.5583
+Extra chunk downloaded for Video  3  which the user already finished watching.
+
+
+User stopped watching Video  4 (  47000.0  ms ) :
+User watched: 2888  ms, downloaded  4000.0  sec.
+Rebuf:  [342.0, 325.0, 0, 177.0, 0]
+chunk versions:  [2, 2, 2] , smooth penalty:  0
+QoE:  3.9886
+QoE_all: [26.38065, 48.1, 3.7, 9.37765, 3.9886] , 91.54690000000001
+Extra chunk downloaded for Video  4  which the user already finished watching.
+
+
+User stopped watching Video  5 (  6000.0  ms ) :
+User watched: 5381  ms, downloaded  6000.0  sec.
+Rebuf:  [187.0, 285.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  10.226799999999999
+QoE_all: [26.38065, 48.1, 3.7, 9.37765, 3.9886, 10.226799999999999] , 101.7737
+
+User stopped watching Video  6 (  125000.0  ms ) :
+User watched: 414  ms, downloaded  6000.0  sec.
+Rebuf:  []
+chunk versions:  [2] , smooth penalty:  0
+QoE:  1.85
+QoE_all: [26.38065, 48.1, 3.7, 9.37765, 3.9886, 10.226799999999999, 1.85] , 103.6237
+Extra chunk downloaded for Video  6  which the user already finished watching.
+
+The user leaves.
+Your score is:  -1.2396800000000923
+Your QoE is:  103.62369999999991
+Your sum of wasted bytes is:  11667412.0
+Your download/watch ratio (downloaded time / total watch time) is:  1.7729298932865054
+---------------------------------------
+
+
+------------trace  12 --------------
+
+User stopped watching Video  0 (  17000.0  ms ) :
+User watched: 17000.0  ms, downloaded  17000.0  sec.
+Rebuf:  [0, 694.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  1100
+QoE:  27.9661
+QoE_all: [27.9661] , 27.9661
+
+User stopped watching Video  1 (  26000.0  ms ) :
+User watched: 26000.0  ms, downloaded  26000.0  sec.
+Rebuf:  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  48.1
+QoE_all: [27.9661, 48.1] , 76.0661
+
+User stopped watching Video  2 (  37000.0  ms ) :
+User watched: 1924  ms, downloaded  23000.0  sec.
+Rebuf:  [0, 0, 0]
+chunk versions:  [2, 2] , smooth penalty:  0
+QoE:  3.7
+QoE_all: [27.9661, 48.1, 3.7] , 79.76610000000001
+Extra chunk downloaded for Video  2  which the user already finished watching.
+
+
+User stopped watching Video  3 (  40000.0  ms ) :
+User watched: 5617  ms, downloaded  8000.0  sec.
+Rebuf:  [770.0, 738.0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  8.3102
+QoE_all: [27.9661, 48.1, 3.7, 8.3102] , 88.0763
+Extra chunk downloaded for Video  3  which the user already finished watching.
+
+
+User stopped watching Video  4 (  47000.0  ms ) :
+User watched: 2888  ms, downloaded  5000.0  sec.
+Rebuf:  [713.0, 595.0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2] , smooth penalty:  0
+QoE:  3.1301999999999994
+QoE_all: [27.9661, 48.1, 3.7, 8.3102, 3.1301999999999994] , 91.2065
+Extra chunk downloaded for Video  4  which the user already finished watching.
+
+
+User stopped watching Video  5 (  6000.0  ms ) :
+User watched: 5381  ms, downloaded  6000.0  sec.
+Rebuf:  [183.0, 397.0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  10.027
+QoE_all: [27.9661, 48.1, 3.7, 8.3102, 3.1301999999999994, 10.027] , 101.2335
+
+User stopped watching Video  6 (  125000.0  ms ) :
+User watched: 414  ms, downloaded  4000.0  sec.
+Rebuf:  [0]
+chunk versions:  [2] , smooth penalty:  0
+QoE:  1.85
+QoE_all: [27.9661, 48.1, 3.7, 8.3102, 3.1301999999999994, 10.027, 1.85] , 103.0835
+Extra chunk downloaded for Video  6  which the user already finished watching.
+
+The user leaves.
+Your score is:  10.270555999999914
+Your QoE is:  103.08349999999992
+Your sum of wasted bytes is:  8718451.0
+Your download/watch ratio (downloaded time / total watch time) is:  1.570309334053762
+---------------------------------------
+
+
+------------trace  13 --------------
+
+User stopped watching Video  0 (  17000.0  ms ) :
+User watched: 17000.0  ms, downloaded  17000.0  sec.
+Rebuf:  [0, 198.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  1100
+QoE:  28.8837
+QoE_all: [28.8837] , 28.8837
+
+User stopped watching Video  1 (  26000.0  ms ) :
+User watched: 26000.0  ms, downloaded  26000.0  sec.
+Rebuf:  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  48.1
+QoE_all: [28.8837, 48.1] , 76.9837
+
+User stopped watching Video  2 (  37000.0  ms ) :
+User watched: 1924  ms, downloaded  15000.0  sec.
+Rebuf:  [0, 0, 0]
+chunk versions:  [2, 2] , smooth penalty:  0
+QoE:  3.7
+QoE_all: [28.8837, 48.1, 3.7] , 80.6837
+Extra chunk downloaded for Video  2  which the user already finished watching.
+
+
+User stopped watching Video  3 (  40000.0  ms ) :
+User watched: 5617  ms, downloaded  10000.0  sec.
+Rebuf:  [251.0, 285.0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  10.1084
+QoE_all: [28.8837, 48.1, 3.7, 10.1084] , 90.7921
+Extra chunk downloaded for Video  3  which the user already finished watching.
+
+
+User stopped watching Video  4 (  47000.0  ms ) :
+User watched: 2888  ms, downloaded  5000.0  sec.
+Rebuf:  [204.0, 363.0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2] , smooth penalty:  0
+QoE:  4.501049999999999
+QoE_all: [28.8837, 48.1, 3.7, 10.1084, 4.501049999999999] , 95.29315
+Extra chunk downloaded for Video  4  which the user already finished watching.
+
+
+User stopped watching Video  5 (  6000.0  ms ) :
+User watched: 5381  ms, downloaded  6000.0  sec.
+Rebuf:  [473.0, 364.0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  9.551549999999999
+QoE_all: [28.8837, 48.1, 3.7, 10.1084, 4.501049999999999, 9.551549999999999] , 104.84469999999999
+
+User stopped watching Video  6 (  125000.0  ms ) :
+User watched: 414  ms, downloaded  3000.0  sec.
+Rebuf:  []
+chunk versions:  [2] , smooth penalty:  0
+QoE:  1.85
+QoE_all: [28.8837, 48.1, 3.7, 10.1084, 4.501049999999999, 9.551549999999999, 1.85] , 106.69469999999998
+Extra chunk downloaded for Video  6  which the user already finished watching.
+
+The user leaves.
+Your score is:  20.151231999999894
+Your QoE is:  106.6946999999999
+Your sum of wasted bytes is:  7290142.0
+Your download/watch ratio (downloaded time / total watch time) is:  1.4521140078346617
+---------------------------------------
+
+
+------------trace  14 --------------
+
+User stopped watching Video  0 (  17000.0  ms ) :
+User watched: 17000.0  ms, downloaded  17000.0  sec.
+Rebuf:  [0, 460.0, 0, 0, 0, 0, 0, 527.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  1100
+QoE:  27.42405
+QoE_all: [27.42405] , 27.42405
+
+User stopped watching Video  1 (  26000.0  ms ) :
+User watched: 26000.0  ms, downloaded  26000.0  sec.
+Rebuf:  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  48.1
+QoE_all: [27.42405, 48.1] , 75.52405
+
+User stopped watching Video  2 (  37000.0  ms ) :
+User watched: 1924  ms, downloaded  22000.0  sec.
+Rebuf:  [0, 0]
+chunk versions:  [2, 2] , smooth penalty:  0
+QoE:  3.7
+QoE_all: [27.42405, 48.1, 3.7] , 79.22405
+Extra chunk downloaded for Video  2  which the user already finished watching.
+
+
+User stopped watching Video  3 (  40000.0  ms ) :
+User watched: 5617  ms, downloaded  9000.0  sec.
+Rebuf:  [42.0, 408.0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  10.2675
+QoE_all: [27.42405, 48.1, 3.7, 10.2675] , 89.49155
+Extra chunk downloaded for Video  3  which the user already finished watching.
+
+
+User stopped watching Video  4 (  47000.0  ms ) :
+User watched: 2888  ms, downloaded  6000.0  sec.
+Rebuf:  [411.0, 458.0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2] , smooth penalty:  0
+QoE:  3.94235
+QoE_all: [27.42405, 48.1, 3.7, 10.2675, 3.94235] , 93.43390000000001
+Extra chunk downloaded for Video  4  which the user already finished watching.
+
+
+User stopped watching Video  5 (  6000.0  ms ) :
+User watched: 5381  ms, downloaded  6000.0  sec.
+Rebuf:  [183.0, 273.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  10.2564
+QoE_all: [27.42405, 48.1, 3.7, 10.2675, 3.94235, 10.2564] , 103.69030000000001
+
+User stopped watching Video  6 (  125000.0  ms ) :
+User watched: 414  ms, downloaded  5000.0  sec.
+Rebuf:  []
+chunk versions:  [2] , smooth penalty:  0
+QoE:  1.85
+QoE_all: [27.42405, 48.1, 3.7, 10.2675, 3.94235, 10.2564, 1.85] , 105.5403
+Extra chunk downloaded for Video  6  which the user already finished watching.
+
+The user leaves.
+Your score is:  10.531651999999937
+Your QoE is:  105.54029999999993
+Your sum of wasted bytes is:  9201000.0
+Your download/watch ratio (downloaded time / total watch time) is:  1.6040794272592191
+---------------------------------------
+
+
+------------trace  15 --------------
+
+User stopped watching Video  0 (  17000.0  ms ) :
+User watched: 17000.0  ms, downloaded  17000.0  sec.
+Rebuf:  [0, 274.0, 335.0, 0, 0, 0, 435.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  1100
+QoE:  27.3186
+QoE_all: [27.3186] , 27.3186
+
+User stopped watching Video  1 (  26000.0  ms ) :
+User watched: 26000.0  ms, downloaded  26000.0  sec.
+Rebuf:  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  48.1
+QoE_all: [27.3186, 48.1] , 75.4186
+
+User stopped watching Video  2 (  37000.0  ms ) :
+User watched: 1924  ms, downloaded  20000.0  sec.
+Rebuf:  [0, 0]
+chunk versions:  [2, 2] , smooth penalty:  0
+QoE:  3.7
+QoE_all: [27.3186, 48.1, 3.7] , 79.1186
+Extra chunk downloaded for Video  2  which the user already finished watching.
+
+
+User stopped watching Video  3 (  40000.0  ms ) :
+User watched: 5617  ms, downloaded  10000.0  sec.
+Rebuf:  [105.0, 479.0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  10.0196
+QoE_all: [27.3186, 48.1, 3.7, 10.0196] , 89.1382
+Extra chunk downloaded for Video  3  which the user already finished watching.
+
+
+User stopped watching Video  4 (  47000.0  ms ) :
+User watched: 2888  ms, downloaded  5000.0  sec.
+Rebuf:  [473.0, 332.0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2] , smooth penalty:  0
+QoE:  4.06075
+QoE_all: [27.3186, 48.1, 3.7, 10.0196, 4.06075] , 93.19895
+Extra chunk downloaded for Video  4  which the user already finished watching.
+
+
+User stopped watching Video  5 (  6000.0  ms ) :
+User watched: 5381  ms, downloaded  6000.0  sec.
+Rebuf:  [300.0, 351.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  9.89565
+QoE_all: [27.3186, 48.1, 3.7, 10.0196, 4.06075, 9.89565] , 103.0946
+
+User stopped watching Video  6 (  125000.0  ms ) :
+User watched: 414  ms, downloaded  7000.0  sec.
+Rebuf:  [0]
+chunk versions:  [2] , smooth penalty:  0
+QoE:  1.85
+QoE_all: [27.3186, 48.1, 3.7, 10.0196, 4.06075, 9.89565, 1.85] , 104.9446
+Extra chunk downloaded for Video  6  which the user already finished watching.
+
+The user leaves.
+Your score is:  10.20465999999989
+Your QoE is:  104.9445999999999
+Your sum of wasted bytes is:  9133388.0
+Your download/watch ratio (downloaded time / total watch time) is:  1.6040794272592191
+---------------------------------------
+
+
+------------trace  16 --------------
+
+User stopped watching Video  0 (  17000.0  ms ) :
+User watched: 17000.0  ms, downloaded  17000.0  sec.
+Rebuf:  [0, 318.0, 103.0, 0, 0, 0, 0, 158.0, 0, 1199.0, 1535.0, 0, 213.0, 35.0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  1100
+QoE:  22.66215
+QoE_all: [22.66215] , 22.66215
+
+User stopped watching Video  1 (  26000.0  ms ) :
+User watched: 26000.0  ms, downloaded  26000.0  sec.
+Rebuf:  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  48.1
+QoE_all: [22.66215, 48.1] , 70.76215
+
+User stopped watching Video  2 (  37000.0  ms ) :
+User watched: 1924  ms, downloaded  21000.0  sec.
+Rebuf:  [0, 0, 0, 0, 0]
+chunk versions:  [2, 2] , smooth penalty:  0
+QoE:  3.7
+QoE_all: [22.66215, 48.1, 3.7] , 74.46215000000001
+Extra chunk downloaded for Video  2  which the user already finished watching.
+
+
+User stopped watching Video  3 (  40000.0  ms ) :
+User watched: 5617  ms, downloaded  10000.0  sec.
+Rebuf:  [550.0, 460.0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  9.2315
+QoE_all: [22.66215, 48.1, 3.7, 9.2315] , 83.69365
+Extra chunk downloaded for Video  3  which the user already finished watching.
+
+
+User stopped watching Video  4 (  47000.0  ms ) :
+User watched: 2888  ms, downloaded  5000.0  sec.
+Rebuf:  [218.0, 629.0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2] , smooth penalty:  0
+QoE:  3.9830499999999995
+QoE_all: [22.66215, 48.1, 3.7, 9.2315, 3.9830499999999995] , 87.67670000000001
+Extra chunk downloaded for Video  4  which the user already finished watching.
+
+
+User stopped watching Video  5 (  6000.0  ms ) :
+User watched: 5381  ms, downloaded  6000.0  sec.
+Rebuf:  [498.0, 434.0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  9.3758
+QoE_all: [22.66215, 48.1, 3.7, 9.2315, 3.9830499999999995, 9.3758] , 97.05250000000001
+
+User stopped watching Video  6 (  125000.0  ms ) :
+User watched: 414  ms, downloaded  2000.0  sec.
+Rebuf:  []
+chunk versions:  [2] , smooth penalty:  0
+QoE:  1.85
+QoE_all: [22.66215, 48.1, 3.7, 9.2315, 3.9830499999999995, 9.3758, 1.85] , 98.9025
+Extra chunk downloaded for Video  6  which the user already finished watching.
+
+The user leaves.
+Your score is:  7.633451999999934
+Your QoE is:  98.90249999999993
+Your sum of wasted bytes is:  8378084.0
+Your download/watch ratio (downloaded time / total watch time) is:  1.5365392408483047
+---------------------------------------
+
+
+------------trace  17 --------------
+
+User stopped watching Video  0 (  17000.0  ms ) :
+User watched: 17000.0  ms, downloaded  17000.0  sec.
+Rebuf:  [0, 186.0, 0, 328.0, 0, 0, 75.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  1100
+QoE:  28.16035
+QoE_all: [28.16035] , 28.16035
+
+User stopped watching Video  1 (  26000.0  ms ) :
+User watched: 26000.0  ms, downloaded  26000.0  sec.
+Rebuf:  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  48.1
+QoE_all: [28.16035, 48.1] , 76.26035
+
+User stopped watching Video  2 (  37000.0  ms ) :
+User watched: 1924  ms, downloaded  15000.0  sec.
+Rebuf:  [0, 0]
+chunk versions:  [2, 2] , smooth penalty:  0
+QoE:  3.7
+QoE_all: [28.16035, 48.1, 3.7] , 79.96035
+Extra chunk downloaded for Video  2  which the user already finished watching.
+
+
+User stopped watching Video  3 (  40000.0  ms ) :
+User watched: 5617  ms, downloaded  8000.0  sec.
+Rebuf:  [504.0, 411.0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  9.40725
+QoE_all: [28.16035, 48.1, 3.7, 9.40725] , 89.36760000000001
+Extra chunk downloaded for Video  3  which the user already finished watching.
+
+
+User stopped watching Video  4 (  47000.0  ms ) :
+User watched: 2888  ms, downloaded  8000.0  sec.
+Rebuf:  [172.0, 486.0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2] , smooth penalty:  0
+QoE:  4.3327
+QoE_all: [28.16035, 48.1, 3.7, 9.40725, 4.3327] , 93.70030000000001
+Extra chunk downloaded for Video  4  which the user already finished watching.
+
+
+User stopped watching Video  5 (  6000.0  ms ) :
+User watched: 5381  ms, downloaded  6000.0  sec.
+Rebuf:  [1279.0, 279.0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  8.217699999999999
+QoE_all: [28.16035, 48.1, 3.7, 9.40725, 4.3327, 8.217699999999999] , 101.918
+
+User stopped watching Video  6 (  125000.0  ms ) :
+User watched: 414  ms, downloaded  5000.0  sec.
+Rebuf:  [0]
+chunk versions:  [2] , smooth penalty:  0
+QoE:  1.85
+QoE_all: [28.16035, 48.1, 3.7, 9.40725, 4.3327, 8.217699999999999, 1.85] , 103.768
+Extra chunk downloaded for Video  6  which the user already finished watching.
+
+The user leaves.
+Your score is:  14.668135999999919
+Your QoE is:  103.76799999999992
+Your sum of wasted bytes is:  7859397.0
+Your download/watch ratio (downloaded time / total watch time) is:  1.5027691476428475
+---------------------------------------
+
+
+------------trace  18 --------------
+
+User stopped watching Video  0 (  17000.0  ms ) :
+User watched: 17000.0  ms, downloaded  17000.0  sec.
+Rebuf:  [0, 214.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  1100
+QoE:  28.8541
+QoE_all: [28.8541] , 28.8541
+
+User stopped watching Video  1 (  26000.0  ms ) :
+User watched: 26000.0  ms, downloaded  26000.0  sec.
+Rebuf:  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  48.1
+QoE_all: [28.8541, 48.1] , 76.9541
+
+User stopped watching Video  2 (  37000.0  ms ) :
+User watched: 1924  ms, downloaded  31000.0  sec.
+Rebuf:  [0, 0]
+chunk versions:  [2, 2] , smooth penalty:  0
+QoE:  3.7
+QoE_all: [28.8541, 48.1, 3.7] , 80.6541
+Extra chunk downloaded for Video  2  which the user already finished watching.
+
+
+User stopped watching Video  3 (  40000.0  ms ) :
+User watched: 5617  ms, downloaded  10000.0  sec.
+Rebuf:  [576.0, 411.0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  9.274049999999999
+QoE_all: [28.8541, 48.1, 3.7, 9.274049999999999] , 89.92815
+Extra chunk downloaded for Video  3  which the user already finished watching.
+
+
+User stopped watching Video  4 (  47000.0  ms ) :
+User watched: 2888  ms, downloaded  5000.0  sec.
+Rebuf:  [740.0, 632.0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2] , smooth penalty:  0
+QoE:  3.0117999999999996
+QoE_all: [28.8541, 48.1, 3.7, 9.274049999999999, 3.0117999999999996] , 92.93995
+Extra chunk downloaded for Video  4  which the user already finished watching.
+
+
+User stopped watching Video  5 (  6000.0  ms ) :
+User watched: 5381  ms, downloaded  6000.0  sec.
+Rebuf:  [754.0, 455.0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  8.86335
+QoE_all: [28.8541, 48.1, 3.7, 9.274049999999999, 3.0117999999999996, 8.86335] , 101.8033
+
+User stopped watching Video  6 (  125000.0  ms ) :
+User watched: 414  ms, downloaded  4000.0  sec.
+Rebuf:  [0]
+chunk versions:  [2] , smooth penalty:  0
+QoE:  1.85
+QoE_all: [28.8541, 48.1, 3.7, 9.274049999999999, 3.0117999999999996, 8.86335, 1.85] , 103.65329999999999
+Extra chunk downloaded for Video  6  which the user already finished watching.
+
+The user leaves.
+Your score is:  0.6790719999999055
+Your QoE is:  103.6532999999999
+Your sum of wasted bytes is:  11292801.0
+Your download/watch ratio (downloaded time / total watch time) is:  1.7391598000810482
+---------------------------------------
+
+
+------------trace  19 --------------
+
+User stopped watching Video  0 (  17000.0  ms ) :
+User watched: 17000.0  ms, downloaded  17000.0  sec.
+Rebuf:  [0, 264.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  1100
+QoE:  28.7616
+QoE_all: [28.7616] , 28.7616
+
+User stopped watching Video  1 (  26000.0  ms ) :
+User watched: 26000.0  ms, downloaded  26000.0  sec.
+Rebuf:  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  48.1
+QoE_all: [28.7616, 48.1] , 76.86160000000001
+
+User stopped watching Video  2 (  37000.0  ms ) :
+User watched: 1924  ms, downloaded  16000.0  sec.
+Rebuf:  [0, 0, 0, 0]
+chunk versions:  [2, 2] , smooth penalty:  0
+QoE:  3.7
+QoE_all: [28.7616, 48.1, 3.7] , 80.56160000000001
+Extra chunk downloaded for Video  2  which the user already finished watching.
+
+
+User stopped watching Video  3 (  40000.0  ms ) :
+User watched: 5617  ms, downloaded  10000.0  sec.
+Rebuf:  [90.0, 398.0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  10.197199999999999
+QoE_all: [28.7616, 48.1, 3.7, 10.197199999999999] , 90.75880000000001
+Extra chunk downloaded for Video  3  which the user already finished watching.
+
+
+User stopped watching Video  4 (  47000.0  ms ) :
+User watched: 2888  ms, downloaded  5000.0  sec.
+Rebuf:  [232.0, 903.0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2] , smooth penalty:  0
+QoE:  3.45025
+QoE_all: [28.7616, 48.1, 3.7, 10.197199999999999, 3.45025] , 94.20905
+Extra chunk downloaded for Video  4  which the user already finished watching.
+
+
+User stopped watching Video  5 (  6000.0  ms ) :
+User watched: 5381  ms, downloaded  6000.0  sec.
+Rebuf:  [7.0, 400.0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+chunk versions:  [2, 2, 2, 2, 2, 2] , smooth penalty:  0
+QoE:  10.34705
+QoE_all: [28.7616, 48.1, 3.7, 10.197199999999999, 3.45025, 10.34705] , 104.5561
+
+User stopped watching Video  6 (  125000.0  ms ) :
+User watched: 414  ms, downloaded  5000.0  sec.
+Rebuf:  [0]
+chunk versions:  [2] , smooth penalty:  0
+QoE:  1.85
+QoE_all: [28.7616, 48.1, 3.7, 10.197199999999999, 3.45025, 10.34705, 1.85] , 106.4061
+Extra chunk downloaded for Video  6  which the user already finished watching.
+
+The user leaves.
+Your score is:  16.949399999999912
+Your QoE is:  106.40609999999991
+Your sum of wasted bytes is:  7842941.0
+Your download/watch ratio (downloaded time / total watch time) is:  1.5027691476428475
+---------------------------------------
+
+
+
+
+Your average indexes under [ high ] network is:
+Score:  11.309812299999917
+Bandwidth Usage:  23088762.55
+QoE:  103.66486249999991
+Sum Wasted Bytes:  8612173.85
+Wasted time ratio:  1.5584898014318518

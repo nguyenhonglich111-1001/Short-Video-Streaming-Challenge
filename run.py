@@ -17,6 +17,7 @@ np.random.seed(RANDOM_SEED)
 seeds = np.random.randint(100, size=(7, 2))
 
 VIDEO_BIT_RATE = [750, 1200, 1850]  # Kbps
+
 SUMMARY_DIR = 'logs'
 LOG_FILE = 'logs/log.txt'
 log_file = None
@@ -67,6 +68,42 @@ def test(isBaseline, isQuickstart, user_id, trace_id, user_sample_id):
             import fix_preload as Solution
             LOG_FILE = 'logs/log_fixpreload.txt'
             log_file = open(LOG_FILE, 'w')
+        elif user_id == 'DucMMSP':
+            import DucMMSP as Solution
+            LOG_FILE = 'logs/log_DucMMSP.txt'
+            log_file = open(LOG_FILE, 'w')
+        elif user_id == 'NextOne':
+            import NextOne as Solution
+            LOG_FILE = 'logs/log_NextOne.txt'
+            log_file = open(LOG_FILE, 'w')
+        elif user_id == 'Waterfall':
+            import Waterfall as Solution
+            LOG_FILE = 'logs/log_Waterfall.txt'
+            log_file = open(LOG_FILE, 'w')
+        elif user_id == 'Fix_B':
+            import Fix_B as Solution
+            LOG_FILE = 'logs/log_Fix_B.txt'
+            log_file = open(LOG_FILE, 'w')  
+        elif user_id == 'Phong':
+            import Phong as Solution
+            LOG_FILE = 'logs/log_Phong.txt'
+            log_file = open(LOG_FILE, 'w')
+        elif user_id == 'Phong_v2':
+            import Phong_v2 as Solution
+            LOG_FILE = 'logs/log_Phong_v2.txt'
+            log_file = open(LOG_FILE, 'w')
+        elif user_id == 'Thuong_1':
+            import Thuong_1 as Solution
+            LOG_FILE = 'logs/log_Thuong_1.txt'
+            log_file = open(LOG_FILE, 'w')    
+        elif user_id == 'Thuong_v2':
+            import Thuong_v2 as Solution
+            LOG_FILE = 'logs/log_Thuong_v2.txt'
+            log_file = open(LOG_FILE, 'w') 
+        elif user_id == 'PDAS':
+            import PDAS as Solution
+            LOG_FILE = 'logs/log_PDAS.txt'
+            log_file = open(LOG_FILE, 'w') 
         sys.path.remove('./quickstart/')        
     else:  # Testing participant's algorithm
         sys.path.append(user_id)
@@ -175,8 +212,9 @@ def test(isBaseline, isQuickstart, user_id, trace_id, user_sample_id):
 
         one_step_QoE = alpha * quality / 1000. - beta * rebuf / 1000. - gamma * smooth / 1000.
         QoE += one_step_QoE
-        # if rebuf != 0:
-        #     print("bitrate:", VIDEO_BIT_RATE[bit_rate], "rebuf:", rebuf, "smooth:", smooth)
+        # if (rebuf != 0 or  smooth !=0):
+            # print("play_video_id",play_video_id,"current_chunk",current_chunk,"bitrate:", VIDEO_BIT_RATE[bit_rate], "rebuf:", rebuf, "smooth:", smooth)
+        # print(trace_id,",",play_video_id,",",current_chunk,",", quality, ",", rebuf, ",", smooth, ",", one_step_QoE, ",", QoE)
 
         if QoE < MIN_QOE:  # Prevent dead loops
             print('Your QoE is too low...(Your video seems to have stuck forever) Please check for errors!')
@@ -186,6 +224,7 @@ def test(isBaseline, isQuickstart, user_id, trace_id, user_sample_id):
         if play_video_id >= ALL_VIDEO_NUM:
             print("The user leaves.", file=log_file)
             print("The user leaves.")
+            
             break
 
         # Apply the participant's algorithm to decide the args for the next step
@@ -234,7 +273,12 @@ def test_all_traces(isBaseline, isQuickstart, user_id, trace, user_sample_id):
     print("QoE: ", avg[2])
     print("Sum Wasted Bytes: ", avg[3])
     print("Wasted time ratio: ", avg[4])
-    return avg
+    # print( avg[0])
+    # print( avg[1])
+    # print( avg[2])
+    # print( avg[3]/1000)
+    # print( avg[4])
+    # return avg
 
 
 def test_user_samples(isBaseline, isQuickstart, user_id, trace, sample_cnt):  # test 50 user sample

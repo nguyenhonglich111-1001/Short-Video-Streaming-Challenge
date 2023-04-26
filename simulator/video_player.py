@@ -60,6 +60,9 @@ class Player:
             for line in file:
                 self.user_time.append(float(line.split()[0]) * MILLISECONDS_IN_SECOND)
                 self.user_retent_rate.append(line.split()[1])
+        
+        # re-buffering time
+        self.rebuf_time = []
 
     def get_user_model(self):
         return self.user_time, self.user_retent_rate
@@ -112,6 +115,7 @@ class Player:
     def get_play_chunk(self):
         return self.play_timeline / VIDEO_CHUNCK_LEN
     
+    # get remain video chunks
     def get_remain_video_num(self):
         self.video_chunk_remain = self.chunk_num - self.video_chunk_counter
         return self.video_chunk_remain

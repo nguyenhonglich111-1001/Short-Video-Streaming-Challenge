@@ -20,6 +20,10 @@ DEL = 1
 VIDEO_BIT_RATE = [750, 1200, 1850]  # Kbps
 PLAYER_NUM = 5
 
+NumberRebuf=[]
+NumSmooth=[]
+
+Sum_my_QoE=[]
 class Environment:
     def __init__(self, user_sample_id, all_cooked_time, all_cooked_bw, video_num, seeds):
         self.players = []
@@ -37,6 +41,10 @@ class Environment:
         self.total_watched_len = 0.0
         self.total_downloaded_len = 0.0
 
+        self.smo=0
+        self.ppo=0
+
+        self.QoE_all = []
         # print(self.watch_ratio)
 
         # self.download_permit = set()
@@ -113,8 +121,12 @@ class Environment:
             if actual_play_time == video_remain_time:
                 # Output: the downloaded time length, the total time length, the watch duration
                 print("\nUser stopped watching Video ", self.start_video_id, "( ", self.players[0].get_video_len(), " ms ) :")
-                print("User watched for ", self.user_models[0].get_ret_duration(), " ms, you downloaded ", self.players[0].get_chunk_counter()*VIDEO_CHUNCK_LEN, " sec.")
-
+                print("User watched:", self.user_models[0].get_ret_duration(), " ms, downloaded ", self.players[0].get_chunk_counter()*VIDEO_CHUNCK_LEN, " sec.")
+                print("Rebuf: ", self.players[0].rebuf_time)
+                for i in range(len(self.players[0].rebuf_time)):
+                    if self.players[0].rebuf_time[i]>0:
+                        self.ppo=self.ppo+1
+                # print("ppo: ",self.ppo )
                 # Output the qualities and smooth of this video:
                 smooth = 0
                 video_qualities = []
@@ -124,8 +136,27 @@ class Environment:
                     video_qualities.append(self.players[0].get_video_quality(i-1))
                     smooth += abs(VIDEO_BIT_RATE[self.players[0].get_video_quality(i)] - VIDEO_BIT_RATE[self.players[0].get_video_quality(i-1)])
                 video_qualities.append(self.players[0].get_video_quality(bitrate_cnt-1))
-                print("Your downloaded bitrates are: ", video_qualities, ", therefore your smooth penalty is: ", smooth)
+                print("chunk versions: ", video_qualities, ", smooth penalty: ", smooth)
+                self.smo+=smooth
 
+                # calculate QoE (modify)
+                my_QoE = 0
+                # VIDEO_BIT_RATE = [750, 1200, 1850]  # Kbps
+                smooth_penalty, rebuff_penalty, bitrate = 0, 0, 0
+                for i in range(len(video_qualities)):
+                    if i==0:
+                        smooth_penalty += 0
+                    else:
+                        smooth_penalty += abs(VIDEO_BIT_RATE[video_qualities[i]] - VIDEO_BIT_RATE[video_qualities[i-1]])
+                    bitrate +=  VIDEO_BIT_RATE[video_qualities[i]]
+
+                for i in range(len(self.players[0].rebuf_time)):
+                    rebuff_penalty += self.players[0].rebuf_time[i]
+
+                my_QoE = bitrate/1000.0 - smooth_penalty/1000.0 - 1.85 * rebuff_penalty/1000.0
+                print("QoE: ", my_QoE)
+                self.QoE_all.append(my_QoE)
+                # print("QoE_all:", self.QoE_all,",", np.sum(self.QoE_all))
                 # use watch duration as an arg for the calculation of wasted_bandwidth of this current video
                 wasted_bw += self.players[0].bandwidth_waste(self.user_models[0])
 
@@ -137,7 +168,13 @@ class Environment:
 
             if self.play_video_id >= self.video_num:
                 # if it has come to the end of the list
-                print("played out!")
+                # print("played out!")
+                NumberRebuf.append(self.ppo)
+                NumSmooth.append(self.smo)
+                Sum_my_QoE.append(np.sum(self.QoE_all))
+                print("my qoe: ",Sum_my_QoE)
+                print("my average qoe: ",np.sum(Sum_my_QoE)/len(Sum_my_QoE))
+                # print(NumSmooth)
                 break
 
         if buffer < 0:  # action ends because a video stuck(needs rebuffer)

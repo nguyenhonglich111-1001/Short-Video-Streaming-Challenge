@@ -1,0 +1,70 @@
+Proposed (high)
+Score:  8.051637600000024
+Bandwidth Usage:  11558683.1
+QoE:  54.28637000000003
+Sum Wasted Bytes:  3279451.05
+Wasted time ratio:  1.3856348361140696
+
+fix B
+Score:  -0.9366953999999854
+Bandwidth Usage:  11695355.1
+QoE:  45.84472500000001
+Sum Wasted Bytes:  4270556.3
+Wasted time ratio:  1.5879777541119398
+
+NextOne (high)
+Score:  -2.506963699999983
+Bandwidth Usage:  17676184.05
+QoE:  68.19777250000001
+Sum Wasted Bytes:  7916502.5
+Wasted time ratio:  1.6293929712460067
+
+WaterFall (high)
+Score:  -2.506963699999983
+Bandwidth Usage:  17676184.05
+QoE:  68.19777250000001
+Sum Wasted Bytes:  7916502.5
+Wasted time ratio:  1.6293929712460067
+
+Phong
+Score:  6.727219400000021
+Bandwidth Usage:  14992527.65
+QoE:  66.69733000000002
+Sum Wasted Bytes:  5111127.6
+Wasted time ratio:  1.3986510472133475
+
+-------------------- Testing -----------------------
+Proposed (medium)
+Score:  -1.7116699999999967
+Bandwidth Usage:  7809676.25
+QoE:  29.527035000000005
+Sum Wasted Bytes:  2125464.35
+Wasted time ratio:  1.312270737190865
+
+Fix_B (medium)
+Score:  -7.8439692999999995
+Bandwidth Usage:  7905217.95
+QoE:  23.776902500000002
+Sum Wasted Bytes:  3005279.45
+Wasted time ratio:  1.4696485623003197
+
+NextOne (medium)
+Score:  -39.5068924
+Bandwidth Usage:  13623903.1
+QoE:  14.988720000000004
+Sum Wasted Bytes:  4227296.55
+Wasted time ratio:  1.2448230978582422
+
+WaterFall (medium)
+Score:  -39.5068924
+Bandwidth Usage:  13623903.1
+QoE:  14.988720000000004
+Sum Wasted Bytes:  4227296.55
+Wasted time ratio:  1.2448230978582422
+
+Phong medium
+Score:  -40.222479299999996
+Bandwidth Usage:  13630634.2
+QoE:  14.300057500000008
+Sum Wasted Bytes:  4222766.45
+Wasted time ratio:  1.243639805940126
