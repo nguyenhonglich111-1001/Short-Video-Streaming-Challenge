@@ -209,9 +209,12 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
         # calculate total rebuffer time for this combination (start with start_buffer and subtract
         # each download time and add 2 seconds in that order)
         rebuffer = 0
-        curr_buffer = start_buffer  # ms
+        curr_buffer = Players[0].get_buffer_size()
+        buffer_video_next = start_buffer
         bitrate_sum = 0
         smoothness_diffs = 0
+        current_play_chunk=int(Players[0].get_play_chunk())
+        cost_sum=0
         # last_quality = int( bit_rate )
         # print(combo)
         for position in range(0, len(combo)):
@@ -221,33 +224,69 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
             # print(position)
             # index = last_index + position + 1 # e.g., if last chunk is 3, then first iter is 3+0+1=4
             download_time = MILLISECONDS_IN_SECOND * (all_future_chunks_size[chunk_quality][position]/1000000.)/(future_bandwidth) # this is MB/MB/s --> seconds
-            k=round(MILLISECONDS_IN_SECOND * (all_future_chunks_size[chunk_quality][0]/1000000.)/(future_bandwidth))
+            #cost
+            cost_sum+=all_future_chunks_size[chunk_quality][position]
+            #the number of chunk that user will watch until download chunk finished
+            k=int((all_future_chunks_size[chunk_quality][position]/1000000.)/(future_bandwidth))
             # print("download time:", MILLISECONDS_IN_SECOND, "*",  (all_future_chunks_size[chunk_quality][position]/1000000.), "/", future_bandwidth)
+            
             # calculate the possibility: P(user will watch the chunk which is going to be preloaded | user has watched from the beginning to the start_chunk)  
             start_chunk = int(Players[download_video_id - play_video_id].get_play_chunk())
             _, user_retent_rate = Players[download_video_id - play_video_id].get_user_model()
             cond_p = float(user_retent_rate[Players[download_video_id - play_video_id].get_chunk_counter()+position]) / float(user_retent_rate[start_chunk])   
-
-            if ( curr_buffer < download_time ):
-                rebuffer += cond_p*(download_time - curr_buffer)
-                curr_buffer = 0
-            else:
-                curr_buffer -= download_time
-            curr_buffer += VIDEO_CHUNCK_LEN
             
-            # possibility user scroll => cause rebuff on the next video
-            for i in range(len(Players)):
-                p_stay=float(user_retent_rate[Players[download_video_id - play_video_id].get_chunk_counter()+position]) / float(user_retent_rate[start_chunk]) 
-
             bitrate_sum += cond_p*VIDEO_BIT_RATE[chunk_quality]
             smoothness_diffs += cond_p*abs(VIDEO_BIT_RATE[chunk_quality] - VIDEO_BIT_RATE[last_quality])
+            last_quality = chunk_quality
+            p_leave =1
+            # possibility user scroll => cause rebuff on the next video
+            for i in range(len(Players)):
+                start_chunk = int(Players[i].get_play_chunk())
+                _, user_retent_rate = Players[i].get_user_model()
+                if start_chunk+k > Players[i].get_chunk_sum():
+                    k = Players[i].get_chunk_sum()-start_chunk+1
+                p_stay=float(user_retent_rate[start_chunk+k]) / float(user_retent_rate[start_chunk]) 
+                if i==0:
+                    if current_play_chunk+k > Players[i].get_chunk_sum():
+                        k = Players[i].get_chunk_sum()-current_play_chunk+1
+                    p_stay=float(user_retent_rate[current_play_chunk+k]) / float(user_retent_rate[current_play_chunk])
+                    rebuffer += p_leave*p_stay*max(download_time-curr_buffer,0)
+                else:
+                    start_chunk = int(Players[i-1].get_play_chunk())
+                    _, user_retent_rate = Players[i-1].get_user_model()
+                    if i==1:
+                        if current_play_chunk+k > Players[i-1].get_chunk_sum():
+                            k = Players[i-1].get_chunk_sum()-current_play_chunk+1
+                        p_leave=p_leave*(1-(float(user_retent_rate[current_play_chunk+k]) / float(user_retent_rate[current_play_chunk])))
+                    else:
+                        if start_chunk+k > Players[i-1].get_chunk_sum():
+                            k = Players[i-1].get_chunk_sum()-start_chunk+1
+                        p_leave=p_leave*(1-(float(user_retent_rate[start_chunk+k]) / float(user_retent_rate[start_chunk])))
+                    if i == (download_video_id - play_video_id):   
+                        rebuffer += p_leave*p_stay*max(download_time-buffer_video_next,0)
+                    else:
+                        rebuffer += p_leave*p_stay*max(download_time-Players[i].get_buffer_size(),0)
+            #buffer and played chunk change each step in future
+            if ( curr_buffer < download_time ):
+                # rebuffer += cond_p*(download_time - curr_buffer)
+                current_play_chunk+=int(curr_buffer/1000)
+                curr_buffer = 0
+            else:
+                current_play_chunk+=k
+                curr_buffer -= download_time
+            
+            if (download_video_id == play_video_id):
+                curr_buffer += VIDEO_CHUNCK_LEN
+            else:
+                buffer_video_next += VIDEO_CHUNCK_LEN
             # bitrate_sum += BITRATE_REWARD[chunk_quality]
             # smoothness_diffs += abs(BITRATE_REWARD[chunk_quality] - BITRATE_REWARD[last_quality])
-            last_quality = chunk_quality
+
+
         # compute reward for this combination (one reward per 5-chunk combo)
         # bitrates are in Mbits/s, rebuffer in seconds, and smoothness_diffs in Mbits/s
         
-        reward = (bitrate_sum/1000.) - (REBUF_PENALTY*rebuffer/1000.) - (smoothness_diffs/1000.)
+        reward = (bitrate_sum/1000.) - (1.85*rebuffer/1000.) - (smoothness_diffs/1000.) - 0.5*cost_sum*8/1000000.
         # reward = bitrate_sum - (8*curr_rebuffer_time) - (smoothness_diffs)
         if ( reward >= max_reward ):
             if (best_combo != ()) and best_combo[0] < combo[0]:
