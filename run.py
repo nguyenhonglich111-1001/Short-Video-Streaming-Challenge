@@ -12,7 +12,7 @@ parser.add_argument('--solution', type=str, default='./', help='The relative pat
 parser.add_argument('--trace', type=str, default='mixed', help='The network trace you are testing (fixed, high, low, medium, middle)')
 args = parser.parse_args()
 
-RANDOM_SEED = 42  # the random seed for user retention
+RANDOM_SEED = 20  # the random seed for user retention
 np.random.seed(RANDOM_SEED)
 seeds = np.random.randint(100, size=(7, 2))
 
@@ -84,9 +84,9 @@ def test(isBaseline, isQuickstart, user_id, trace_id, user_sample_id):
             import Fix_B as Solution
             LOG_FILE = 'logs/log_Fix_B.txt'
             log_file = open(LOG_FILE, 'w')  
-        elif user_id == 'Phong':
-            import Phong as Solution
-            LOG_FILE = 'logs/log_Phong.txt'
+        elif user_id == 'Network_based':
+            import Network_based as Solution
+            LOG_FILE = 'logs/log_Network_based.txt'
             log_file = open(LOG_FILE, 'w')
         elif user_id == 'Phong_v2':
             import Phong_v2 as Solution
@@ -267,18 +267,18 @@ def test_all_traces(isBaseline, isQuickstart, user_id, trace, user_sample_id):
         avg += test(isBaseline, isQuickstart, user_id, i, user_sample_id)
         print('---------------------------------------\n\n')
     avg /= len(all_cooked_time)
-    print("\n\nYour average indexes under [", trace, "] network is: ")
-    print("Score: ", avg[0])
-    print("Bandwidth Usage: ", avg[1])
-    print("QoE: ", avg[2])
-    print("Sum Wasted Bytes: ", avg[3])
-    print("Wasted time ratio: ", avg[4])
-    # print( avg[0])
-    # print( avg[1])
-    # print( avg[2])
-    # print( avg[3]/1000)
-    # print( avg[4])
-    # return avg
+    # print("\n\nYour average indexes under [", trace, "] network is: ")
+    # print("Score: ", avg[0])
+    # print("Bandwidth Usage: ", avg[1])
+    # print("QoE: ", avg[2])
+    # print("Sum Wasted Bytes: ", avg[3])
+    # print("Wasted time ratio: ", avg[4])
+    print( avg[0])
+    print( avg[1])
+    print( avg[2])
+    print( avg[3]/1000)
+    print( avg[4])
+    return avg
 
 
 def test_user_samples(isBaseline, isQuickstart, user_id, trace, sample_cnt):  # test 50 user sample

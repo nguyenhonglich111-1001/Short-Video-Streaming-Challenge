@@ -25,6 +25,7 @@ class Algorithm:
         self.past_bandwidth_ests = []
         self.past_errors = []
         self.sleep_time = 0
+        self.future_bandwidth=0
 
     # Intial
     def Initialize(self):
@@ -54,8 +55,8 @@ class Algorithm:
         if ( len(self.past_errors) < 5 ):
             error_pos = -len(self.past_errors)
         max_error = float(max(self.past_errors[error_pos:]))
-        future_bandwidth = harmonic_bandwidth/(1+max_error)  # robustMPC here
-        self.past_bandwidth_ests.append(future_bandwidth)
+        self.future_bandwidth = harmonic_bandwidth/(1+max_error)  # robustMPC here
+        self.past_bandwidth_ests.append(harmonic_bandwidth)
         # self.past_bandwidth = np.roll(self.past_bandwidth, -1)
         # self.past_bandwidth[-1] = future_bandwidth
 
@@ -103,7 +104,7 @@ class Algorithm:
             # print('user_retent_rate[start_chunk]: ',user_retent_rate)
             # update past_errors and past_bandwidth_ests
             self.estimate_bw(P[seq])
-            b_max=max(cond_p*((max(future_chunks_highest_size[seq])/1000000)/self.past_bandwidth_ests[-1]),3.5*math.e**(-0.3*self.past_bandwidth_ests[-1]-0.15*seq))
+            b_max=max(cond_p*((max(future_chunks_highest_size[seq])/1000000)/self.future_bandwidth),3.5*math.e**(-0.3*self.future_bandwidth-0.15*seq))
             if (Players[seq].get_buffer_size()/1000)<=b_max and Players[seq].get_remain_video_num() != 0:
                 # print("1: ",cond_p[seq]*((max(future_chunks_highest_size[seq])/1000000)/self.past_bandwidth_ests[-1]))
                 # print('2: ',3.5*math.e**(-0.3*self.past_bandwidth_ests[-1]-0.15*seq))

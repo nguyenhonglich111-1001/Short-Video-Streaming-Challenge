@@ -233,8 +233,10 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
             # calculate the possibility: P(user will watch the chunk which is going to be preloaded | user has watched from the beginning to the start_chunk)  
             start_chunk = int(Players[download_video_id - play_video_id].get_play_chunk())
             _, user_retent_rate = Players[download_video_id - play_video_id].get_user_model()
-            cond_p = float(user_retent_rate[Players[download_video_id - play_video_id].get_chunk_counter()+position]) / float(user_retent_rate[start_chunk])   
-            
+            if (download_video_id == play_video_id):
+                cond_p = float(user_retent_rate[Players[download_video_id - play_video_id].get_chunk_counter()+position]) / float(user_retent_rate[current_play_chunk])   
+            else:
+                cond_p = float(user_retent_rate[Players[download_video_id - play_video_id].get_chunk_counter()+position]) / float(user_retent_rate[start_chunk])
             bitrate_sum += cond_p*VIDEO_BIT_RATE[chunk_quality]
             smoothness_diffs += cond_p*abs(VIDEO_BIT_RATE[chunk_quality] - VIDEO_BIT_RATE[last_quality])
             last_quality = chunk_quality
@@ -244,11 +246,11 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
                 start_chunk = int(Players[i].get_play_chunk())
                 _, user_retent_rate = Players[i].get_user_model()
                 if start_chunk+k > Players[i].get_chunk_sum():
-                    k = Players[i].get_chunk_sum()-start_chunk+1
+                    k = Players[i].get_chunk_sum()-start_chunk
                 p_stay=float(user_retent_rate[start_chunk+k]) / float(user_retent_rate[start_chunk]) 
                 if i==0:
                     if current_play_chunk+k > Players[i].get_chunk_sum():
-                        k = Players[i].get_chunk_sum()-current_play_chunk+1
+                        k = Players[i].get_chunk_sum()-current_play_chunk
                     p_stay=float(user_retent_rate[current_play_chunk+k]) / float(user_retent_rate[current_play_chunk])
                     rebuffer += p_leave*p_stay*max(download_time-curr_buffer,0)
                 else:
@@ -256,11 +258,11 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
                     _, user_retent_rate = Players[i-1].get_user_model()
                     if i==1:
                         if current_play_chunk+k > Players[i-1].get_chunk_sum():
-                            k = Players[i-1].get_chunk_sum()-current_play_chunk+1
+                            k = Players[i-1].get_chunk_sum()-current_play_chunk
                         p_leave=p_leave*(1-(float(user_retent_rate[current_play_chunk+k]) / float(user_retent_rate[current_play_chunk])))
                     else:
                         if start_chunk+k > Players[i-1].get_chunk_sum():
-                            k = Players[i-1].get_chunk_sum()-start_chunk+1
+                            k = Players[i-1].get_chunk_sum()-start_chunk
                         p_leave=p_leave*(1-(float(user_retent_rate[start_chunk+k]) / float(user_retent_rate[start_chunk])))
                     if i == (download_video_id - play_video_id):   
                         rebuffer += p_leave*p_stay*max(download_time-buffer_video_next,0)
