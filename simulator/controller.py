@@ -172,7 +172,8 @@ class Environment:
                 NumberRebuf.append(self.ppo)
                 NumSmooth.append(self.smo)
                 Sum_my_QoE.append(np.sum(self.QoE_all))
-                print("my qoe: ",Sum_my_QoE)
+                # print("my qoe: ",Sum_my_QoE)
+                print("len: ",len(Sum_my_QoE))
                 print("my average qoe: ",np.sum(Sum_my_QoE)/len(Sum_my_QoE))
                 # print(NumSmooth)
                 break

@@ -76,11 +76,11 @@ class Algorithm:
             download_video_id = play_video_id
         
         
-        if download_video_id == -1:
+        if download_video_id == -1 and play_video_id < 6:
             if Players[1].get_remain_video_num() != 0:
                 download_video_id = play_video_id + 1
         
-        if download_video_id == -1:
+        if download_video_id == -1 and play_video_id < 5:
             if Players[2].get_remain_video_num() != 0:
                 download_video_id = play_video_id + 2
                     

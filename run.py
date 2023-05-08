@@ -12,7 +12,7 @@ parser.add_argument('--solution', type=str, default='./', help='The relative pat
 parser.add_argument('--trace', type=str, default='mixed', help='The network trace you are testing (fixed, high, low, medium, middle)')
 args = parser.parse_args()
 
-RANDOM_SEED = 20  # the random seed for user retention
+RANDOM_SEED = 42  # the random seed for user retention
 np.random.seed(RANDOM_SEED)
 seeds = np.random.randint(100, size=(7, 2))
 
@@ -290,18 +290,26 @@ def test_user_samples(isBaseline, isQuickstart, user_id, trace, sample_cnt):  # 
         seeds = np.random.randint(10000, size=(7, 2))  # reset the sample random seeds
         avgs += test_all_traces(isBaseline, isQuickstart, user_id, trace, j)
     avgs /= sample_cnt
-    print("Score: ", avgs[0])
-    print("Bandwidth Usage: ", avgs[1])
-    print("QoE: ", avgs[2])
-    print("Sum Wasted Bytes: ", avgs[3])
-    print("Wasted time ratio: ", avgs[4])
-
+    # print("Score: ", avgs[0])
+    # print("Bandwidth Usage: ", avgs[1])
+    # print("QoE: ", avgs[2])
+    # print("Sum Wasted Bytes: ", avgs[3])
+    # print("Wasted time ratio: ", avgs[4])
+    print('..............')
+    print( avgs[0])
+    print( avgs[1])
+    print( avgs[2])
+    print( avgs[3]/1000)
+    print( avgs[4])
 
 if __name__ == '__main__':
     assert args.trace in ["mixed", "high", "low", "medium"]
     if args.baseline == '' and args.quickstart == '':
-        test_all_traces(False, False, args.solution, args.trace, 0)  # 0 means the first user sample.
+        # test_all_traces(False, False, args.solution, args.trace, 0)  # 0 means the first user sample.
+        test_user_samples(False, False, args.solution, args.trace, 50)
     elif args.quickstart != '':
-        test_all_traces(False, True, args.quickstart, args.trace, 0)
+        # test_all_traces(False, True, args.quickstart, args.trace, 0)
+        test_user_samples(False, True, args.quickstart, args.trace, 50)
     else:
-        test_all_traces(True, False, args.baseline, args.trace, 0)
+        # test_all_traces(True, False, args.baseline, args.trace, 0)
+        test_user_samples(True, False, args.baseline, args.trace, 50)

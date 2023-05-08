@@ -77,7 +77,7 @@ class Algorithm:
             # print("buffer current video", play_video_id )
         
         
-        if download_video_id == -1:
+        if download_video_id == -1 and play_video_id <6:
             if Players[1].get_remain_video_num() != 0:
                 download_video_id = play_video_id + 1
                 # print("buffer next video", play_video_id + 1)   
