@@ -1,244 +1,133 @@
-# This example aims at helping you to learn what parameters you need to decide in your algorithm.
-# It only gives you clues to things you can do to improve the algorithm, so it isn't necessarily reasonable.
-# You need to find a better solution to balance QoE and bandwidth waste.
-# You can run this example and get results by command: python run.py --quickstart fix_preload
+# Comparison Algorithm: No saving approach
+# No saving algorithm downloads the current playing video first.
+# When the current playing video download ends, it preloads the videos in the following players periodically, with 800KB for each video.
 
-# Description of fixed-preload algorithm
-# Fixed-preload algorithm downloads the current playing video first.
-# When the current playing video download ends, it preloads the videos in the recommendation queue in order.
-# The maximum of preloading size is 4 chunks for each video.
-# For each preloading chunk, if possibility (using data in user_ret to esimate) > RETENTION_THRESHOLD, it is assumed that user will watch this chunk so that it should be preloaded.
-# It stops when all downloads end.
+import numpy as np
+import sys
+sys.path.append("..")
+from simulator.video_player import BITRATE_LEVELS
+from simulator import mpc_module
+import math
 
-# We use buffer size to decide bitrate, here is the threshold.
-LOW_BITRATE_THRESHOLD = 1000
-HIGH_BITRATE_THRESHOLD = 2000
-# If there is no need to download, sleep for TAU time.
-TAU = 500.0  # ms
-# max length of PLAYER_NUM
-PLAYER_NUM = 5
-# user retention threshold
-RETENTION_THRESHOLD = 0.65
-# fixed preload chunk num
+MPC_FUTURE_CHUNK_COUNT = 5     # MPC 
+PAST_BW_LEN = 5
+TAU = 50.0  # ms
+PLAYER_NUM = 5  
+PROLOAD_SIZE = 800000.0   # B
 PRELOAD_CHUNK_NUM = 4
-
-# threshold (ms)
-
-
-DUC_RETENTION_THRESHOLD = 0.5
+RETENTION_THRESHOLD = 0.65
 
 class Algorithm:
     def __init__(self):
-        # fill the self params
-        self.thrp_sample = []
-        self.smooth_thrp = 0.0
-        self.B1 = 3000
-        self.B2 = 2000
-        self.K = PLAYER_NUM
-        self.Retention = 0.6
-        pass
+        # fill your self params
+        self.buffer_size = 0
+        self.past_bandwidth = []
+        self.past_bandwidth_ests = []
+        self.past_errors = []
+        self.sleep_time = 0
+        self.future_bandwidth=0
 
+    # Intial
     def Initialize(self):
-        # Initialize the session or something
-        pass
+        # Initialize your session or something
+        # past bandwidth record
+        self.past_bandwidth = np.zeros(PAST_BW_LEN)
 
-    def get_smooth_thrp(self):
-        if self.smooth_thrp == 0.0:
-            self.smooth_thrp = self.thrp_sample[-1]
-        else:
-            self.smooth_thrp = self.smooth_thrp * 0.8 + self.thrp_sample[-1] * 0.2
-            # if self.thrp_sample[-1] > self.thrp_sample[-2] * 0.8:
-            #     self.smooth_thrp = self.smooth_thrp * 0.8 + self.thrp_sample[-1] * 0.2
-            # else:
-            #     self.smooth_thrp = self.thrp_sample[-1]
-        return self.smooth_thrp
-    
-    def get_avg_thrp(self, N):
-        avg_thrp = 0
-        if len(self.thrp_sample) < N:
-            N_real = len(self.thrp_sample)
-        else:
-            N_real = N
-        for i in range(N_real):
-            avg_thrp += self.thrp_sample[-1-i]/N_real
-        return avg_thrp
-        
+    def estimate_bw(self, P):
+        # record the newest error
+        curr_error = 0  # default assumes that this is the first request so error is 0 since we have never predicted bandwidth
+        if (len(self.past_bandwidth_ests) > 0) and self.past_bandwidth[-1] != 0:
+            curr_error = abs(self.past_bandwidth_ests[-1] - self.past_bandwidth[-1])/float(self.past_bandwidth[-1])
+        self.past_errors.append(curr_error)
+        # first get harmonic mean of last 5 bandwidths
+        past_bandwidth = self.past_bandwidth[:]
+        while past_bandwidth[0] == 0.0:
+            past_bandwidth = past_bandwidth[1:]
+        bandwidth_sum = 0
+        for past_val in past_bandwidth:
+            bandwidth_sum += (1/float(past_val))
+        harmonic_bandwidth = 1.0/(bandwidth_sum/len(past_bandwidth))
 
-    # Define the algorithm here.
-    # The args you can get are as follows:
-    # 1. delay: the time cost of your last operation
-    # 2. rebuf: the length of rebufferment
-    # 3. video_size: the size of the last downloaded chunk
-    # 4. end_of_video: if the last video was ended
-    # 5. play_video_id: the id of the current video
-    # 6. Players: the video data of a RECOMMEND QUEUE of 5 (see specific definitions in readme)
-    # 7. first_step: is this your first step?
+        # future bandwidth prediction
+        # divide by 1 + max of last 5 (or up to 5) errors
+        max_error = 0
+        error_pos = -5
+        if ( len(self.past_errors) < 5 ):
+            error_pos = -len(self.past_errors)
+        max_error = float(max(self.past_errors[error_pos:]))
+        self.future_bandwidth = harmonic_bandwidth/(1+max_error)  # robustMPC here
+        self.past_bandwidth_ests.append(harmonic_bandwidth)
+        # self.past_bandwidth = np.roll(self.past_bandwidth, -1)
+        # self.past_bandwidth[-1] = future_bandwidth
+
+    # Define your algorithm
     def run(self, delay, rebuf, video_size, end_of_video, play_video_id, Players, first_step=False):
-        # Here we didn't make use of delay & rebuf & video_size & end_of_video.
-        # You can use them or get more information from Players to help you make better decisions.
-
-        # If it is the first step, you have no information of past steps.
-        # So we return specific download_video_id & bit_rate & sleep_time.
         Players[0].rebuf_time.append(rebuf)
-        if first_step:
+        DEFAULT_QUALITY = 0
+        if first_step:   # 第一步没有任何信息
             self.sleep_time = 0
-            return 0, 0, 0.0
-        
-        # decide buffer size B
-        thrp = self.get_avg_thrp(10)
-        # smooth_thrp = self.get_smooth_thrp()
-        # print(thrp)
-        # if thrp >  2.5*Players[0].get_video_size(2):
-        #     B1=2000
+            return 0, 0, self.sleep_time
 
-        # elif thrp >  2*Players[0].get_video_size(2): 
-        #     B1=3000
+        # download a chunk, record the bitrate and update the network 
+        if self.sleep_time == 0:
+            self.past_bandwidth = np.roll(self.past_bandwidth, -1)
+            self.past_bandwidth[-1] = (float(video_size)/1000000.0) /(float(delay) / 1000.0)  # MB / s
+            # print(self.past_bandwidth)
+        P = []
+        all_future_chunks_size = []
+        future_chunks_highest_size = []
 
-        # elif thrp >  1.5*Players[0].get_video_size(2):    
-        #     B1=3000
+        for i in range(min(len(Players), PLAYER_NUM)):
+            if Players[i].get_remain_video_num() == 0:      # download over
+                P.append(0)
+                all_future_chunks_size.append([0])
+                future_chunks_highest_size.append([0])
+                continue
+            
+            P.append(min(MPC_FUTURE_CHUNK_COUNT, Players[i].get_remain_video_num()))
+            all_future_chunks_size.append(Players[i].get_undownloaded_video_size(P[-1]))
+            future_chunks_highest_size.append(all_future_chunks_size[-1][BITRATE_LEVELS-1])
 
-        # else:    
-        #     B1=4000
 
-        # decide download video id
+
         download_video_id = -1
-        if Players[0].get_remain_video_num() != 0:  # prefetch next chunk of current video if B_cur < B
-            # if thrp >  2*Players[0].get_video_size(bit_rate):
-            #     self.B1=2000
-    
-            # elif thrp >  1*Players[0].get_video_size(bit_rate):    
-            #     self.B1=3000
-                
-            # else:    
-            #     self.B1=4000
-        
-            # print("B1: ",self.B1)
-            _, user_retent_rate = Players[0].get_user_model()
-            if float(user_retent_rate[Players[0].get_chunk_counter()]) > self.Retention:
-                if Players[0].get_buffer_size() < self.B1:
-                    download_video_id = play_video_id
-                    print("buffer current video",download_video_id)
-            else:
-                if Players[0].get_buffer_size() < self.B2:
-                    download_video_id = play_video_id
-                    print("buffer current video",download_video_id)
-            # if Players[0].get_buffer_size() < self.B1:
-            # #     for bit_rate in [2,1,0]:
-            # #         if Players[0].get_video_size(bit_rate) < 1.2*smooth_thrp:
-            # #             break
-            #     # print("B1: ", self.B1)
-            #     download_video_id = play_video_id
-            #     print("buffer current video",download_video_id)
-        
-        
-        if download_video_id == -1 and play_video_id < 6:
-            # preload videos in PLAYER_NUM one by one
-            # print("Selecting next video to prefetch")
-            # if Players[min(min(len(Players), PLAYER_NUM),self.K)-1].get_buffer_size()==self.B2 and self.B2<self.B1:
-            #     self.B2+=1000
+        # get_chunk_counter: tổng chunk đã tải về
+        # get_buffer_size
+        # get_user_model: retention rate
+        # get_remain_video_num: số chunk chưa tải
+        # get_play_chunk: số chunk đã xem
+        for seq in range(0, min(len(Players), PLAYER_NUM)):
+            # calculate the possibility: P(user will watch the chunk which is going to be preloaded | user has watched from the beginning to the start_chunk)  
+            start_chunk = int(Players[seq].get_play_chunk())
+            _, user_retent_rate = Players[seq].get_user_model()
+            cond_p= float(user_retent_rate[Players[seq].get_chunk_counter()]) / float(user_retent_rate[start_chunk])
+            # print('user_retent_rate[start_chunk]: ',user_retent_rate)
+            # update past_errors and past_bandwidth_ests
+            self.estimate_bw(P[seq])
+            b_max=max(cond_p*((max(future_chunks_highest_size[seq])/1000000)/self.future_bandwidth),3.5*math.e**(-0.3*self.future_bandwidth-0.15*seq))
+            if (Players[seq].get_buffer_size()/1000)<=b_max and Players[seq].get_remain_video_num() != 0:
+                # print('upper: ',cond_p*((max(future_chunks_highest_size[seq])/1000000)/self.future_bandwidth))
+                # print('lower: ',3.5*math.e**(-0.3*self.future_bandwidth-0.15*seq))
+                # print('buffer: ',Players[seq].get_buffer_size()/1000)
+                download_video_id=play_video_id+seq
+                break
 
-
-
-            
-            for seq in range(1, min(min(len(Players), PLAYER_NUM),self.K)):
-                # print("len player: ", len(Players))
-                if Players[seq].get_remain_video_num() != 0:
-                    if Players[seq].get_buffer_size() < self.B2:
-                        download_video_id = play_video_id + seq
-                        print("buffer next video",download_video_id)
-                        break
-
-
-            # a=1
-            # for seq in range(1, min(min(len(Players), PLAYER_NUM),self.K)):
-            #     if(Players[a].get_buffer_size()>Players[seq].get_buffer_size()):
-            #         a=seq
-            #         # print("next video: ", play_video_id + a)
-            # if Players[a].get_remain_video_num() != 0:
-            #     if Players[a].get_buffer_size() < self.B2:
-            #         download_video_id = play_video_id + a
-            #         print("buffer next video",download_video_id)
-           
-           
-           # if thrp >  2*Players[a].get_video_size(bit_rate):
-            #     self.B1=2000
-            #     self.K = PLAYER_NUM
-            # elif thrp >  1*Players[a].get_video_size(bit_rate):    
-            #     self.B1=3000
-            #     self.K = 4
-            # else:    
-            #     self.B1=4000
-            #     self.K = PLAYER_NUM
-            # if Players[a].get_remain_video_num() != 0:
-            #     if Players[a].get_buffer_size() < self.B2:
-            #         # for bit_rate in [2,1,0]:
-            #         #     if Players[a].get_video_size(bit_rate) < 1.2*smooth_thrp:
-            #         #         break
-            #         # print("B1: ", self.B1)
-            #         download_video_id = play_video_id + a
-            #         print("buffer next video",download_video_id)        
-            # while seq < min(min(len(Players), PLAYER_NUM),self.K):
-            #     if Players[seq].get_buffer_size() < self.B2:
-            #         download_video_id = play_video_id + seq
-            #         print("buffer next video",download_video_id)
-            #         break 
-            #     elif seq == min(min(len(Players), PLAYER_NUM),self.K)-1 and self.B2<self.B1:
-            #         self.B2=self.B2+1000
-            #         print("B2: ",self.B2)
-            #         seq=0   
-            #         continue    
-            #     else:
-            #         seq+=1
-                
-                
-
-        if download_video_id == -1:  # no need to download, sleep for TAU time
-            sleep_time = TAU
-            print("sleep: ", TAU)
+        if download_video_id == -1:  # no need to download
+            self.sleep_time = TAU
             bit_rate = 0
-            download_video_id = play_video_id  # the value of bit_rate and download_video_id doesn't matter
+            download_video_id = play_video_id
         else:
-            seq = download_video_id - play_video_id
-            # bit_rate = 2
-            ins_thrp = video_size / (delay * 0.001)
-            # print(ins_thrp)
-            self.thrp_sample.append(ins_thrp)
-            smooth_thrp = self.get_smooth_thrp()
-            # print(video_size, delay, ins_thrp, Players[seq].get_video_size(0))
-            # bit_rate = 2
-            # for bit_rate in [2,1,0]:
-            #     if Players[0].get_remain_video_num() != 0:
-            #         if Players[0].get_buffer_size() < self.B1:
-            #             if Players[0].get_video_size(bit_rate) < self.get_avg_thrp(10):
-            #                 break
-            #     if Players[a].get_remain_video_num() != 0:
-            #         if Players[a].get_buffer_size() < self.B1:
-            #             if Players[a].get_video_size(bit_rate) < self.get_avg_thrp(10):
-            #                 break
+            download_video_seq = download_video_id - play_video_id
+            buffer_size = Players[download_video_seq].get_buffer_size()  # ms
+            video_chunk_remain = Players[download_video_seq].get_remain_video_num()
+            chunk_sum = Players[download_video_seq].get_chunk_sum()
+            download_chunk_bitrate = Players[download_video_seq].get_downloaded_bitrate()
+            last_quality = DEFAULT_QUALITY
+            if len(download_chunk_bitrate) > 0:
+                last_quality = download_chunk_bitrate[-1]
+            # print("choosing bitrate for: ", download_video_id, ", chunk: ", Players[download_video_seq].get_chunk_counter())
+            # print("past_bandwidths:", self.past_bandwidth[-5:], "past_ests:", self.past_bandwidth_ests[-5:])
+            bit_rate = mpc_module.mpc(self.past_bandwidth, self.past_bandwidth_ests, self.past_errors, all_future_chunks_size[download_video_seq], P[download_video_seq], buffer_size, chunk_sum, video_chunk_remain, last_quality, Players, download_video_id, play_video_id)
+            self.sleep_time = 0.0
 
-
-            for bit_rate in [2,1,0]:
-                if Players[seq].get_video_size(bit_rate) < 1.5*smooth_thrp:
-                    # print("ID: ",seq,"video size: ",Players[seq].get_video_size(bit_rate) )
-                    # print("bitrate: ",bit_rate)
-                    break
-
-            # if smooth_thrp >  2*Players[seq].get_video_size(bit_rate):
-            #     self.B1=2000
-            #     self.K = PLAYER_NUM
-            # elif smooth_thrp >  1*Players[seq].get_video_size(bit_rate):    
-            #     self.B1=3000
-            #     self.K=4
-            # else:    
-            #     self.B1=4000
-            #     self.K = PLAYER_NUM
-            # print("B1: ",self.B1)
-            
-            # for bit_rate in [2,1,0]:
-            #     if Players[seq].get_video_size(bit_rate) < 1.2*smooth_thrp:
-            #         break
-            sleep_time = 0.0
-        # print(Players[0].get_video_size(bit_rate))
-
-        return download_video_id, bit_rate, sleep_time
-
+        return download_video_id, bit_rate, self.sleep_time

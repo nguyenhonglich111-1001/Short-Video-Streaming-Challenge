@@ -27,27 +27,30 @@ B1 = 4000
 B2 = 2000
 K = 5
 DUC_RETENTION_THRESHOLD = 0.6
+M= 10
 
 class Algorithm:
     def __init__(self):
         # fill the self params
         self.thrp_sample = []
         self.smooth_thrp = 0.0
-        self.average_thrp = 0.0
+        
         pass
 
     def Initialize(self):
         # Initialize the session or something
         pass
     def average(self):
-        #if len(self.thrp_sample)<11:
-        self.average_thrp=sum(self.thrp_sample)/len(self.thrp_sample)
-        #else:
+        if len(self.thrp_sample)<=M:
+            average_thrp=sum(self.thrp_sample)/len(self.thrp_sample)
+        else:
+            average_thrp=sum(self.thrp_sample[-M:])/M
+            # average_thrp=sum(self.thrp_sample)/len(self.thrp_sample)
             #for i in range(len(self.thrp_sample)-10,len(self.thrp_sample)):
             #    self.average_thrp=self.average_thrp+self.thrp_sample[i]
             #self.average_thrp=self.average_thrp/11
                 #self.average_thrp = (self.thrp_sample[len(self.thrp_sample)-10]+self.thrp_sample[len(self.thrp_sample)-9]+self.thrp_sample[len(self.thrp_sample)-8]+self.thrp_sample[len(self.thrp_sample)-7]+self.thrp_sample[len(self.thrp_sample)-6]+self.thrp_sample[len(self.thrp_sample)-5]+self.thrp_sample[len(self.thrp_sample)-4]+self.thrp_sample[len(self.thrp_sample)-3]+self.thrp_sample[len(self.thrp_sample)-2]+self.thrp_sample[len(self.thrp_sample)-1]+self.thrp_sample[len(self.thrp_sample)])/10
-        return self.average_thrp
+        return average_thrp
     def get_smooth_thrp(self):
         if self.smooth_thrp == 0.0:
             self.smooth_thrp = self.thrp_sample[-1]
@@ -97,7 +100,7 @@ class Algorithm:
             for seq in range(1, min(len(Players), PLAYER_NUM)):
                 if Players[seq].get_remain_video_num() != 0:      # preloading hasn't finished yet 
                     # print(seq, Players[seq].get_buffer_size())
-                    if Players[seq].get_buffer_size() < B2+1000-seq:
+                    if Players[seq].get_buffer_size() < B2+1000:
                         download_video_id = play_video_id + seq
                         break
                     # _, user_retent_rate = Players[seq].get_user_model()
@@ -138,7 +141,7 @@ class Algorithm:
             if self.average()<200000:           
                 for bit_rate in [1,0]:
                     if Players[seq].get_video_size(bit_rate) < smooth_thrp:
-                        break
+                        break 
                 sleep_time = 0.0
                 #if self.average()<100000:
 

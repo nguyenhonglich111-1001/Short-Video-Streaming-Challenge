@@ -72,7 +72,7 @@ class Algorithm:
         if self.sleep_time == 0:
             self.past_bandwidth = np.roll(self.past_bandwidth, -1)
             self.past_bandwidth[-1] = (float(video_size)/1000000.0) /(float(delay) / 1000.0)  # MB / s
-        
+            # print(self.past_bandwidth)
         P = []
         all_future_chunks_size = []
         future_chunks_highest_size = []
@@ -106,9 +106,9 @@ class Algorithm:
             self.estimate_bw(P[seq])
             b_max=max(cond_p*((max(future_chunks_highest_size[seq])/1000000)/self.future_bandwidth),3.5*math.e**(-0.3*self.future_bandwidth-0.15*seq))
             if (Players[seq].get_buffer_size()/1000)<=b_max and Players[seq].get_remain_video_num() != 0:
-                # print("1: ",cond_p[seq]*((max(future_chunks_highest_size[seq])/1000000)/self.past_bandwidth_ests[-1]))
-                # print('2: ',3.5*math.e**(-0.3*self.past_bandwidth_ests[-1]-0.15*seq))
-                # print('b_max',b_max)
+                # print('upper: ',cond_p*((max(future_chunks_highest_size[seq])/1000000)/self.future_bandwidth))
+                # print('lower: ',3.5*math.e**(-0.3*self.future_bandwidth-0.15*seq))
+                # print('buffer: ',Players[seq].get_buffer_size()/1000)
                 download_video_id=play_video_id+seq
                 break
 

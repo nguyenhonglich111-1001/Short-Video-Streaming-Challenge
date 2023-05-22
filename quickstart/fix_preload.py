@@ -46,6 +46,7 @@ class Algorithm:
 
         # If it is the first step, you have no information of past steps.
         # So we return specific download_video_id & bit_rate & sleep_time.
+        Players[0].rebuf_time.append(rebuf)
         if first_step:
             self.sleep_time = 0
             return 0, 0, 0.0

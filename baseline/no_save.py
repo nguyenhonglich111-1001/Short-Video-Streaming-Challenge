@@ -59,6 +59,7 @@ class Algorithm:
     # Define your algorithm
     def run(self, delay, rebuf, video_size, end_of_video, play_video_id, Players, first_step=False):
         DEFAULT_QUALITY = 0
+        Players[0].rebuf_time.append(rebuf)
         if first_step:   # 第一步没有任何信息
             self.sleep_time = 0
             return 0, 2, self.sleep_time
@@ -82,12 +83,12 @@ class Algorithm:
             all_future_chunks_size.append(Players[i].get_undownloaded_video_size(P[-1]))
             future_chunks_highest_size.append(all_future_chunks_size[-1][BITRATE_LEVELS-1])
         # print('all_future_chunks_size',all_future_chunks_size)
-        print('future_chunks_highest_size',future_chunks_highest_size)
-        print('max: ',max(future_chunks_highest_size[0]))
+        # print('future_chunks_highest_size',future_chunks_highest_size)
+        # print('max: ',max(future_chunks_highest_size[0]))
         download_video_id = -1
         if Players[0].get_remain_video_num() > 0:  # download the playing video if downloading hasn't finished
             download_video_id = play_video_id
-            print('play_video_id',play_video_id)
+            # print('play_video_id',play_video_id)
         else:  # otherwise preloads the videos on the recommendation queue periodically
             need_loop = True
             cnt = 1

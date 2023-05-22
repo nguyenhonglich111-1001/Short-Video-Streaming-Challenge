@@ -96,10 +96,6 @@ def test(isBaseline, isQuickstart, user_id, trace_id, user_sample_id):
             import Thuong_1 as Solution
             LOG_FILE = 'logs/log_Thuong_1.txt'
             log_file = open(LOG_FILE, 'w')    
-        elif user_id == 'Thuong_v2':
-            import Thuong_v2 as Solution
-            LOG_FILE = 'logs/log_Thuong_v2.txt'
-            log_file = open(LOG_FILE, 'w') 
         elif user_id == 'PDAS':
             import PDAS as Solution
             LOG_FILE = 'logs/log_PDAS.txt'
@@ -202,6 +198,7 @@ def test(isBaseline, isQuickstart, user_id, trace_id, user_sample_id):
             print("Finished Playing!", file=log_file)
         if rebuf != 0:
             print("You caused rebuf for Video ", play_video_id, " of ", rebuf, " ms", file=log_file)
+            # print("You caused rebuf for Video ", play_video_id, " of ", rebuf, " ms")
         print("*****************", file=log_file)
 
 

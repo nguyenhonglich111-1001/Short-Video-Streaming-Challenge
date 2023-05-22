@@ -1,1423 +1,289 @@
-------------trace  1 --------------
+------------trace  19 --------------
 Download Video  0  chunk ( 1  /  17 ) with bitrate  0
 Causing smooth penalty:  0
 Playing Video  0  chunk ( 0.0  /  17 ) with bitrate  0
-You caused rebuf for Video  0  of  226.0  ms
+You caused rebuf for Video  0  of  504.0  ms
 *****************
 
 
 *****************
-Download Video  0  chunk ( 2  /  17 ) with bitrate  2
-Causing smooth penalty:  1100
-Playing Video  0  chunk ( 0.631  /  17 ) with bitrate  0
-*****************
-
-
-*****************
-Download Video  0  chunk ( 3  /  17 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  0  chunk ( 1.587  /  17 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  0  chunk ( 4  /  17 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  0  chunk ( 1.979  /  17 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  0  chunk ( 5  /  17 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  0  chunk ( 2.24  /  17 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  0  chunk ( 6  /  17 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  0  chunk ( 4.302  /  17 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  0  chunk ( 7  /  17 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  0  chunk ( 5.559  /  17 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  0  chunk ( 8  /  17 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  0  chunk ( 7.0  /  17 ) with bitrate  2
-You caused rebuf for Video  0  of  76.0  ms
-*****************
-
-
-*****************
-Download Video  0  chunk ( 9  /  17 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  0  chunk ( 8.0  /  17 ) with bitrate  2
-You caused rebuf for Video  0  of  659.0  ms
-*****************
-
-
-*****************
-Download Video  0  chunk ( 10  /  17 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  0  chunk ( 9.0  /  17 ) with bitrate  2
-You caused rebuf for Video  0  of  273.0  ms
-*****************
-
-
-*****************
-Download Video  0  chunk ( 11  /  17 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  0  chunk ( 10.0  /  17 ) with bitrate  2
-You caused rebuf for Video  0  of  16.0  ms
-*****************
-
-
-*****************
-Download Video  0  chunk ( 12  /  17 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  0  chunk ( 11.0  /  17 ) with bitrate  2
-You caused rebuf for Video  0  of  343.0  ms
-*****************
-
-
-*****************
-Download Video  0  chunk ( 13  /  17 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  0  chunk ( 11.774  /  17 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  0  chunk ( 14  /  17 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  0  chunk ( 12.182  /  17 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  0  chunk ( 15  /  17 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  0  chunk ( 12.536  /  17 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  1  chunk ( 1  /  26 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  0  chunk ( 12.691  /  17 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  1  chunk ( 2  /  26 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  0  chunk ( 12.906  /  17 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  1  chunk ( 3  /  26 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  0  chunk ( 13.522  /  17 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  0  chunk ( 16  /  17 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  0  chunk ( 13.958  /  17 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 1  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  0  chunk ( 14.382  /  17 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  0  chunk ( 17  /  17 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  0  chunk ( 14.809  /  17 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 2  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  0  chunk ( 15.233  /  17 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 3  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  0  chunk ( 15.882  /  17 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  3  chunk ( 1  /  40 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  0  chunk ( 16.319  /  17 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  3  chunk ( 2  /  40 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  0  chunk ( 16.678  /  17 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  3  chunk ( 3  /  40 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  1  chunk ( 0.093  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  1  chunk ( 4  /  26 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  1  chunk ( 1.015  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  1  chunk ( 5  /  26 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  1  chunk ( 2.466  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  1  chunk ( 6  /  26 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  1  chunk ( 3.68  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  1  chunk ( 7  /  26 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  1  chunk ( 4.545  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  1  chunk ( 8  /  26 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  1  chunk ( 5.447  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  1  chunk ( 9  /  26 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  1  chunk ( 5.753  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  1  chunk ( 10  /  26 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  1  chunk ( 6.027  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  4  chunk ( 1  /  47 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  1  chunk ( 6.58  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  4  chunk ( 2  /  47 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  1  chunk ( 7.069  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  4  chunk ( 3  /  47 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  1  chunk ( 7.529  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  5  chunk ( 1  /  6 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  1  chunk ( 7.966  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  5  chunk ( 2  /  6 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  1  chunk ( 8.625  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  1  chunk ( 11  /  26 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  1  chunk ( 9.227  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  1  chunk ( 12  /  26 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  1  chunk ( 9.818  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  5  chunk ( 3  /  6 ) with bitrate  2
-Playing Video  1  chunk ( 10.393  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  1  chunk ( 13  /  26 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  1  chunk ( 10.797  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  1  chunk ( 11.297  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  1  chunk ( 14  /  26 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  1  chunk ( 11.401  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  1  chunk ( 11.901  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  1  chunk ( 12.401  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  1  chunk ( 15  /  26 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  1  chunk ( 12.506  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  1  chunk ( 13.006  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  1  chunk ( 16  /  26 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  1  chunk ( 14.306  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  1  chunk ( 17  /  26 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  1  chunk ( 15.517  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  1  chunk ( 18  /  26 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  1  chunk ( 16.518  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  1  chunk ( 19  /  26 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  1  chunk ( 17.739  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  1  chunk ( 20  /  26 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  1  chunk ( 18.57  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  1  chunk ( 21  /  26 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  1  chunk ( 19.381  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  1  chunk ( 22  /  26 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  1  chunk ( 20.08  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  1  chunk ( 23  /  26 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  1  chunk ( 20.186  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  1  chunk ( 20.686  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  1  chunk ( 21.186  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  1  chunk ( 24  /  26 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  1  chunk ( 21.314  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  1  chunk ( 21.814  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  1  chunk ( 22.314  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  1  chunk ( 25  /  26 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  1  chunk ( 22.425  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  1  chunk ( 22.925  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  1  chunk ( 23.425  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  1  chunk ( 26  /  26 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  1  chunk ( 23.761  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  1  chunk ( 24.261  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  1  chunk ( 24.761  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  1  chunk ( 25.261  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  1  chunk ( 25.761  /  26 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  2  chunk ( 0.261  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 4  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 1.114  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  6  chunk ( 1  /  125 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 1.522  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  6  chunk ( 2  /  125 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 2.382  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 5  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 2.836  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  6  chunk ( 3  /  125 ) with bitrate  2
-Playing Video  2  chunk ( 3.501  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 6  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 4.485  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 7  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 5.579  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 8  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 6.741  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 9  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 7.736  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 10  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 8.487  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 11  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 9.06  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 12  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 10.372  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 13  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 10.907  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  2  chunk ( 11.407  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 14  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 12.016  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 15  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 12.932  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  2  chunk ( 13.432  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 16  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 14.279  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 17  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 14.882  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  2  chunk ( 15.382  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 18  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 15.964  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  2  chunk ( 16.464  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 19  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 16.967  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  2  chunk ( 17.467  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 20  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 17.983  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  2  chunk ( 18.483  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 21  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 19.136  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 22  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 19.589  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  2  chunk ( 20.089  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 23  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 21.027  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 24  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 21.687  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  2  chunk ( 22.187  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 25  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 22.913  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  2  chunk ( 23.413  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 26  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 23.942  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  2  chunk ( 24.442  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 27  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 25.28  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 28  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 25.665  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  2  chunk ( 26.165  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 29  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 26.492  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  2  chunk ( 26.992  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  2  chunk ( 27.492  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 30  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 27.959  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  2  chunk ( 28.459  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 31  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 29.085  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 32  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 29.711  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  2  chunk ( 30.211  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 33  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 30.861  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  2  chunk ( 31.361  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 34  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 31.922  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  2  chunk ( 32.422  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 35  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 32.907  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  2  chunk ( 33.407  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 36  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 33.848  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  2  chunk ( 34.348  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  2  chunk ( 37  /  37 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  2  chunk ( 34.656  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  2  chunk ( 35.156  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  2  chunk ( 35.656  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  2  chunk ( 36.156  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  2  chunk ( 36.656  /  37 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 0.156  /  40 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  3  chunk ( 4  /  40 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  3  chunk ( 0.684  /  40 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  3  chunk ( 5  /  40 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  3  chunk ( 1.135  /  40 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 1.635  /  40 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 2.135  /  40 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 2.635  /  40 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 3.135  /  40 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  3  chunk ( 6  /  40 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  3  chunk ( 3.322  /  40 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 3.822  /  40 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 4.322  /  40 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  3  chunk ( 7  /  40 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  3  chunk ( 4.432  /  40 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 4.932  /  40 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 5.432  /  40 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  3  chunk ( 8  /  40 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  3  chunk ( 5.983  /  40 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 6.483  /  40 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  3  chunk ( 9  /  40 ) with bitrate  2
+Download Video  0  chunk ( 2  /  17 ) with bitrate  0
 Causing smooth penalty:  0
-Playing Video  3  chunk ( 7.126  /  40 ) with bitrate  2
+Playing Video  0  chunk ( 0.493  /  17 ) with bitrate  0
 *****************
 
 
 *****************
-Download Video  3  chunk ( 10  /  40 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  3  chunk ( 7.862  /  40 ) with bitrate  2
+Download Video  0  chunk ( 3  /  17 ) with bitrate  0
+Playing Video  1  chunk ( 0.0  /  26 ) with bitrate  -1
+You caused rebuf for Video  1  of  99.0  ms
 *****************
 
 
 *****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 8.362  /  40 ) with bitrate  2
+Download Video  1  chunk ( 1  /  26 ) with bitrate  1
+Causing smooth penalty:  450
+Playing Video  1  chunk ( 0.0  /  26 ) with bitrate  1
+You caused rebuf for Video  1  of  184.0  ms
 *****************
 
 
 *****************
-Download Video  3  chunk ( 11  /  40 ) with bitrate  2
+Download Video  1  chunk ( 2  /  26 ) with bitrate  1
 Causing smooth penalty:  0
-Playing Video  3  chunk ( 9.498  /  40 ) with bitrate  2
+Playing Video  1  chunk ( 0.172  /  26 ) with bitrate  1
 *****************
 
 
 *****************
-Download Video  3  chunk ( 12  /  40 ) with bitrate  2
+Download Video  1  chunk ( 3  /  26 ) with bitrate  1
 Causing smooth penalty:  0
-Playing Video  3  chunk ( 10.601  /  40 ) with bitrate  2
+Playing Video  1  chunk ( 0.961  /  26 ) with bitrate  1
 *****************
 
 
 *****************
-Download Video  3  chunk ( 13  /  40 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  3  chunk ( 11.336  /  40 ) with bitrate  2
+Download Video  1  chunk ( 4  /  26 ) with bitrate  0
+Causing smooth penalty:  450
+Playing Video  1  chunk ( 3.0  /  26 ) with bitrate  1
+You caused rebuf for Video  1  of  93.0  ms
 *****************
 
 
 *****************
-Download Video  3  chunk ( 14  /  40 ) with bitrate  2
+Download Video  1  chunk ( 5  /  26 ) with bitrate  0
 Causing smooth penalty:  0
-Playing Video  3  chunk ( 12.472  /  40 ) with bitrate  2
+Playing Video  1  chunk ( 4.0  /  26 ) with bitrate  0
+You caused rebuf for Video  1  of  915.0  ms
 *****************
 
 
 *****************
-Download Video  3  chunk ( 15  /  40 ) with bitrate  2
+Download Video  1  chunk ( 6  /  26 ) with bitrate  0
 Causing smooth penalty:  0
-Playing Video  3  chunk ( 13.114  /  40 ) with bitrate  2
+Playing Video  1  chunk ( 5.0  /  26 ) with bitrate  0
+You caused rebuf for Video  1  of  855.0  ms
 *****************
 
 
 *****************
-Download Video  3  chunk ( 16  /  40 ) with bitrate  2
+Download Video  1  chunk ( 7  /  26 ) with bitrate  0
 Causing smooth penalty:  0
-Playing Video  3  chunk ( 14.033  /  40 ) with bitrate  2
+Playing Video  1  chunk ( 6.0  /  26 ) with bitrate  0
+You caused rebuf for Video  1  of  223.0  ms
 *****************
 
 
 *****************
-Download Video  3  chunk ( 17  /  40 ) with bitrate  2
+Download Video  1  chunk ( 8  /  26 ) with bitrate  0
 Causing smooth penalty:  0
-Playing Video  3  chunk ( 14.701  /  40 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 15.201  /  40 ) with bitrate  2
+Playing Video  1  chunk ( 7.0  /  26 ) with bitrate  0
+You caused rebuf for Video  1  of  371.0  ms
 *****************
 
 
 *****************
-Download Video  3  chunk ( 18  /  40 ) with bitrate  2
+Download Video  1  chunk ( 9  /  26 ) with bitrate  0
 Causing smooth penalty:  0
-Playing Video  3  chunk ( 15.776  /  40 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 16.276  /  40 ) with bitrate  2
+Playing Video  1  chunk ( 7.919  /  26 ) with bitrate  0
 *****************
 
 
 *****************
-Download Video  3  chunk ( 19  /  40 ) with bitrate  2
+Download Video  1  chunk ( 10  /  26 ) with bitrate  0
 Causing smooth penalty:  0
-Playing Video  3  chunk ( 17.009  /  40 ) with bitrate  2
+Playing Video  1  chunk ( 8.577  /  26 ) with bitrate  0
 *****************
 
 
 *****************
-Download Video  3  chunk ( 20  /  40 ) with bitrate  2
+Download Video  1  chunk ( 11  /  26 ) with bitrate  0
 Causing smooth penalty:  0
-Playing Video  3  chunk ( 17.74  /  40 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 18.24  /  40 ) with bitrate  2
+Playing Video  1  chunk ( 9.477  /  26 ) with bitrate  0
 *****************
 
 
 *****************
-Download Video  3  chunk ( 21  /  40 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  3  chunk ( 18.891  /  40 ) with bitrate  2
+Download Video  1  chunk ( 12  /  26 ) with bitrate  0
+Playing Video  1  chunk ( 10.377  /  26 ) with bitrate  0
 *****************
 
 
 *****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 19.391  /  40 ) with bitrate  2
+Download Video  1  chunk ( 13  /  26 ) with bitrate  1
+Playing Video  2  chunk ( 0.0  /  37 ) with bitrate  -1
+You caused rebuf for Video  2  of  956.0  ms
 *****************
 
 
 *****************
-Download Video  3  chunk ( 22  /  40 ) with bitrate  2
+Download Video  2  chunk ( 1  /  37 ) with bitrate  0
 Causing smooth penalty:  0
-Playing Video  3  chunk ( 19.898  /  40 ) with bitrate  2
-*****************
-
-
+Playing Video  2  chunk ( 0.0  /  37 ) with bitrate  0
+You caused rebuf for Video  2  of  764.0  ms
 *****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 20.398  /  40 ) with bitrate  2
-*****************
 
 
 *****************
-Download Video  3  chunk ( 23  /  40 ) with bitrate  2
+Download Video  2  chunk ( 2  /  37 ) with bitrate  0
 Causing smooth penalty:  0
-Playing Video  3  chunk ( 21.286  /  40 ) with bitrate  2
+Playing Video  2  chunk ( 1.0  /  37 ) with bitrate  0
+You caused rebuf for Video  2  of  53.0  ms
 *****************
 
 
 *****************
-Download Video  3  chunk ( 24  /  40 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  3  chunk ( 22.559  /  40 ) with bitrate  2
+Download Video  2  chunk ( 3  /  37 ) with bitrate  0
+Playing Video  3  chunk ( 0.0  /  40 ) with bitrate  -1
+You caused rebuf for Video  3  of  305.0  ms
 *****************
 
 
 *****************
-Download Video  3  chunk ( 25  /  40 ) with bitrate  2
+Download Video  3  chunk ( 1  /  40 ) with bitrate  0
 Causing smooth penalty:  0
-Playing Video  3  chunk ( 22.956  /  40 ) with bitrate  2
+Playing Video  3  chunk ( 0.0  /  40 ) with bitrate  0
+You caused rebuf for Video  3  of  603.0  ms
 *****************
 
 
 *****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 23.456  /  40 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  3  chunk ( 26  /  40 ) with bitrate  2
+Download Video  3  chunk ( 2  /  40 ) with bitrate  0
 Causing smooth penalty:  0
-Playing Video  3  chunk ( 24.484  /  40 ) with bitrate  2
+Playing Video  3  chunk ( 0.792  /  40 ) with bitrate  0
 *****************
 
 
 *****************
-Download Video  3  chunk ( 27  /  40 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  3  chunk ( 25.159  /  40 ) with bitrate  2
+Download Video  3  chunk ( 3  /  40 ) with bitrate  0
+Playing Video  4  chunk ( 0.0  /  47 ) with bitrate  -1
+You caused rebuf for Video  4  of  369.0  ms
 *****************
 
 
 *****************
-Download Video  3  chunk ( 28  /  40 ) with bitrate  2
+Download Video  4  chunk ( 1  /  47 ) with bitrate  0
 Causing smooth penalty:  0
-Playing Video  3  chunk ( 25.833  /  40 ) with bitrate  2
-*****************
-
-
+Playing Video  4  chunk ( 0.0  /  47 ) with bitrate  0
+You caused rebuf for Video  4  of  494.0  ms
 *****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 26.333  /  40 ) with bitrate  2
-*****************
 
 
 *****************
-Download Video  3  chunk ( 29  /  40 ) with bitrate  2
+Download Video  4  chunk ( 2  /  47 ) with bitrate  0
 Causing smooth penalty:  0
-Playing Video  3  chunk ( 26.903  /  40 ) with bitrate  2
-*****************
-
-
+Playing Video  4  chunk ( 0.908  /  47 ) with bitrate  0
 *****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 27.403  /  40 ) with bitrate  2
-*****************
 
 
 *****************
-Download Video  3  chunk ( 30  /  40 ) with bitrate  2
+Download Video  4  chunk ( 3  /  47 ) with bitrate  0
 Causing smooth penalty:  0
-Playing Video  3  chunk ( 27.9  /  40 ) with bitrate  2
-*****************
-
-
+Playing Video  4  chunk ( 1.684  /  47 ) with bitrate  0
 *****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 28.4  /  40 ) with bitrate  2
-*****************
 
 
 *****************
-Download Video  3  chunk ( 31  /  40 ) with bitrate  2
+Download Video  4  chunk ( 4  /  47 ) with bitrate  0
 Causing smooth penalty:  0
-Playing Video  3  chunk ( 28.953  /  40 ) with bitrate  2
-*****************
-
-
+Playing Video  4  chunk ( 2.829  /  47 ) with bitrate  0
 *****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 29.453  /  40 ) with bitrate  2
-*****************
 
 
 *****************
-Download Video  3  chunk ( 32  /  40 ) with bitrate  2
+Download Video  4  chunk ( 5  /  47 ) with bitrate  0
 Causing smooth penalty:  0
-Playing Video  3  chunk ( 29.934  /  40 ) with bitrate  2
-*****************
-
-
+Playing Video  4  chunk ( 3.747  /  47 ) with bitrate  0
 *****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 30.434  /  40 ) with bitrate  2
-*****************
 
 
 *****************
-Download Video  3  chunk ( 33  /  40 ) with bitrate  2
+Download Video  4  chunk ( 6  /  47 ) with bitrate  0
 Causing smooth penalty:  0
-Playing Video  3  chunk ( 30.895  /  40 ) with bitrate  2
-*****************
-
-
+Playing Video  4  chunk ( 4.689  /  47 ) with bitrate  0
 *****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 31.395  /  40 ) with bitrate  2
-*****************
 
 
 *****************
-Download Video  3  chunk ( 34  /  40 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  3  chunk ( 31.811  /  40 ) with bitrate  2
+Download Video  4  chunk ( 7  /  47 ) with bitrate  0
+Playing Video  4  chunk ( 5.768  /  47 ) with bitrate  0
 *****************
 
 
 *****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 32.311  /  40 ) with bitrate  2
+Download Video  4  chunk ( 8  /  47 ) with bitrate  0
+Playing Video  5  chunk ( 0.0  /  6 ) with bitrate  -1
+You caused rebuf for Video  5  of  588.0  ms
 *****************
 
 
 *****************
-Download Video  3  chunk ( 35  /  40 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  3  chunk ( 32.781  /  40 ) with bitrate  2
+Download Video  5  chunk ( 1  /  6 ) with bitrate  1
+Causing smooth penalty:  450
+Playing Video  5  chunk ( 0.0  /  6 ) with bitrate  1
+You caused rebuf for Video  5  of  701.0  ms
 *****************
 
 
 *****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 33.281  /  40 ) with bitrate  2
+Download Video  5  chunk ( 2  /  6 ) with bitrate  0
+Causing smooth penalty:  450
+Playing Video  5  chunk ( 0.775  /  6 ) with bitrate  1
 *****************
 
 
 *****************
-Download Video  3  chunk ( 36  /  40 ) with bitrate  2
+Download Video  5  chunk ( 3  /  6 ) with bitrate  0
 Causing smooth penalty:  0
-Playing Video  3  chunk ( 33.836  /  40 ) with bitrate  2
-*****************
-
-
+Playing Video  5  chunk ( 1.629  /  6 ) with bitrate  0
 *****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 34.336  /  40 ) with bitrate  2
-*****************
 
 
 *****************
-Download Video  3  chunk ( 37  /  40 ) with bitrate  2
+Download Video  5  chunk ( 4  /  6 ) with bitrate  0
 Causing smooth penalty:  0
-Playing Video  3  chunk ( 34.763  /  40 ) with bitrate  2
-*****************
-
-
+Playing Video  5  chunk ( 2.297  /  6 ) with bitrate  0
 *****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 35.263  /  40 ) with bitrate  2
-*****************
 
 
 *****************
-Download Video  3  chunk ( 38  /  40 ) with bitrate  2
+Download Video  5  chunk ( 5  /  6 ) with bitrate  0
 Causing smooth penalty:  0
-Playing Video  3  chunk ( 35.689  /  40 ) with bitrate  2
-*****************
-
-
+Playing Video  5  chunk ( 3.375  /  6 ) with bitrate  0
 *****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 36.189  /  40 ) with bitrate  2
-*****************
 
 
 *****************
-Download Video  3  chunk ( 39  /  40 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  3  chunk ( 36.687  /  40 ) with bitrate  2
+Download Video  5  chunk ( 6  /  6 ) with bitrate  0
+Playing Video  5  chunk ( 4.225  /  6 ) with bitrate  0
 *****************
 
 
 *****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 37.187  /  40 ) with bitrate  2
+Download Video  6  chunk ( 1  /  125 ) with bitrate  1
+Causing smooth penalty:  450
+Playing Video  6  chunk ( 0.0  /  125 ) with bitrate  1
+You caused rebuf for Video  6  of  75.0  ms
 *****************
 
 
 *****************
-Download Video  3  chunk ( 40  /  40 ) with bitrate  2
+Download Video  6  chunk ( 2  /  125 ) with bitrate  1
 Causing smooth penalty:  0
-Playing Video  3  chunk ( 37.543  /  40 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 38.043  /  40 ) with bitrate  2
+Playing Video  6  chunk ( 0.687  /  125 ) with bitrate  1
 *****************
 
 
 *****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 38.543  /  40 ) with bitrate  2
+Download Video  6  chunk ( 3  /  125 ) with bitrate  0
+Finished Playing!
 *****************
+The user leaves.
+------------trace  19 --------------
 
 
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 39.043  /  40 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  3  chunk ( 39.543  /  40 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  4  chunk ( 0.043  /  47 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  4  chunk ( 4  /  47 ) with bitrate  2
-Causing smooth penalty:  1850
-Playing Video  4  chunk ( 0.426  /  47 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  4  chunk ( 0.926  /  47 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  4  chunk ( 1.426  /  47 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  4  chunk ( 1.926  /  47 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  4  chunk ( 2.426  /  47 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  4  chunk ( 5  /  47 ) with bitrate  2
-Playing Video  4  chunk ( 2.758  /  47 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  4  chunk ( 3.258  /  47 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  4  chunk ( 6  /  47 ) with bitrate  2
-Playing Video  4  chunk ( 3.693  /  47 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  5  chunk ( 0.403  /  6 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  5  chunk ( 4  /  6 ) with bitrate  2
-Playing Video  5  chunk ( 0.854  /  6 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  5  chunk ( 5  /  6 ) with bitrate  2
-Playing Video  5  chunk ( 1.265  /  6 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  6  chunk ( 0.346  /  125 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
-Playing Video  6  chunk ( 0.846  /  125 ) with bitrate  2
-*****************
-
-
-*****************
-You choose to sleep for  500.0  ms
------trace  0 --------------
+****************
+The user leaves.
+------------trace  18 --------------
 
 
