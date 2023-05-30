@@ -106,9 +106,9 @@ class Algorithm:
             self.estimate_bw(P[seq])
             b_max=max(cond_p*((max(future_chunks_highest_size[seq])/1000000)/self.future_bandwidth),3.5*math.e**(-0.3*self.future_bandwidth-0.15*seq))
             if (Players[seq].get_buffer_size()/1000)<=b_max and Players[seq].get_remain_video_num() != 0:
-                # print('upper: ',cond_p*((max(future_chunks_highest_size[seq])/1000000)/self.future_bandwidth))
-                # print('lower: ',3.5*math.e**(-0.3*self.future_bandwidth-0.15*seq))
-                # print('buffer: ',Players[seq].get_buffer_size()/1000)
+                print('upper: ',cond_p*((max(future_chunks_highest_size[seq])/1000000)/self.future_bandwidth))
+                print('lower: ',3.5*math.e**(-0.3*self.future_bandwidth-0.15*seq))
+                print('buffer: ',Players[seq].get_buffer_size()/1000)
                 download_video_id=play_video_id+seq
                 break
 
