@@ -302,11 +302,11 @@ def test_user_samples(isBaseline, isQuickstart, user_id, trace, sample_cnt):  # 
 if __name__ == '__main__':
     assert args.trace in ["mixed", "high", "low", "medium"]
     if args.baseline == '' and args.quickstart == '':
-        test_all_traces(False, False, args.solution, args.trace, 0)  # 0 means the first user sample.
-        # test_user_samples(False, False, args.solution, args.trace, 50)
+        # test_all_traces(False, False, args.solution, args.trace, 0)  # 0 means the first user sample.
+        test_user_samples(False, False, args.solution, args.trace, 50)
     elif args.quickstart != '':
-        test_all_traces(False, True, args.quickstart, args.trace, 0)
-        # test_user_samples(False, True, args.quickstart, args.trace, 50)
+        # test_all_traces(False, True, args.quickstart, args.trace, 0)
+        test_user_samples(False, True, args.quickstart, args.trace, 50)
     else:
-        test_all_traces(True, False, args.baseline, args.trace, 0)
-        # test_user_samples(True, False, args.baseline, args.trace, 50)
+        # test_all_traces(True, False, args.baseline, args.trace, 0)
+        test_user_samples(True, False, args.baseline, args.trace, 50)

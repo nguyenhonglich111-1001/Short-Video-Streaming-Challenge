@@ -396,6 +396,7 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
         smoothness_diffs = 0
         current_play_chunk=int(Players[0].get_play_chunk())
         cost_sum=0
+        waste =0
         # last_quality = int( bit_rate )
         # print(combo)
         for position in range(0, len(combo)):
@@ -449,6 +450,7 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
                         rebuffer += p_leave*p_stay*max(download_time-buffer_video_next,0)
                     else:
                         rebuffer += p_leave*p_stay*max(download_time-Players[i].get_buffer_size(),0)
+                    waste += p_leave*VIDEO_BIT_RATE[chunk_quality]
             #buffer and played chunk change each step in future
             if ( curr_buffer < download_time ):
                 # rebuffer += cond_p*(download_time - curr_buffer)
@@ -468,7 +470,7 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
 
         # compute reward for this combination (one reward per 5-chunk combo)
         # bitrates are in Mbits/s, rebuffer in seconds, and smoothness_diffs in Mbits/s
-        reward = (bitrate_sum/1000.) - (1.85*rebuffer/1000.) - (smoothness_diffs/1000.)
+        reward = (bitrate_sum/1000.) - (1.85*rebuffer/1000.) - (smoothness_diffs/1000.) - (waste/1000.)
         # reward = (bitrate_sum/1000.) - (1.85*rebuffer/1000.) - (smoothness_diffs/1000.) - 0.5*cost_sum*8/1000000.
         # reward = bitrate_sum - (8*curr_rebuffer_time) - (smoothness_diffs)
         if ( reward >= max_reward ):
