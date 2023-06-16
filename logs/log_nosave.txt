@@ -341,95 +341,32 @@ The user leaves.
 ------------trace  19 --------------
 
 
-trate  2
-Playing Video  4  chunk ( 4.742  /  47 ) with bitrate  2
+nalty:  0
+Playing Video  5  chunk ( 3.909  /  6 ) with bitrate  0
 *****************
 
 
 *****************
-Download Video  4  chunk ( 13  /  47 ) with bitrate  2
-Playing Video  4  chunk ( 5.377  /  47 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  4  chunk ( 14  /  47 ) with bitrate  2
-Playing Video  4  chunk ( 5.819  /  47 ) with bitrate  2
-*****************
-
-
-*****************
-Download Video  4  chunk ( 15  /  47 ) with bitrate  2
-Playing Video  5  chunk ( 0.0  /  6 ) with bitrate  -1
-You caused rebuf for Video  5  of  481.0  ms
-*****************
-
-
-*****************
-Download Video  5  chunk ( 1  /  6 ) with bitrate  1
-Causing smooth penalty:  650
-Playing Video  5  chunk ( 0.0  /  6 ) with bitrate  1
-You caused rebuf for Video  5  of  363.0  ms
-*****************
-
-
-*****************
-Download Video  5  chunk ( 2  /  6 ) with bitrate  2
-Causing smooth penalty:  650
-Playing Video  5  chunk ( 0.813  /  6 ) with bitrate  1
-*****************
-
-
-*****************
-Download Video  5  chunk ( 3  /  6 ) with bitrate  2
+Download Video  6  chunk ( 2  /  125 ) with bitrate  0
 Causing smooth penalty:  0
-Playing Video  5  chunk ( 2.0  /  6 ) with bitrate  2
-You caused rebuf for Video  5  of  45.0  ms
+Playing Video  5  chunk ( 4.091  /  6 ) with bitrate  0
 *****************
 
 
 *****************
-Download Video  5  chunk ( 4  /  6 ) with bitrate  0
-Causing smooth penalty:  1100
-Playing Video  5  chunk ( 2.366  /  6 ) with bitrate  2
+Download Video  6  chunk ( 3  /  125 ) with bitrate  0
+Playing Video  5  chunk ( 4.331  /  6 ) with bitrate  0
 *****************
 
 
 *****************
-Download Video  5  chunk ( 5  /  6 ) with bitrate  1
-Causing smooth penalty:  450
-Playing Video  5  chunk ( 2.832  /  6 ) with bitrate  2
+Download Video  6  chunk ( 4  /  125 ) with bitrate  1
+Playing Video  6  chunk ( 0.771  /  125 ) with bitrate  0
 *****************
 
 
 *****************
-Download Video  5  chunk ( 6  /  6 ) with bitrate  2
-Playing Video  5  chunk ( 3.327  /  6 ) with bitrate  0
-*****************
-
-
-*****************
-Download Video  6  chunk ( 1  /  125 ) with bitrate  1
-Causing smooth penalty:  0
-Playing Video  5  chunk ( 3.512  /  6 ) with bitrate  0
-*****************
-
-
-*****************
-Download Video  6  chunk ( 2  /  125 ) with bitrate  1
-Causing smooth penalty:  0
-Playing Video  5  chunk ( 3.754  /  6 ) with bitrate  0
-*****************
-
-
-*****************
-Download Video  6  chunk ( 3  /  125 ) with bitrate  2
-Playing Video  6  chunk ( 0.156  /  125 ) with bitrate  1
-*****************
-
-
-*****************
-Download Video  6  chunk ( 4  /  125 ) with bitrate  2
+Download Video  6  chunk ( 5  /  125 ) with bitrate  2
 Finished Playing!
 *****************
 The user leaves.

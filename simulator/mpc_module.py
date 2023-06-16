@@ -14,7 +14,7 @@
 
 
 # def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size, P, buffer_size, chunk_sum, video_chunk_remain, last_quality):
-#     print("MPC:::", buffer_size, "\n")
+#     # print("MPC:::", buffer_size, "\n")
 
 #     CHUNK_COMBO_OPTIONS = []
 
@@ -323,7 +323,7 @@ SMOOTH_PENALTY = 1
 MILLISECONDS_IN_SECOND = 1000.0
 PLAYER_NUM = 5  
 
-def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size, P, buffer_size, chunk_sum, video_chunk_remain, last_quality, Players, download_video_id,  play_video_id):
+def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size, P, buffer_size, chunk_sum, video_chunk_remain, last_quality, Players, download_video_id,  play_video_id, future_bandwidth):
     # print("MPC:::", buffer_size, "\n")
 
     CHUNK_COMBO_OPTIONS = []
@@ -366,7 +366,7 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
     # if ( len(copy_past_errors) < 5 ):
     #     error_pos = -len(copy_past_errors)
     # max_error = float(max(copy_past_errors[error_pos:]))
-    future_bandwidth = copy_past_bandwidth_ests[-1]  # robustMPC here
+    # future_bandwidth = copy_past_bandwidth_ests[-1]  # robustMPC here
     # print("future_bd:", future_bandwidth)
     # copy_past_bandwidth_ests.append(harmonic_bandwidth)
 
@@ -419,8 +419,8 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
                 cond_p = float(user_retent_rate[Players[download_video_id - play_video_id].get_chunk_counter()+position]) / float(user_retent_rate[current_play_chunk])   
             else:
                 cond_p = float(user_retent_rate[Players[download_video_id - play_video_id].get_chunk_counter()+position]) / float(user_retent_rate[start_chunk])
-            bitrate_sum += cond_p*VIDEO_BIT_RATE[chunk_quality]
-            smoothness_diffs += cond_p*abs(VIDEO_BIT_RATE[chunk_quality] - VIDEO_BIT_RATE[last_quality])
+            bitrate_sum += VIDEO_BIT_RATE[chunk_quality] #cond_p* VIDEO_BIT_RATE[chunk_quality]
+            smoothness_diffs += abs(VIDEO_BIT_RATE[chunk_quality] - VIDEO_BIT_RATE[last_quality]) #cond_p*abs(VIDEO_BIT_RATE[chunk_quality] - VIDEO_BIT_RATE[last_quality])
             last_quality = chunk_quality
             p_leave =1
             # possibility user scroll => cause rebuff on the next video
@@ -441,7 +441,7 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
                     if i==1:
                         if current_play_chunk+k > Players[i-1].get_chunk_sum():
                             k = Players[i-1].get_chunk_sum()-current_play_chunk
-                        p_leave=p_leave*(1-(float(user_retent_rate[current_play_chunk+k]) / float(user_retent_rate[current_play_chunk])))
+                        p_leave=p_leave*(1-(float(user_retent_rate[current_play_chunk+k])  / float(user_retent_rate[current_play_chunk])))
                     else:
                         if start_chunk+k > Players[i-1].get_chunk_sum():
                             k = Players[i-1].get_chunk_sum()-start_chunk
@@ -450,7 +450,8 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
                         rebuffer += p_leave*p_stay*max(download_time-buffer_video_next,0)
                     else:
                         rebuffer += p_leave*p_stay*max(download_time-Players[i].get_buffer_size(),0)
-                    waste += p_leave*VIDEO_BIT_RATE[chunk_quality]
+                    if download_video_id == play_video_id:
+                        waste += p_leave*all_future_chunks_size[chunk_quality][position]
             #buffer and played chunk change each step in future
             if ( curr_buffer < download_time ):
                 # rebuffer += cond_p*(download_time - curr_buffer)
@@ -470,7 +471,8 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
 
         # compute reward for this combination (one reward per 5-chunk combo)
         # bitrates are in Mbits/s, rebuffer in seconds, and smoothness_diffs in Mbits/s
-        reward = (bitrate_sum/1000.) - (1.85*rebuffer/1000.) - (smoothness_diffs/1000.) - (waste/1000.)
+        # reward = (bitrate_sum/1000.) - (1.85*rebuffer/1000.) - (smoothness_diffs/1000.)
+        reward = (bitrate_sum/1000.) - (1.85*rebuffer/1000.) - (smoothness_diffs/1000.) - (waste*8/1000000.)
         # reward = (bitrate_sum/1000.) - (1.85*rebuffer/1000.) - (smoothness_diffs/1000.) - 0.5*cost_sum*8/1000000.
         # reward = bitrate_sum - (8*curr_rebuffer_time) - (smoothness_diffs)
         if ( reward >= max_reward ):

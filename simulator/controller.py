@@ -175,6 +175,8 @@ class Environment:
                 # print("my qoe: ",Sum_my_QoE)
                 print("len: ",len(Sum_my_QoE))
                 print("my average qoe: ",np.sum(Sum_my_QoE)/len(Sum_my_QoE))
+                if len(Sum_my_QoE) == 1000:
+                    print("Sum_my_QoE: ",Sum_my_QoE)
                 # print(NumSmooth)
                 break
 

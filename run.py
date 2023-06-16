@@ -92,6 +92,10 @@ def test(isBaseline, isQuickstart, user_id, trace_id, user_sample_id):
             import Phong_v2 as Solution
             LOG_FILE = 'logs/log_Phong_v2.txt'
             log_file = open(LOG_FILE, 'w')
+        elif user_id == 'Phong_v3':
+            import Phong_v3 as Solution
+            LOG_FILE = 'logs/log_Phong_v3.txt'
+            log_file = open(LOG_FILE, 'w')
         elif user_id == 'Thuong_1':
             import Thuong_1 as Solution
             LOG_FILE = 'logs/log_Thuong_1.txt'

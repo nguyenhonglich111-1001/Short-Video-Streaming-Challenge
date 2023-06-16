@@ -81,7 +81,7 @@ class Algorithm:
         Players[0].rebuf_time.append(rebuf)
         if first_step:
             self.sleep_time = 0
-            return 0, 0, 0.0
+            return 0, 2, 0.0
         
         # decide buffer size B
         thrp = self.get_avg_thrp(10)
