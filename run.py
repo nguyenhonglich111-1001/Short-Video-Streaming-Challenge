@@ -33,7 +33,7 @@ ALL_VIDEO_NUM = 7
 MIN_QOE = -1e4
 all_cooked_time = []
 all_cooked_bw = []
-
+W=[]
 # record the last chunk(which will be played) of each video to aid the calculation of smoothness
 last_chunk_bitrate = [-1, -1, -1, -1, -1, -1, -1]
 
@@ -251,6 +251,10 @@ def test(isBaseline, isQuickstart, user_id, trace_id, user_sample_id):
     print("Your QoE is: ", QoE)
     # wasted_bytes
     print("Your sum of wasted bytes is: ", sum_wasted_bytes)
+    W.append(sum_wasted_bytes* 8/1000000)
+    print('len W: ',len(W))
+    if(len(W)==1000):
+        print("my avg waste: ",np.sum(W)/len(W))
     print("Your download/watch ratio (downloaded time / total watch time) is: ", net_env.get_wasted_time_ratio())
 
     # end the test

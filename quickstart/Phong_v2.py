@@ -10,7 +10,7 @@ from simulator import mpc_module
 import math
 
 MPC_FUTURE_CHUNK_COUNT = 5     # MPC 
-PAST_BW_LEN = 15
+PAST_BW_LEN = 10
 TAU = 500.0  # ms
 PLAYER_NUM = 5  
 PROLOAD_SIZE = 800000.0   # B
@@ -161,7 +161,7 @@ class Algorithm:
                 b_max =4
             elif b_max < 1+TAU/1000:
                 b_max = 1+TAU/1000
-            print(b_max)
+            # print(b_max)
             if (Players[seq].get_buffer_size()/1000)<=b_max and Players[seq].get_remain_video_num() != 0:
                 # if seq == 0 and len(Players) > 1 :
                 #     print('upper: ',cond_p*((max(future_chunks_highest_size[seq])/1000000)/self.future_bandwidth)+b_max_next+1)

@@ -24,6 +24,9 @@ NumberRebuf=[]
 NumSmooth=[]
 
 Sum_my_QoE=[]
+Sum_my_R=[]
+Sum_my_RB=[]
+Sum_my_Sm=[]
 class Environment:
     def __init__(self, user_sample_id, all_cooked_time, all_cooked_bw, video_num, seeds):
         self.players = []
@@ -45,6 +48,9 @@ class Environment:
         self.ppo=0
 
         self.QoE_all = []
+        self.R_all= []
+        self.RB_all= []
+        self.Sm_all= []
         # print(self.watch_ratio)
 
         # self.download_permit = set()
@@ -156,6 +162,9 @@ class Environment:
                 my_QoE = bitrate/1000.0 - smooth_penalty/1000.0 - 1.85 * rebuff_penalty/1000.0
                 print("QoE: ", my_QoE)
                 self.QoE_all.append(my_QoE)
+                self.R_all.append(bitrate/1000.0)
+                self.RB_all.append(rebuff_penalty/1000.0)
+                self.Sm_all.append(smooth_penalty/1000.0)
                 # print("QoE_all:", self.QoE_all,",", np.sum(self.QoE_all))
                 # use watch duration as an arg for the calculation of wasted_bandwidth of this current video
                 wasted_bw += self.players[0].bandwidth_waste(self.user_models[0])
@@ -172,11 +181,17 @@ class Environment:
                 NumberRebuf.append(self.ppo)
                 NumSmooth.append(self.smo)
                 Sum_my_QoE.append(np.sum(self.QoE_all))
+                Sum_my_R.append(np.sum(self.R_all))
+                Sum_my_RB.append(np.sum(self.RB_all))
+                Sum_my_Sm.append(np.sum(self.Sm_all))
                 # print("my qoe: ",Sum_my_QoE)
                 print("len: ",len(Sum_my_QoE))
                 print("my average qoe: ",np.sum(Sum_my_QoE)/len(Sum_my_QoE))
-                if len(Sum_my_QoE) == 1000:
-                    print("Sum_my_QoE: ",Sum_my_QoE)
+                print("my average R: ",np.sum(Sum_my_R)/len(Sum_my_R))
+                print("my average RB: ",np.sum(Sum_my_RB)/len(Sum_my_RB))
+                print("my average Sm: ",np.sum(Sum_my_Sm)/len(Sum_my_Sm))
+                # if len(Sum_my_QoE) == 1000:
+                #     print("Sum_my_QoE: ",Sum_my_QoE)
                 # print(NumSmooth)
                 break
 
@@ -210,6 +225,7 @@ class Environment:
             # print("\n\n")
             # play_timeline, buffer = self.players[self.play_video_id - self.start_video_id].video_play(delay)
             buffer, wasted = self.play_videos(delay)
+            # print('helo: ',self.play_videos(delay))
             self.total_downloaded_len += VIDEO_CHUNCK_LEN  # sum up the total downloaded time
             if download_video_id < self.start_video_id:
                 # If the video has already been ended, we only accumulate the wastage
