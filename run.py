@@ -3,6 +3,7 @@ sys.path.append('./simulator/')
 import argparse
 import random
 import numpy as np
+from timeit import default_timer as timer
 from simulator import controller as env, short_video_load_trace
 
 parser = argparse.ArgumentParser()
@@ -34,6 +35,8 @@ MIN_QOE = -1e4
 all_cooked_time = []
 all_cooked_bw = []
 W=[]
+Time_run=[]
+
 # record the last chunk(which will be played) of each video to aid the calculation of smoothness
 last_chunk_bitrate = [-1, -1, -1, -1, -1, -1, -1]
 
@@ -143,6 +146,7 @@ def test(isBaseline, isQuickstart, user_id, trace_id, user_sample_id):
     QoE = 0
     last_played_chunk = -1  # record the last played chunk
     bandwidth_usage = 0  # record total bandwidth usage
+    T_run=[] #record runninng time of algorithms
 
     while True:
         # calculate the quality and smooth for this download step taken
@@ -229,7 +233,13 @@ def test(isBaseline, isQuickstart, user_id, trace_id, user_sample_id):
             break
 
         # Apply the participant's algorithm to decide the args for the next step
+        start = timer()
+        # print("start: ", start)
         download_video_id, bit_rate, sleep_time = solution.run(delay, rebuf, video_size, end_of_video, play_video_id, net_env.players, False)
+        end = timer()
+        # print("end: ", end)
+        T_run.append(end - start)
+        
         assert 0 <= download_video_id - play_video_id < len(net_env.players), "The video you choose is not in the current Recommend Queue. \
                 \n   % You can only choose the current play video and its following four videos %"
 
@@ -255,8 +265,15 @@ def test(isBaseline, isQuickstart, user_id, trace_id, user_sample_id):
     print('len W: ',len(W))
     if(len(W)==1000):
         print("my avg waste: ",np.sum(W)/len(W))
+        # print("W: ", W)
     print("Your download/watch ratio (downloaded time / total watch time) is: ", net_env.get_wasted_time_ratio())
 
+    Time_run.append(np.sum(T_run)/len(T_run))
+    print('len Time run: ',len(Time_run))
+    print("my avg time running: ",np.sum(Time_run)/len(Time_run))
+    if(len(Time_run)==1000):
+        print('Time: ',Time_run)
+        # print("end", end)
     # end the test
     print('------------trace ', trace_id, '--------------\n\n', file=log_file)
     return np.array([S, bandwidth_usage,  QoE, sum_wasted_bytes, net_env.get_wasted_time_ratio()])

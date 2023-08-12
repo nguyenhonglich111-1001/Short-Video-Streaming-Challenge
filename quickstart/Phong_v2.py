@@ -10,7 +10,7 @@ from simulator import mpc_module
 import math
 
 MPC_FUTURE_CHUNK_COUNT = 5     # MPC 
-PAST_BW_LEN = 10
+PAST_BW_LEN = 15
 TAU = 500.0  # ms
 PLAYER_NUM = 5  
 PROLOAD_SIZE = 800000.0   # B
@@ -133,7 +133,7 @@ class Algorithm:
             # print('user_retent_rate[start_chunk]: ',user_retent_rate)
             # update past_errors and past_bandwidth_ests
             self.estimate_bw(P[seq])
-            next_id = 0
+            # next_id = 0
             if seq == 0 and len(Players) > 1 :
                 for i in range(1, min(len(Players), PLAYER_NUM)):
                     start_chunk = int(Players[i].get_play_chunk())
@@ -142,25 +142,34 @@ class Algorithm:
                     b_max_next=cond_p*((max(future_chunks_highest_size[i])/1000000)/self.future_bandwidth)
                     # b_max_next=max(cond_p*((max(future_chunks_highest_size[i])/1000000)/self.future_bandwidth),3.5*math.e**(-0.3*self.future_bandwidth-0.15*i))
                     if (Players[i].get_buffer_size()/1000)<=b_max_next and Players[i].get_remain_video_num() != 0:
-                        next_id = i
+                        # next_id = i
                         break
             start_chunk = int(Players[seq].get_play_chunk())
             _, user_retent_rate = Players[seq].get_user_model()
             cond_p= float(user_retent_rate[Players[seq].get_chunk_counter()]) / float(user_retent_rate[start_chunk])
             # b_max=max(cond_p*((max(future_chunks_highest_size[seq])/1000000)/self.future_bandwidth),3.5*math.e**(-0.3*self.future_bandwidth-0.15*seq))
-            if (min(future_chunks_smallest_size[seq])/1000000)/self.avg_bandwidth >= 1:
-                b_max=cond_p*((max(future_chunks_highest_size[seq])/1000000)/self.future_bandwidth)
-                # print("threshold1: ")
+            # if (min(future_chunks_smallest_size[seq])/1000000)/self.avg_bandwidth >= 1:
+            #     b_max=cond_p*((max(future_chunks_highest_size[seq])/1000000)/self.future_bandwidth)
+            #     # print("threshold1: ")
+            # else:
+            #     if seq == 0 and len(Players) > 1 :
+            #         b_max=cond_p*((max(future_chunks_highest_size[seq])/1000000)/self.future_bandwidth)+b_max_next+1
+            #     else: 
+            #         b_max=max(cond_p*((max(future_chunks_highest_size[seq])/1000000)/self.future_bandwidth),1+TAU/1000)
+            #     # print("threshold2: ")
+
+            if seq == 0 and len(Players) > 1 and (min(future_chunks_smallest_size[seq])/1000000)/self.avg_bandwidth < 1:
+                b_max=cond_p*((max(future_chunks_highest_size[seq])/1000000)/self.future_bandwidth)+b_max_next+1
             else:
-                if seq == 0 and len(Players) > 1 :
-                    b_max=cond_p*((max(future_chunks_highest_size[seq])/1000000)/self.future_bandwidth)+b_max_next+1
-                else: 
-                    b_max=max(cond_p*((max(future_chunks_highest_size[seq])/1000000)/self.future_bandwidth),1+TAU/1000)
-                # print("threshold2: ")
-            if b_max > 4:
-                b_max =4
-            elif b_max < 1+TAU/1000:
-                b_max = 1+TAU/1000
+                b_max=cond_p*((max(future_chunks_highest_size[seq])/1000000)/self.future_bandwidth)
+
+            # if b_max > 4:
+            #     b_max =4
+            # elif b_max < 1+TAU/1000:
+            #     b_max = 1+TAU/1000
+
+            b_max=min(b_max,4)
+            b_max=max(b_max,1+TAU/1000)
             # print(b_max)
             if (Players[seq].get_buffer_size()/1000)<=b_max and Players[seq].get_remain_video_num() != 0:
                 # if seq == 0 and len(Players) > 1 :

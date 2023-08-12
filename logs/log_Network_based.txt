@@ -283,22 +283,85 @@ The user leaves.
 ------------trace  19 --------------
 
 
-chunk ( 1  /  125 ) with bitrate  2
+***********
+
+
+*****************
+Download Video  4  chunk ( 9  /  47 ) with bitrate  2
+Playing Video  4  chunk ( 5.934  /  47 ) with bitrate  2
+*****************
+
+
+*****************
+You choose to sleep for  500.0  ms
+Playing Video  5  chunk ( 0.447  /  6 ) with bitrate  2
+*****************
+
+
+*****************
+Download Video  5  chunk ( 4  /  6 ) with bitrate  2
 Causing smooth penalty:  0
-Playing Video  6  chunk ( 0.0  /  125 ) with bitrate  2
-You caused rebuf for Video  6  of  364.0  ms
+Playing Video  5  chunk ( 1.018  /  6 ) with bitrate  2
 *****************
 
 
 *****************
-Download Video  6  chunk ( 2  /  125 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  6  chunk ( 0.64  /  125 ) with bitrate  2
+Download Video  5  chunk ( 5  /  6 ) with bitrate  2
+Causing smooth penalty:  1850
+Playing Video  5  chunk ( 1.472  /  6 ) with bitrate  2
 *****************
 
 
 *****************
-Download Video  6  chunk ( 3  /  125 ) with bitrate  2
+You choose to sleep for  500.0  ms
+Playing Video  5  chunk ( 1.972  /  6 ) with bitrate  2
+*****************
+
+
+*****************
+You choose to sleep for  500.0  ms
+Playing Video  5  chunk ( 2.472  /  6 ) with bitrate  2
+*****************
+
+
+*****************
+Download Video  5  chunk ( 6  /  6 ) with bitrate  2
+Playing Video  5  chunk ( 3.122  /  6 ) with bitrate  2
+*****************
+
+
+*****************
+You choose to sleep for  500.0  ms
+Playing Video  5  chunk ( 3.622  /  6 ) with bitrate  2
+*****************
+
+
+*****************
+You choose to sleep for  500.0  ms
+Playing Video  5  chunk ( 4.122  /  6 ) with bitrate  2
+*****************
+
+
+*****************
+You choose to sleep for  500.0  ms
+Playing Video  6  chunk ( 0.009  /  125 ) with bitrate  2
+*****************
+
+
+*****************
+Download Video  6  chunk ( 4  /  125 ) with bitrate  2
+Playing Video  6  chunk ( 0.578  /  125 ) with bitrate  2
+*****************
+
+
+*****************
+You choose to sleep for  500.0  ms
+Playing Video  6  chunk ( 1.078  /  125 ) with bitrate  2
+*****************
+
+
+*****************
+Download Video  6  chunk ( 5  /  125 ) with bitrate  2
 Finished Playing!
 *****************
 The user leaves.
