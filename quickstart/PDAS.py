@@ -89,7 +89,9 @@ class Algorithm:
             future_chunks_highest_size.append(all_future_chunks_size[-1][BITRATE_LEVELS-1])
 
 
-
+        bitrate=[]
+        reward=[]
+        id=[]
         download_video_id = -1
         # get_chunk_counter: tổng chunk đã tải về
         # get_buffer_size
@@ -110,24 +112,34 @@ class Algorithm:
                 # print('lower: ',3.5*math.e**(-0.3*self.future_bandwidth-0.15*seq))
                 # print('buffer: ',Players[seq].get_buffer_size()/1000)
                 download_video_id=play_video_id+seq
-                break
+
+                download_video_seq = download_video_id - play_video_id
+                buffer_size = Players[download_video_seq].get_buffer_size()  # ms
+                video_chunk_remain = Players[download_video_seq].get_remain_video_num()
+                chunk_sum = Players[download_video_seq].get_chunk_sum()
+                download_chunk_bitrate = Players[download_video_seq].get_downloaded_bitrate()
+                last_quality = DEFAULT_QUALITY
+                if len(download_chunk_bitrate) > 0:
+                    last_quality = download_chunk_bitrate[-1]
+                # print("choosing bitrate for: ", download_video_id, ", chunk: ", Players[download_video_seq].get_chunk_counter())
+                # print("past_bandwidths:", self.past_bandwidth[-5:], "past_ests:", self.past_bandwidth_ests[-5:])
+                bit_rate,max_reward = mpc_module.mpc(self.past_bandwidth, self.past_bandwidth_ests, self.past_errors, all_future_chunks_size[download_video_seq], P[download_video_seq], buffer_size, chunk_sum, video_chunk_remain, last_quality, Players, download_video_id, play_video_id)
+                self.sleep_time = 0.0
+                bitrate.append(bit_rate)
+                reward.append(max_reward)
+                id.append(download_video_id)
 
         if download_video_id == -1:  # no need to download
             self.sleep_time = TAU
             bit_rate = 0
             download_video_id = play_video_id
         else:
-            download_video_seq = download_video_id - play_video_id
-            buffer_size = Players[download_video_seq].get_buffer_size()  # ms
-            video_chunk_remain = Players[download_video_seq].get_remain_video_num()
-            chunk_sum = Players[download_video_seq].get_chunk_sum()
-            download_chunk_bitrate = Players[download_video_seq].get_downloaded_bitrate()
-            last_quality = DEFAULT_QUALITY
-            if len(download_chunk_bitrate) > 0:
-                last_quality = download_chunk_bitrate[-1]
-            # print("choosing bitrate for: ", download_video_id, ", chunk: ", Players[download_video_seq].get_chunk_counter())
-            # print("past_bandwidths:", self.past_bandwidth[-5:], "past_ests:", self.past_bandwidth_ests[-5:])
-            bit_rate = mpc_module.mpc(self.past_bandwidth, self.past_bandwidth_ests, self.past_errors, all_future_chunks_size[download_video_seq], P[download_video_seq], buffer_size, chunk_sum, video_chunk_remain, last_quality, Players, download_video_id, play_video_id)
-            self.sleep_time = 0.0
+            x=max(reward)
+            for i in range(len(reward)):
+                if x == reward[i]:
+                    y=i
+                    break
+            download_video_id=id[y]
+            bit_rate=bitrate[y]
 
         return download_video_id, bit_rate, self.sleep_time

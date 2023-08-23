@@ -302,7 +302,7 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
                 send_data = best_combo[0]
 
     bit_rate = send_data
-    return bit_rate
+    return bit_rate,max_reward
 
 # # MPC for phong
 # # import numpy as np
@@ -441,7 +441,10 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
 #                     if current_play_chunk+k > Players[i-1].get_chunk_sum():
 #                         k = Players[i-1].get_chunk_sum()-current_play_chunk
 #                     p_leave=p_leave*(1-(float(user_retent_rate[current_play_chunk+k])  / float(user_retent_rate[current_play_chunk])))
-#                     rebuffer += p_leave*p_stay*max(download_time-Players[i].get_buffer_size(),0)
+#                     if i == (download_video_id - play_video_id):   
+#                         rebuffer += p_leave*p_stay*max(download_time-buffer_video_next,0)
+#                     else:
+#                         rebuffer += p_leave*p_stay*max(download_time-Players[i].get_buffer_size(),0)
 #                     if download_video_id == play_video_id:
 #                         waste += p_leave*all_future_chunks_size[chunk_quality][position]
 #             #buffer and played chunk change each step in future
@@ -459,8 +462,7 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
 #                 buffer_video_next += VIDEO_CHUNCK_LEN
 #             # bitrate_sum += BITRATE_REWARD[chunk_quality]
 #             # smoothness_diffs += abs(BITRATE_REWARD[chunk_quality] - BITRATE_REWARD[last_quality])
-
-
+            
 #         # compute reward for this combination (one reward per 5-chunk combo)
 #         # bitrates are in Mbits/s, rebuffer in seconds, and smoothness_diffs in Mbits/s
 #         # reward = (bitrate_sum/1000.) - (1.85*rebuffer/1000.) - (smoothness_diffs/1000.)
