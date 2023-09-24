@@ -5,6 +5,7 @@ import random
 import numpy as np
 from timeit import default_timer as timer
 from simulator import controller as env, short_video_load_trace
+import psutil
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--quickstart', type=str, default='', help='Is testing quickstart')
@@ -40,6 +41,9 @@ Time_run=[]
 # record the last chunk(which will be played) of each video to aid the calculation of smoothness
 last_chunk_bitrate = [-1, -1, -1, -1, -1, -1, -1]
 
+def get_process_memory():
+    process = psutil.Process(os.getpid())
+    return process.memory_info().rss
 
 # calculate the smooth penalty for an action to download:
 # chunk:[chunk_id] of the video:[download_video_id] with bitrate:[quality]
@@ -234,12 +238,14 @@ def test(isBaseline, isQuickstart, user_id, trace_id, user_sample_id):
 
         # Apply the participant's algorithm to decide the args for the next step
         start = timer()
+        mem_before = get_process_memory()
         # print("start: ", start)
         download_video_id, bit_rate, sleep_time = solution.run(delay, rebuf, video_size, end_of_video, play_video_id, net_env.players, False)
+        mem_after = get_process_memory()
         end = timer()
         # print("end: ", end)
         T_run.append(end - start)
-        
+        # print("mem_before: ",mem_before,"mem_after: ",mem_after,"memory: ",mem_after - mem_before)
         assert 0 <= download_video_id - play_video_id < len(net_env.players), "The video you choose is not in the current Recommend Queue. \
                 \n   % You can only choose the current play video and its following four videos %"
 
@@ -265,6 +271,7 @@ def test(isBaseline, isQuickstart, user_id, trace_id, user_sample_id):
     print('len W: ',len(W))
     if(len(W)==1000):
         print("my avg waste: ",np.sum(W)/len(W))
+        print("my full waste: ",W)
         # print("W: ", W)
     print("Your download/watch ratio (downloaded time / total watch time) is: ", net_env.get_wasted_time_ratio())
 

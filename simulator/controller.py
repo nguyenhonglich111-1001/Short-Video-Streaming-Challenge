@@ -184,8 +184,9 @@ class Environment:
                 Sum_my_R.append(np.sum(self.R_all))
                 Sum_my_RB.append(np.sum(self.RB_all))
                 Sum_my_Sm.append(np.sum(self.Sm_all))
-                # print("my qoe: ",Sum_my_QoE)
+                
                 print("len: ",len(Sum_my_QoE))
+                print("my qoe: ",Sum_my_QoE)
                 print("my average qoe: ",np.sum(Sum_my_QoE)/len(Sum_my_QoE))
                 print("my average R: ",np.sum(Sum_my_R)/len(Sum_my_R))
                 print("my average RB: ",np.sum(Sum_my_RB)/len(Sum_my_RB))

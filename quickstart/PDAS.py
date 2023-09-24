@@ -141,5 +141,7 @@ class Algorithm:
                     break
             download_video_id=id[y]
             bit_rate=bitrate[y]
-
+            # print(reward)
+            # print(bitrate)
+            # print(id)
         return download_video_id, bit_rate, self.sleep_time
