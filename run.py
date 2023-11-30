@@ -18,7 +18,7 @@ RANDOM_SEED = 42  # the random seed for user retention
 np.random.seed(RANDOM_SEED)
 seeds = np.random.randint(100, size=(7, 2))
 
-VIDEO_BIT_RATE = [750, 1200, 1850]  # Kbps
+VIDEO_BIT_RATE = [750, 1200, 1850]  # Kilobit per second
 
 SUMMARY_DIR = 'logs'
 LOG_FILE = 'logs/log.txt'
@@ -162,6 +162,7 @@ def test(isBaseline, isQuickstart, user_id, trace_id, user_sample_id):
                 download_video_id - net_env.get_start_video_id()].get_watch_chunk_cnt()
             # last downloaded chunk id
             download_chunk = net_env.players[download_video_id - net_env.get_start_video_id()].get_chunk_counter()
+            
             if max_watch_chunk_id >= download_chunk:  # the downloaded chunk will be played
                 if download_chunk == max_watch_chunk_id:  # maintain the last_chunk_bitrate array
                     last_chunk_bitrate[download_video_id] = bit_rate
@@ -296,17 +297,17 @@ def test_all_traces(isBaseline, isQuickstart, user_id, trace, user_sample_id):
         avg += test(isBaseline, isQuickstart, user_id, i, user_sample_id)
         print('---------------------------------------\n\n')
     avg /= len(all_cooked_time)
-    # print("\n\nYour average indexes under [", trace, "] network is: ")
-    # print("Score: ", avg[0])
-    # print("Bandwidth Usage: ", avg[1])
-    # print("QoE: ", avg[2])
-    # print("Sum Wasted Bytes: ", avg[3])
-    # print("Wasted time ratio: ", avg[4])
-    print( avg[0])
-    print( avg[1])
-    print( avg[2])
-    print( avg[3]/1000)
-    print( avg[4])
+    print("\n\nYour average indexes under [", trace, "] network is: ")
+    print("Score: ", avg[0])
+    print("Bandwidth Usage: ", avg[1])
+    print("QoE: ", avg[2])
+    print("Sum Wasted Bytes: ", avg[3]/1000)
+    print("Wasted time ratio: ", avg[4])
+    # print( avg[0])
+    # print( avg[1])
+    # print( avg[2])
+    # print( avg[3]/1000)
+    # print( avg[4])
     return avg
 
 
@@ -319,19 +320,21 @@ def test_user_samples(isBaseline, isQuickstart, user_id, trace, sample_cnt):  # 
         seeds = np.random.randint(10000, size=(7, 2))  # reset the sample random seeds
         avgs += test_all_traces(isBaseline, isQuickstart, user_id, trace, j)
     avgs /= sample_cnt
-    # print("Score: ", avgs[0])
-    # print("Bandwidth Usage: ", avgs[1])
-    # print("QoE: ", avgs[2])
-    # print("Sum Wasted Bytes: ", avgs[3])
-    # print("Wasted time ratio: ", avgs[4])
+    
     print('..............')
-    print( avgs[0])
-    print( avgs[1])
-    print( avgs[2])
-    print( avgs[3]/1000)
-    print( avgs[4])
+    # print( avgs[0])
+    # print( avgs[1])
+    # print( avgs[2])
+    # print( avgs[3]/1000)
+    # print( avgs[4])
+    print("Score: ", avgs[0])
+    print("Bandwidth Usage: ", avgs[1])
+    print("QoE: ", avgs[2])
+    print("Sum Wasted Bytes: ", avgs[3]/1000)
+    print("Wasted time ratio: ", avgs[4])
 
 if __name__ == '__main__':
+    
     assert args.trace in ["mixed", "high", "low", "medium"]
     if args.baseline == '' and args.quickstart == '':
         # test_all_traces(False, False, args.solution, args.trace, 0)  # 0 means the first user sample.

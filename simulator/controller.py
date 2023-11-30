@@ -17,7 +17,7 @@ log_file = open(LOG_FILE, 'a')
 NEW = 0
 DEL = 1
 
-VIDEO_BIT_RATE = [750, 1200, 1850]  # Kbps
+VIDEO_BIT_RATE = [750, 1200, 1850]  # Kilobit per second
 PLAYER_NUM = 5
 
 NumberRebuf=[]
@@ -147,7 +147,7 @@ class Environment:
 
                 # calculate QoE (modify)
                 my_QoE = 0
-                # VIDEO_BIT_RATE = [750, 1200, 1850]  # Kbps
+                # VIDEO_BIT_RATE = [750, 1200, 1850]  # Kilobit per second
                 smooth_penalty, rebuff_penalty, bitrate = 0, 0, 0
                 for i in range(len(video_qualities)):
                     if i==0:

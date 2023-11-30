@@ -6,7 +6,7 @@
 # import itertools
 # from video_player import VIDEO_CHUNCK_LEN
 
-# VIDEO_BIT_RATE = [750,1200,1850]  # Kbps
+# VIDEO_BIT_RATE = [750,1200,1850]  # Kilobit per second
 # BITS_IN_BYTE = 8
 # REBUF_PENALTY = 4.3  # 1 sec rebuffering -> 3 Mbps
 # SMOOTH_PENALTY = 1
@@ -135,7 +135,7 @@
 # sys.path.append("..")
 # import math
 
-# VIDEO_BIT_RATE = [750,1200,1850]  # Kbps
+# VIDEO_BIT_RATE = [750,1200,1850]  # Kilobit per second
 # BITS_IN_BYTE = 8
 # REBUF_PENALTY = 4.3  # 1 sec rebuffering -> 3 Mbps
 # SMOOTH_PENALTY = 1
@@ -316,7 +316,7 @@ import sys
 sys.path.append("..")
 import math
 
-VIDEO_BIT_RATE = [750,1200,1850]  # Kbps
+VIDEO_BIT_RATE = [750,1200,1850]  # Kilobit per second
 BITS_IN_BYTE = 8
 REBUF_PENALTY = 4.3  # 1 sec rebuffering -> 3 Mbps
 SMOOTH_PENALTY = 1
