@@ -325,7 +325,7 @@ def test_user_samples(isBaseline, isQuickstart, user_id, trace, sample_cnt):  # 
         avgs += test_all_traces(isBaseline, isQuickstart, user_id, trace, j)
     avgs /= sample_cnt
     
-    print('..............')
+    print('\nFinal Avg Result\n..............')
     # print( avgs[0])
     # print( avgs[1])
     # print( avgs[2])
@@ -342,10 +342,11 @@ if __name__ == '__main__':
     assert args.trace in ["mixed", "high", "low", "medium"]
     if args.baseline == '' and args.quickstart == '':
         # test_all_traces(False, False, args.solution, args.trace, 0)  # 0 means the first user sample.
-        test_user_samples(False, False, args.solution, args.trace, 50)
+        # TODO How much User!
+        test_user_samples(False, False, args.solution, args.trace, 1)
     elif args.quickstart != '':
         # test_all_traces(False, True, args.quickstart, args.trace, 0)
-        test_user_samples(False, True, args.quickstart, args.trace, 50)
+        test_user_samples(False, True, args.quickstart, args.trace, 1)
     else:
         # test_all_traces(True, False, args.baseline, args.trace, 0)
-        test_user_samples(True, False, args.baseline, args.trace, 50)
+        test_user_samples(True, False, args.baseline, args.trace, 1)
