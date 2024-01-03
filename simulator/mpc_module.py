@@ -326,11 +326,8 @@ PLAYER_NUM = 5
 def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size, P, buffer_size, chunk_sum, video_chunk_remain, last_quality, Players, download_video_id,  play_video_id, future_bandwidth):
     # print("MPC:::", buffer_size, "\n")
 
-    CHUNK_COMBO_OPTIONS = []
 
-    # make chunk combination options
-    for combo in itertools.product([0,1,2], repeat=P):
-        CHUNK_COMBO_OPTIONS.append(combo)
+
 
     # ================== MPC =========================
     # shouldn't change the value of past_bandwidth_ests and past_errors in MPC
@@ -384,8 +381,9 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
     start_buffer = buffer_size
     # print("start_buffer:", start_buffer)
 
-    #start = time.time()
-    for combo in CHUNK_COMBO_OPTIONS:
+    # make chunk combination options
+    # TODO Change repeat=P when done testing with DP
+    for combo in itertools.product([0, 1, 2], repeat=P):
         # combo = full_combo[0:future_chunk_length]
         # calculate total rebuffer time for this combination (start with start_buffer and subtract
         # each download time and add 2 seconds in that order)
@@ -469,7 +467,7 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
         reward = (bitrate_sum/1000.) - (1.85*rebuffer/1000.) - (smoothness_diffs/1000.) - (waste*8/1000000.)
         # reward = (bitrate_sum/1000.) - (1.85*rebuffer/1000.) - (smoothness_diffs/1000.) - 0.5*cost_sum*8/1000000.
         # reward = bitrate_sum - (8*curr_rebuffer_time) - (smoothness_diffs)
-        if ( reward >= max_reward ):
+        if ( reward >= max_reward and len(combo) == P):
             if (best_combo != ()) and best_combo[0] < combo[0]:
                 best_combo = combo
             else:
