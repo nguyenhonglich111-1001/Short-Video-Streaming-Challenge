@@ -112,7 +112,7 @@ class Player:
             future_videosize.append(size_in_level)
         return future_videosize
 
-    def get_play_chunk(self):
+    def get_play_chunk(self) -> float:
         return self.play_timeline / VIDEO_CHUNCK_LEN
     
     # get remain video chunks
@@ -126,7 +126,7 @@ class Player:
     def get_chunk_counter(self):
         return self.video_chunk_counter
 
-    def get_buffer_size(self):
+    def get_buffer_size(self) -> int:
         return self.buffer_size
     
     def record_download_bitrate(self, bit_rate):

@@ -310,20 +310,35 @@
 # import load_trace
 # import matplotlib.pyplot as plt
 import itertools
-from video_player import VIDEO_CHUNCK_LEN
 import numpy as np
+import copy
 import sys
+from video_player import VIDEO_CHUNCK_LEN
+from video_player import Player
 sys.path.append("..")
 import math
 
 VIDEO_BIT_RATE = [750,1200,1850]  # Kilobit per second
+VIDEO_BIT_RATE_INDEX = [0,1,2]  # Kilobit per second
 BITS_IN_BYTE = 8
 REBUF_PENALTY = 4.3  # 1 sec rebuffering -> 3 Mbps
 SMOOTH_PENALTY = 1
 MILLISECONDS_IN_SECOND = 1000.0
 PLAYER_NUM = 5  
+class State:
 
-def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size, P, buffer_size, chunk_sum, video_chunk_remain, last_quality, Players, download_video_id,  play_video_id, future_bandwidth):
+    def __init__(self, combo : list[int]) -> None:
+        self.bitrate_sum : float = 0
+        self.rebuffer: float = 0
+        self.smoothness_diffs: float = 0
+        self.waste: float = 0
+        self.cost_sum : float = 0
+        self.combo: list[int] = combo[:]
+        self.curr_buffer = None
+        self.buffer_video_next = None
+        self.current_play_chunk = None
+
+def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size, P, buffer_size, chunk_sum, video_chunk_remain, last_quality, Players : list[Player], download_video_id,  play_video_id, future_bandwidth):
     # print("MPC:::", buffer_size, "\n")
 
 
@@ -383,22 +398,37 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
 
     # make chunk combination options
     # TODO Change repeat=P when done testing with DP
-    for combo in itertools.product([0, 1, 2], repeat=P):
-        # combo = full_combo[0:future_chunk_length]
-        # calculate total rebuffer time for this combination (start with start_buffer and subtract
-        # each download time and add 2 seconds in that order)
-        rebuffer = 0
-        curr_buffer = Players[0].get_buffer_size()
-        buffer_video_next = start_buffer
-        bitrate_sum = 0
-        smoothness_diffs = 0
-        current_play_chunk=int(Players[0].get_play_chunk())
-        cost_sum=0
-        waste =0
-        # last_quality = int( bit_rate )
-        # print(combo)
-        for position in range(0, len(combo)):
+    states = [State([0]),State([1]),State([2])]
+    send_data = 0 
+
+    for p_index in range(P):
+        new_states = []
+        for state in states:
+            
+            combo = state.combo
+            # combo = full_combo[0:future_chunk_length]
+            # calculate total rebuffer time for this combination (start with start_buffer and subtract
+            # each download time and add 2 seconds in that order)
+
+            # Migrate from old version to new version
+            bitrate_sum = state.bitrate_sum
+            rebuffer = state.rebuffer
+            smoothness_diffs = state.smoothness_diffs
+            waste = state.waste
+            cost_sum = state.cost_sum
+
+            # Chỉnh lại theo DP nhưng kết quả không thay đổi ?
+            curr_buffer = state.curr_buffer if state.curr_buffer is not None else Players[0].get_buffer_size(
+            )
+            buffer_video_next = state.buffer_video_next if state.buffer_video_next is not None else start_buffer
+            current_play_chunk = state.current_play_chunk if state.current_play_chunk is not None else int(
+                Players[0].get_play_chunk()) + len(combo) - 1
+            # last_quality = int( bit_rate )
+            # print(combo)
+
+            position = len(combo) - 1
             chunk_quality = combo[position]
+
             # print(len(all_future_chunks_size[0]))
             # print(chunk_quality)
             # print(position)
@@ -460,23 +490,45 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
                 buffer_video_next += VIDEO_CHUNCK_LEN
             # bitrate_sum += BITRATE_REWARD[chunk_quality]
             # smoothness_diffs += abs(BITRATE_REWARD[chunk_quality] - BITRATE_REWARD[last_quality])
-            
-        # compute reward for this combination (one reward per 5-chunk combo)
-        # bitrates are in Mbits/s, rebuffer in seconds, and smoothness_diffs in Mbits/s
-        # reward = (bitrate_sum/1000.) - (1.85*rebuffer/1000.) - (smoothness_diffs/1000.)
-        reward = (bitrate_sum/1000.) - (1.85*rebuffer/1000.) - (smoothness_diffs/1000.) - (waste*8/1000000.)
-        # reward = (bitrate_sum/1000.) - (1.85*rebuffer/1000.) - (smoothness_diffs/1000.) - 0.5*cost_sum*8/1000000.
-        # reward = bitrate_sum - (8*curr_rebuffer_time) - (smoothness_diffs)
-        if ( reward >= max_reward and len(combo) == P):
-            if (best_combo != ()) and best_combo[0] < combo[0]:
-                best_combo = combo
-            else:
-                best_combo = combo
-            max_reward = reward
-            # send data to html side (first chunk of best combo)
-            send_data = 0 # no combo had reward better than -1000000 (ERROR) so send 0
-            if ( best_combo != () ): # some combo was good
-                send_data = best_combo[0]
+                
+            # compute reward for this combination (one reward per 5-chunk combo)
+            # bitrates are in Mbits/s, rebuffer in seconds, and smoothness_diffs in Mbits/s
+            # reward = (bitrate_sum/1000.) - (1.85*rebuffer/1000.) - (smoothness_diffs/1000.)
+            reward = (bitrate_sum/1000.) - (1.85*rebuffer/1000.) - (smoothness_diffs/1000.) - (waste*8/1000000.)
+            # reward = (bitrate_sum/1000.) - (1.85*rebuffer/1000.) - (smoothness_diffs/1000.) - 0.5*cost_sum*8/1000000.
+            # reward = bitrate_sum - (8*curr_rebuffer_time) - (smoothness_diffs)
+            if ( reward >= max_reward and len(combo) >= P-2):
 
+                # WHAT ???
+                if (best_combo != ()) and best_combo[0] < combo[0]:
+                    best_combo = combo
+                else:
+                    best_combo = combo
+                max_reward = reward
+                # send data to html side (first chunk of best combo)
+                send_data = 0 # no combo had reward better than -1000000 (ERROR) so send 0
+                if ( best_combo != () ): # some combo was good
+                    send_data = best_combo[0]
+
+            # Migrate from old version to new version
+            state.bitrate_sum  = bitrate_sum
+            state.rebuffer = rebuffer
+            state.smoothness_diffs = smoothness_diffs
+            state.waste = waste
+            state.cost_sum = cost_sum
+            state.curr_buffer = curr_buffer
+            state.buffer_video_next = buffer_video_next
+            state.current_play_chunk = current_play_chunk
+
+
+            if p_index != P-1:
+                for index in VIDEO_BIT_RATE_INDEX:
+                    next_state = copy.deepcopy(state)
+                    next_state.combo.append(index)
+                    new_states.append(next_state)
+
+        states = new_states
+        
     bit_rate = send_data
+
     return bit_rate

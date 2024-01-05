@@ -7,6 +7,7 @@ import sys
 sys.path.append("..")
 from simulator.video_player import BITRATE_LEVELS
 from simulator import mpc_module
+from simulator.video_player import Player
 import math
 
 MPC_FUTURE_CHUNK_COUNT = 5     # MPC 
@@ -90,7 +91,7 @@ class Algorithm:
     #     # self.past_bandwidth[-1] = future_bandwidth
 
     # Define your algorithm
-    def run(self, delay, rebuf, video_size, end_of_video, play_video_id, Players, first_step=False):
+    def run(self, delay, rebuf, video_size, end_of_video, play_video_id, Players : list[Player], first_step=False):
         Players[0].rebuf_time.append(rebuf)
         DEFAULT_QUALITY = 0
         if first_step:   # 第一步没有任何信息
@@ -185,6 +186,8 @@ class Algorithm:
             bit_rate = 0
             download_video_id = play_video_id
         else:
+
+            # Get data for mpc
             download_video_seq = download_video_id - play_video_id
             buffer_size = Players[download_video_seq].get_buffer_size()  # ms
             video_chunk_remain = Players[download_video_seq].get_remain_video_num()
