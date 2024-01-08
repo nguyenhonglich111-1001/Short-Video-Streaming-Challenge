@@ -11,7 +11,7 @@ from simulator.video_player import Player
 import math
 
 MPC_FUTURE_CHUNK_COUNT = 5     # MPC 
-PAST_BW_LEN = 15
+PAST_BW_LEN = 20
 TAU = 500.0  # ms
 PLAYER_NUM = 5  
 PROLOAD_SIZE = 800000.0   # B
@@ -44,15 +44,15 @@ class Algorithm:
         first_non_zero_index = 0
         while self.past_bandwidth[first_non_zero_index] == 0:
             first_non_zero_index += 1
-        past_bandwidth = self.past_bandwidth[first_non_zero_index:]
+        past_bandwidths = self.past_bandwidth[first_non_zero_index:]
             
-        self.avg_bandwidth = sum(past_bandwidth)/len(past_bandwidth)
-        future_bandw = 0
-        for past_val in range(len(past_bandwidth)):
-            if(past_val == 0):
-                future_bandw= past_bandwidth[0]
-            else:
-                future_bandw = future_bandw*0.8 + past_bandwidth[past_val]*0.2
+        self.avg_bandwidth = sum(past_bandwidths)/len(past_bandwidths)
+        future_bandw = past_bandwidths[0]
+        
+        for bandwidth in (past_bandwidths):
+            future_bandw = future_bandw*0.8 + bandwidth*0.2
+
+
         self.future_bandwidth = future_bandw
         # future bandwidth prediction
         # divide by 1 + max of last 5 (or up to 5) errors
