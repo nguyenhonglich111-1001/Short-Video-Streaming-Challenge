@@ -29,7 +29,7 @@ Sum_my_RB=[]
 Sum_my_Sm=[]
 class Environment:
     def __init__(self, user_sample_id, all_cooked_time, all_cooked_bw, video_num, seeds):
-        self.players = []
+        self.players : list[Player] = []
         self.seeds = seeds
         global USER_FILE
         USER_FILE = 'logs/sample_user/user_'+str(user_sample_id)+'.txt'

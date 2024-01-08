@@ -1,3 +1,4 @@
+import time
 import sys, os
 sys.path.append('./simulator/')
 import argparse
@@ -63,59 +64,57 @@ def test(isBaseline, isQuickstart, user_id, trace_id, user_sample_id):
     global LOG_FILE
     global log_file
     if isBaseline:  # Testing baseline algorithm
-        sys.path.append('./baseline/')
         if user_id == 'no_save':
-            import no_save as Solution
+            import baseline.no_save as Solution
             LOG_FILE = 'logs/log_nosave.txt'
             log_file = open(LOG_FILE, 'w')
         sys.path.remove('./baseline/')
     elif isQuickstart:  # Testing quickstart algorithm
         sys.path.append('./quickstart/')
         if user_id == 'Thompson_Sampling':
-            import Thompson_Sampling as Solution
+            import quickstart.Thompson_Sampling as Solution
             LOG_FILE = 'logs/log_Thompson_Sampling.txt'
             log_file = open(LOG_FILE, 'w')
         elif user_id == 'fixed_preload':
-            import fix_preload as Solution
+            import quickstart.fix_preload as Solution
             LOG_FILE = 'logs/log_fixpreload.txt'
             log_file = open(LOG_FILE, 'w')
         elif user_id == 'DucMMSP':
-            import DucMMSP as Solution
+            import quickstart.DucMMSP as Solution
             LOG_FILE = 'logs/log_DucMMSP.txt'
             log_file = open(LOG_FILE, 'w')
         elif user_id == 'NextOne':
-            import NextOne as Solution
+            import quickstart.NextOne as Solution
             LOG_FILE = 'logs/log_NextOne.txt'
             log_file = open(LOG_FILE, 'w')
         elif user_id == 'Waterfall':
-            import Waterfall as Solution
+            import quickstart.Waterfall as Solution
             LOG_FILE = 'logs/log_Waterfall.txt'
             log_file = open(LOG_FILE, 'w')
         elif user_id == 'Fix_B':
-            import Fix_B as Solution
+            import quickstart.Fix_B as Solution
             LOG_FILE = 'logs/log_Fix_B.txt'
             log_file = open(LOG_FILE, 'w')  
         elif user_id == 'Network_based':
-            import Network_based as Solution
+            import quickstart.Network_based as Solution
             LOG_FILE = 'logs/log_Network_based.txt'
             log_file = open(LOG_FILE, 'w')
         elif user_id == 'Phong_v2':
-            import Phong_v2 as Solution
+            import quickstart.Phong_v2 as Solution
             LOG_FILE = 'logs/log_Phong_v2.txt'
             log_file = open(LOG_FILE, 'w')
         elif user_id == 'Phong_v3':
-            import Phong_v3 as Solution
+            import quickstart.Phong_v3 as Solution
             LOG_FILE = 'logs/log_Phong_v3.txt'
             log_file = open(LOG_FILE, 'w')
         elif user_id == 'Thuong_1':
-            import Thuong_1 as Solution
+            import quickstart.Thuong_1 as Solution
             LOG_FILE = 'logs/log_Thuong_1.txt'
             log_file = open(LOG_FILE, 'w')    
         elif user_id == 'PDAS':
-            import PDAS as Solution
+            import quickstart.PDAS as Solution
             LOG_FILE = 'logs/log_PDAS.txt'
             log_file = open(LOG_FILE, 'w') 
-        sys.path.remove('./quickstart/')        
     else:  # Testing participant's algorithm
         sys.path.append(user_id)
         import solution as Solution
@@ -346,7 +345,9 @@ if __name__ == '__main__':
         test_user_samples(False, False, args.solution, args.trace, 1)
     elif args.quickstart != '':
         # test_all_traces(False, True, args.quickstart, args.trace, 0)
+        startTime = time.time()
         test_user_samples(False, True, args.quickstart, args.trace, 1)
+        print('Running time:', time.time() - startTime)
     else:
         # test_all_traces(True, False, args.baseline, args.trace, 0)
         test_user_samples(True, False, args.baseline, args.trace, 1)
