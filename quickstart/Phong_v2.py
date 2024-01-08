@@ -41,9 +41,11 @@ class Algorithm:
         #     curr_error = abs(self.past_bandwidth_ests[-1] - self.past_bandwidth[-1])/float(self.past_bandwidth[-1])
         # self.past_errors.append(curr_error)
         # first get harmonic mean of last 5 bandwidths
-        past_bandwidth = self.past_bandwidth[:]
-        while past_bandwidth[0] == 0:
-            past_bandwidth = past_bandwidth[1:]
+        first_non_zero_index = 0
+        while self.past_bandwidth[first_non_zero_index] == 0:
+            first_non_zero_index += 1
+        past_bandwidth = self.past_bandwidth[first_non_zero_index:]
+            
         self.avg_bandwidth = sum(past_bandwidth)/len(past_bandwidth)
         future_bandw = 0
         for past_val in range(len(past_bandwidth)):
@@ -63,6 +65,7 @@ class Algorithm:
         self.past_bandwidth_ests.append(self.future_bandwidth)
         # self.past_bandwidth = np.roll(self.past_bandwidth, -1)
         # self.past_bandwidth[-1] = future_bandwidth
+        
     # def estimate_bw(self, P):
     #     # record the newest error
     #     curr_error = 0  # default assumes that this is the first request so error is 0 since we have never predicted bandwidth
