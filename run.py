@@ -4,9 +4,10 @@ sys.path.append('./simulator/')
 import argparse
 import random
 import numpy as np
+import psutil
 from timeit import default_timer as timer
 from simulator import controller as env, short_video_load_trace
-import psutil
+from constant.constants import VIDEO_BIT_RATE
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--quickstart', type=str, default='', help='Is testing quickstart')
@@ -18,8 +19,6 @@ args = parser.parse_args()
 RANDOM_SEED = 42  # the random seed for user retention
 np.random.seed(RANDOM_SEED)
 seeds = np.random.randint(100, size=(7, 2))
-
-VIDEO_BIT_RATE = [750, 1200, 1850]  # Kilobit per second
 
 SUMMARY_DIR = 'logs'
 LOG_FILE = 'logs/log.txt'

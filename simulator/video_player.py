@@ -2,9 +2,8 @@
 import numpy as np
 import math
 import os
+from constant.constants import VIDEO_BIT_RATE, BITRATE_LEVELS
 
-BITRATE_LEVELS = 3
-VIDEO_BIT_RATE = [750,1200,1850]  # Kilobit per second
 VIDEO_CHUNCK_LEN = 1000.0
 MILLISECONDS_IN_SECOND = 1000.0
 VIDEO_SIZE_FILE = 'data/short_video_size/'

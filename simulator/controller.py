@@ -8,6 +8,7 @@ from numpy.lib.utils import _split_line
 from video_player import Player, VIDEO_CHUNCK_LEN
 from user_module import Retention
 from network_module import Network
+from constant.constants import VIDEO_BIT_RATE
 
 USER_FILE = 'logs/sample_user/user.txt'
 # user_file = open(USER_FILE, 'wb')
@@ -17,7 +18,6 @@ log_file = open(LOG_FILE, 'a')
 NEW = 0
 DEL = 1
 
-VIDEO_BIT_RATE = [750, 1200, 1850]  # Kilobit per second
 PLAYER_NUM = 5
 
 NumberRebuf=[]

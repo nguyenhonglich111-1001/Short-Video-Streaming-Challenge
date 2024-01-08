@@ -315,11 +315,10 @@ import copy
 import sys
 from video_player import VIDEO_CHUNCK_LEN
 from video_player import Player
+from constant.constants import VIDEO_BIT_RATE, VIDEO_BIT_RATE_INDEX
 sys.path.append("..")
 import math
 
-VIDEO_BIT_RATE = [750,1200,1850]  # Kilobit per second
-VIDEO_BIT_RATE_INDEX = [0,1,2]  # Kilobit per second
 BITS_IN_BYTE = 8
 REBUF_PENALTY = 4.3  # 1 sec rebuffering -> 3 Mbps
 SMOOTH_PENALTY = 1
