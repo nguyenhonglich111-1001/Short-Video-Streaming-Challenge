@@ -70,11 +70,7 @@ def test(isBaseline, isQuickstart, user_id, trace_id, user_sample_id):
         sys.path.remove('./baseline/')
     elif isQuickstart:  # Testing quickstart algorithm
         sys.path.append('./quickstart/')
-        if user_id == 'Thompson_Sampling':
-            import quickstart.Thompson_Sampling as Solution
-            LOG_FILE = 'logs/log_Thompson_Sampling.txt'
-            log_file = open(LOG_FILE, 'w')
-        elif user_id == 'fixed_preload':
+        if user_id == 'fixed_preload':
             import quickstart.fix_preload as Solution
             LOG_FILE = 'logs/log_fixpreload.txt'
             log_file = open(LOG_FILE, 'w')
