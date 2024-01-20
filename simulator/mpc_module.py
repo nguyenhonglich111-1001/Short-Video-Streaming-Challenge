@@ -363,10 +363,6 @@ class State:
         return new_state
 
 def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size, P, buffer_size, chunk_sum, video_chunk_remain, last_quality, Players : list[Player], download_video_id,  play_video_id, future_bandwidth):
-    # print("MPC:::", buffer_size, "\n")
-
-
-
 
     # ================== MPC =========================
     # shouldn't change the value of past_bandwidth_ests and past_errors in MPC
@@ -421,7 +417,6 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
     # print("start_buffer:", start_buffer)
 
     # make chunk combination options
-    # TODO Change repeat=P when done testing with DP
     states : list[State]= []
     for i in range(3):
         states.append(
