@@ -33,8 +33,8 @@ class Algorithm:
         self.future_bandwidth = 0.0
         self.avg_bandwidth = 0
 
-        self.macd_upper_bound = 0.005
-        self.macd_lower_bound = -0.005
+        self.macd_upper_bound = 0.009
+        self.macd_lower_bound = -0.009
         self.harmonic_samples = 20
     # Intial
 
@@ -123,11 +123,10 @@ class Algorithm:
         self.avg_bandwidth = sum(past_bandwidths)/len(past_bandwidths)
 
         ema_short = self._ewma(past_bandwidths, 5)
-        ema_long = self._ewma(past_bandwidths, 15)
+        ema_long = self._ewma(past_bandwidths, 20)
         macd = ema_short[-1] - ema_long[-1]
-
         k = 21
-        P_ZERO = 0.2
+        P_ZERO = 0.5
         last_bandwidth_est = self.past_bandwidth_ests[-1]
         last_bandwidth = past_bandwidths[-1]
 
@@ -145,7 +144,7 @@ class Algorithm:
             past_bandwidth_avg = np.mean(past_bandwidths)
             triangle_param = (
                 past_bandwidths[-1] - past_bandwidth_avg) / past_bandwidth_avg
-            weight2 = 0.8
+            
             weight2 = 1 / (1 + np.exp(k*triangle_param))
             
             future_bandw = weight2*last_bandwidth_est + \
@@ -182,10 +181,12 @@ class Algorithm:
                 future_chunks_highest_size.append([0])
                 future_chunks_smallest_size.append([0])
                 continue
+            
             if i == 0:
-                P.append(min(5, Players[i].get_remain_video_num()))
+                P.append(min(3, Players[i].get_remain_video_num()))
             else:
-                P.append(min(2, Players[i].get_remain_video_num()))
+                P.append(min(5, Players[i].get_remain_video_num()))
+
             all_future_chunks_size.append(
                 Players[i].get_undownloaded_video_size(P[-1]))
             future_chunks_highest_size.append(
@@ -203,7 +204,7 @@ class Algorithm:
 
             # update past_errors and past_bandwidth_ests
             # TODO Change back and forth between 2 version of estimate bw
-            self.estimate_bw2(P[seq])
+            self.estimate_bw(P[seq])
             # next_id = 0
             if seq == 0 and len(Players) > 1:
                 for i in range(1, min(len(Players), PLAYER_NUM)):
