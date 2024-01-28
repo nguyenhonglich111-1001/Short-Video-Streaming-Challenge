@@ -97,7 +97,7 @@ def test(isBaseline, isQuickstart, user_id, trace_id, user_sample_id):
         elif user_id == 'Phong_v2':
             import quickstart.Phong_v2 as Solution
             LOG_FILE = 'logs/log_Phong_v2.txt'
-            log_file = open(LOG_FILE, 'w')
+            # log_file = open(LOG_FILE, 'w')
         elif user_id == 'Phong_v3':
             import quickstart.Phong_v3 as Solution
             LOG_FILE = 'logs/log_Phong_v3.txt'
@@ -118,7 +118,7 @@ def test(isBaseline, isQuickstart, user_id, trace_id, user_sample_id):
         log_file = open(LOG_FILE, 'w')
 
     # start the test
-    print('------------trace ', trace_id, '--------------', file=log_file)
+    # print('------------trace ', trace_id, '--------------', file=log_file)
 
     solution = Solution.Algorithm()
     solution.Initialize()
@@ -136,12 +136,14 @@ def test(isBaseline, isQuickstart, user_id, trace_id, user_sample_id):
 
     # output the first step
     if sleep_time != 0:
-        print("You choose to sleep for ", sleep_time, " ms", file=log_file)
+        pass
+        # print("You choose to sleep for ", sleep_time, " ms", file=log_file)
     else:
-        print("Download Video ", download_video_id, " chunk (",
-              net_env.players[download_video_id].get_chunk_counter() + 1, " / ",
-              net_env.players[download_video_id].get_chunk_sum(), ") with bitrate ", bit_rate,
-              file=log_file)
+        pass
+        # print("Download Video ", download_video_id, " chunk (",
+        #       net_env.players[download_video_id].get_chunk_counter() + 1, " / ",
+        #       net_env.players[download_video_id].get_chunk_sum(), ") with bitrate ", bit_rate,
+        #       file=log_file)
 
     # sum of wasted bytes for a user
     sum_wasted_bytes = 0
@@ -173,7 +175,8 @@ def test(isBaseline, isQuickstart, user_id, trace_id, user_sample_id):
                             smooth += abs(quality - VIDEO_BIT_RATE[next_bitrate])
                 quality = VIDEO_BIT_RATE[bit_rate]
                 smooth += get_smooth(net_env, download_video_id, download_chunk, quality)
-                print("Causing smooth penalty: ", smooth, file=log_file)
+
+                # print("Causing smooth penalty: ", smooth, file=log_file)
 
 
         delay, rebuf, video_size, end_of_video, \
@@ -192,8 +195,8 @@ def test(isBaseline, isQuickstart, user_id, trace_id, user_sample_id):
             current_chunk = net_env.players[0].get_play_chunk()
             # print(current_chunk)
             current_bitrate = net_env.players[0].get_video_quality(max(int(current_chunk - 1e-10), 0))
-            print("Playing Video ", play_video_id, " chunk (", current_chunk, " / ", net_env.players[0].get_chunk_sum(),
-                  ") with bitrate ", current_bitrate, file=log_file)
+            # print("Playing Video ", play_video_id, " chunk (", current_chunk, " / ", net_env.players[0].get_chunk_sum(),
+            #       ") with bitrate ", current_bitrate, file=log_file)
             # if max(int(current_chunk - 1e-10), 0) == 0 or last_played_chunk == max(int(current_chunk - 1e-10), 0):
             #     # is the first chunk or the same chunk as last time(already calculated) of the current video
             #     smooth = 0
@@ -206,11 +209,13 @@ def test(isBaseline, isQuickstart, user_id, trace_id, user_sample_id):
             #         print("Your bitrate changes from ", last_bitrate, " to ", current_bitrate, ".", file=log_file)
             # last_played_chunk = max(int(current_chunk - 1e-10), 0)
         else:
-            print("Finished Playing!", file=log_file)
+            pass
+            # print("Finished Playing!", file=log_file)
         if rebuf != 0:
-            print("You caused rebuf for Video ", play_video_id, " of ", rebuf, " ms", file=log_file)
+            pass
+            # print("You caused rebuf for Video ", play_video_id, " of ", rebuf, " ms", file=log_file)
             # print("You caused rebuf for Video ", play_video_id, " of ", rebuf, " ms")
-        print("*****************", file=log_file)
+        # print("*****************", file=log_file)
 
 
         # Update QoE:
@@ -230,7 +235,7 @@ def test(isBaseline, isQuickstart, user_id, trace_id, user_sample_id):
 
         # play over all videos
         if play_video_id >= ALL_VIDEO_NUM:
-            print("The user leaves.", file=log_file)
+            # print("The user leaves.", file=log_file)
             print("The user leaves.")
             
             break
@@ -249,15 +254,17 @@ def test(isBaseline, isQuickstart, user_id, trace_id, user_sample_id):
                 \n   % You can only choose the current play video and its following four videos %"
 
         # print log info of the last operation
-        print("\n\n*****************", file=log_file)
+        # print("\n\n*****************", file=log_file)
         # the operation detail
         if sleep_time != 0:
-            print("You choose to sleep for ", sleep_time, " ms", file=log_file)
+            pass
+            # print("You choose to sleep for ", sleep_time, " ms", file=log_file)
         else:
             assert 0 <= download_video_id - play_video_id < len(net_env.players), "The video you choose is not in the current Recommend Queue. \
                 \n   % You can only choose the current play video and its following four videos %"
-            print("Download Video ", download_video_id, " chunk (", net_env.players[download_video_id - play_video_id].get_chunk_counter() + 1, " / ",
-                  net_env.players[download_video_id - play_video_id].get_chunk_sum(), ") with bitrate ", bit_rate, file=log_file)
+            
+            # print("Download Video ", download_video_id, " chunk (", net_env.players[download_video_id - play_video_id].get_chunk_counter() + 1, " / ",
+            #       net_env.players[download_video_id - play_video_id].get_chunk_sum(), ") with bitrate ", bit_rate, file=log_file)
     # Score
     S = QoE - theta * bandwidth_usage * 8 / 1000000.
     print("Your score is: ", S)
@@ -281,7 +288,7 @@ def test(isBaseline, isQuickstart, user_id, trace_id, user_sample_id):
         print('Time: ',Time_run)
         # print("end", end)
     # end the test
-    print('------------trace ', trace_id, '--------------\n\n', file=log_file)
+    # print('------------trace ', trace_id, '--------------\n\n', file=log_file)
     return np.array([S, bandwidth_usage,  QoE, sum_wasted_bytes, net_env.get_wasted_time_ratio()])
 
 
@@ -337,12 +344,12 @@ if __name__ == '__main__':
     if args.baseline == '' and args.quickstart == '':
         # test_all_traces(False, False, args.solution, args.trace, 0)  # 0 means the first user sample.
         # TODO How much User!
-        test_user_samples(False, False, args.solution, args.trace, 1)
+        test_user_samples(False, False, args.solution, args.trace, 10)
     elif args.quickstart != '':
         # test_all_traces(False, True, args.quickstart, args.trace, 0)
         startTime = time.time()
-        test_user_samples(False, True, args.quickstart, args.trace, 1)
+        test_user_samples(False, True, args.quickstart, args.trace, 10)
         print('Running time:', time.time() - startTime)
     else:
         # test_all_traces(True, False, args.baseline, args.trace, 0)
-        test_user_samples(True, False, args.baseline, args.trace, 1)
+        test_user_samples(True, False, args.baseline, args.trace, 10)
