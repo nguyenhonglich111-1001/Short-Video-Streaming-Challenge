@@ -297,6 +297,9 @@ def test_all_traces(isBaseline, isQuickstart, user_id, trace, user_sample_id):
     cooked_trace_folder = 'data/network_traces/' + trace + '/'
     global all_cooked_time, all_cooked_bw
     all_cooked_time, all_cooked_bw = short_video_load_trace.load_trace(cooked_trace_folder)
+
+    # TODO return back when testing complete
+    all_cooked_time = [all_cooked_time[0]]
     for i in range(len(all_cooked_time)):
         print('------------trace ', i, '--------------')
         avg += test(isBaseline, isQuickstart, user_id, i, user_sample_id)

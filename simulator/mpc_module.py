@@ -4,7 +4,7 @@ import copy
 import sys
 from video_player import VIDEO_CHUNCK_LEN
 from video_player import Player
-from constant.constants import VIDEO_BIT_RATE, VIDEO_BIT_RATE_INDEX
+from constant.constants import VIDEO_BIT_RATE, VIDEO_BIT_RATE_INDEX, BITRATE_LEVELS
 sys.path.append("..")
 import math
 
@@ -105,9 +105,9 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
     start_buffer = buffer_size
     # print("start_buffer:", start_buffer)
 
-    # make chunk combination options
+    # Init the state for future dp
     states : list[State]= []
-    for i in range(3):
+    for i in range(BITRATE_LEVELS):
         states.append(
             State(
                 0,
@@ -186,6 +186,7 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
                         state.rebuffer += p_leave*p_stay*max(download_time-Players[i].get_buffer_size(),0)
                     if download_video_id == play_video_id:
                         state.waste += p_leave*all_future_chunks_size[chunk_quality][position]
+                        
             #buffer and played chunk change each step in future
             if ( state.curr_buffer < download_time ):
                 # state.rebuffer += cond_p*(download_time - state.curr_buffer)
@@ -205,9 +206,10 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
             # compute reward for this combination (one reward per 5-chunk state.combo)
             # bitrates are in Mbits/s, state.rebuffer in seconds, and state.smoothness_diffs in Mbits/s
             # reward = (state.bitrate_sum/1000.) - (1.85*state.rebuffer/1000.) - (state.smoothness_diffs/1000.)
-            reward = (state.bitrate_sum/1000.) - (1.85*state.rebuffer/1000.) - (state.smoothness_diffs/1000.) - (state.waste*8/1000000.)
             # reward = (state.bitrate_sum/1000.) - (1.85*state.rebuffer/1000.) - (state.smoothness_diffs/1000.) - 0.5*state.cost_sum*8/1000000.
             # reward = state.bitrate_sum - (8*curr_rebuffer_time) - (state.smoothness_diffs)
+            reward = (state.bitrate_sum/1000.) - (1.85*state.rebuffer/1000.) - (state.smoothness_diffs/1000.)
+            reward = (state.bitrate_sum/1000.) - (1.85*state.rebuffer/1000.) - (state.smoothness_diffs/1000.) - (state.waste*8/1000000.)
             if ( reward >= max_reward and len(state.combo) >= P):
 
                 # WHAT ???

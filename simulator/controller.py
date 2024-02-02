@@ -14,6 +14,9 @@ USER_FILE = 'logs/sample_user/user.txt'
 # user_file = open(USER_FILE, 'wb')
 LOG_FILE = 'logs/log_Phong_v2.txt'
 log_file = open(LOG_FILE, 'w')
+qoe_log_file = open("logs/comparing/qoe.txt", 'w')
+rebuff_log_file = open("logs/comparing/rebuff.txt", 'w')
+chunk_version_log_file = open("logs/comparing/chunk_version.txt", 'w')
 
 NEW = 0
 DEL = 1
@@ -126,9 +129,8 @@ class Environment:
             # if the current video has ended
             if actual_play_time == video_remain_time:
                 # Output: the downloaded time length, the total time length, the watch duration
-                print("\nUser stopped watching Video ", self.start_video_id, "( ", self.players[0].get_video_len(), " ms ) :",file=log_file)
-                print("User watched:", self.user_models[0].get_ret_duration(), " ms, downloaded ", self.players[0].get_chunk_counter()*VIDEO_CHUNCK_LEN, " sec.",file=log_file)
-                print("Rebuf: ", self.players[0].rebuf_time,file=log_file)
+                # print("User stopped watching Video ", self.start_video_id, "( ", self.players[0].get_video_len(), " ms ) :",file=log_file)
+                # print("User watched:", self.user_models[0].get_ret_duration(), " ms, downloaded ", self.players[0].get_chunk_counter()*VIDEO_CHUNCK_LEN, " sec.",file=log_file)
                 for i in range(len(self.players[0].rebuf_time)):
                     if self.players[0].rebuf_time[i]>0:
                         self.ppo=self.ppo+1
@@ -142,7 +144,6 @@ class Environment:
                     video_qualities.append(self.players[0].get_video_quality(i-1))
                     smooth += abs(VIDEO_BIT_RATE[self.players[0].get_video_quality(i)] - VIDEO_BIT_RATE[self.players[0].get_video_quality(i-1)])
                 video_qualities.append(self.players[0].get_video_quality(bitrate_cnt-1))
-                print("chunk versions: ", video_qualities, ", smooth penalty: ", smooth,file=log_file)
                 self.smo+=smooth
 
                 # calculate QoE (modify)
@@ -160,7 +161,11 @@ class Environment:
                     rebuff_penalty += self.players[0].rebuf_time[i]
 
                 my_QoE = bitrate/1000.0 - smooth_penalty/1000.0 - 1.85 * rebuff_penalty/1000.0
-                print("QoE: ", my_QoE,file=log_file)
+
+                print(my_QoE, file=qoe_log_file)
+                print(",".join(str(v) for v in video_qualities), file=chunk_version_log_file)
+                print(",".join(str(v) for v in self.players[0].rebuf_time), file=rebuff_log_file)
+
                 self.QoE_all.append(my_QoE)
                 self.R_all.append(bitrate/1000.0)
                 self.RB_all.append(rebuff_penalty/1000.0)
@@ -185,13 +190,17 @@ class Environment:
                 Sum_my_RB.append(np.sum(self.RB_all))
                 Sum_my_Sm.append(np.sum(self.Sm_all))
                 
-                print("len: ", len(Sum_my_QoE), file=log_file)
-                print("my qoe: ", Sum_my_QoE, file=log_file)
-                print("my average qoe: ",np.sum(Sum_my_QoE)/len(Sum_my_QoE),file=log_file)
-                print("my average R: ", np.sum(Sum_my_R) /
-                      len(Sum_my_R), file=log_file)
-                print("my average RB: ",np.sum(Sum_my_RB)/len(Sum_my_RB),file=log_file)
-                print("my average Sm: ",np.sum(Sum_my_Sm)/len(Sum_my_Sm),file=log_file)
+                print("...", file=qoe_log_file)
+                print("...", file=rebuff_log_file)
+                print("...", file=chunk_version_log_file)
+
+                # print("len: ", len(Sum_my_QoE), file=log_file)
+                # print("my qoe: ", Sum_my_QoE, file=log_file)
+                # print("my average qoe: ",np.sum(Sum_my_QoE)/len(Sum_my_QoE),file=log_file)
+                # print("my average R: ", np.sum(Sum_my_R) /
+                #       len(Sum_my_R), file=log_file)
+                # print("my average RB: ",np.sum(Sum_my_RB)/len(Sum_my_RB),file=log_file)
+                # print("my average Sm: ",np.sum(Sum_my_Sm)/len(Sum_my_Sm),file=log_file)
                 # if len(Sum_my_QoE) == 1000:
                 #     print("Sum_my_QoE: ",Sum_my_QoE)
                 # print(NumSmooth)

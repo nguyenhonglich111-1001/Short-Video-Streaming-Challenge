@@ -100,7 +100,6 @@ class Algorithm:
 
     def estimate_bw(self, P):
 
-        # TODO
         # Estimate bandwidth of last segment -> self.past_bandwidth_ests
         # e bitrate of channel v for multimedia segment i ->
         #  the time consumed to download segment i ->
@@ -249,8 +248,9 @@ class Algorithm:
             #     b_max = 1+TAU/1000
 
             b_max = min(b_max, 4)
+            # TODO Tuning
             b_max = max(b_max, 1+TAU/1000)
-            # print(b_max)
+
             if (Players[seq].get_buffer_size()/1000) <= b_max and Players[seq].get_remain_video_num() != 0:
                 # if seq == 0 and len(Players) > 1 :
                 #     print('upper: ',cond_p*((max(future_chunks_highest_size[seq])/1000000)/self.future_bandwidth)+b_max_next+1)
