@@ -181,10 +181,11 @@ class Algorithm:
                 future_chunks_smallest_size.append([0])
                 continue
             
+            # TODO Tuning this
             if i == 0:
-                P.append(min(3, Players[i].get_remain_video_num()))
-            else:
                 P.append(min(5, Players[i].get_remain_video_num()))
+            else:
+                P.append(min(2, Players[i].get_remain_video_num()))
 
             all_future_chunks_size.append(
                 Players[i].get_undownloaded_video_size(P[-1]))
@@ -203,7 +204,7 @@ class Algorithm:
 
             # update past_errors and past_bandwidth_ests
             # TODO Change back and forth between 2 version of estimate bw
-            self.estimate_bw(P[seq])
+            self.estimate_bw2(P[seq])
             # next_id = 0
             if seq == 0 and len(Players) > 1:
                 for i in range(1, min(len(Players), PLAYER_NUM)):
