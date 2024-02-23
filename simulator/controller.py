@@ -240,8 +240,8 @@ class Environment:
             self.total_downloaded_len += VIDEO_CHUNCK_LEN  # sum up the total downloaded time
             if download_video_id < self.start_video_id:
                 # If the video has already been ended, we only accumulate the wastage
-                print("Extra chunk downloaded for Video ", download_video_id,
-                      " which the user already finished watching.\n")
+                # print("Extra chunk downloaded for Video ", download_video_id,
+                #       " which the user already finished watching.\n")
                 wasted += video_size  # Since its already fluently played, the download must be redundant
                 end_of_video = True
             else:

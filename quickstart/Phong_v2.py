@@ -1,11 +1,15 @@
 # Comparison Algorithm: No saving approach
 # No saving algorithm downloads the current playing video first.
 # When the current playing video download ends, it preloads the videos in the following players periodically, with 800KB for each video.
-
-import math
+import importlib
 from simulator.video_player import Player
 from simulator import mpc_module
 from simulator.video_player import BITRATE_LEVELS
+
+from constant import reward_hyper_params
+import constant.network_const as network_const
+EMA_LONG_WINDOW, EMA_SHORT_WINDOW, K, P_ZERO = network_const.read_network_params()
+
 from numba import int64
 from numba import float64
 from numba import jit
@@ -21,7 +25,9 @@ PROLOAD_SIZE = 800000.0   # B
 PRELOAD_CHUNK_NUM = 4
 RETENTION_THRESHOLD = 0.65
 
-
+def reimport_network_params():
+    global EMA_LONG_WINDOW, EMA_SHORT_WINDOW, K, P_ZERO
+    EMA_LONG_WINDOW, EMA_SHORT_WINDOW, K, P_ZERO = network_const.read_network_params()
 class Algorithm:
     def __init__(self):
         # fill your self params
@@ -100,20 +106,25 @@ class Algorithm:
 
     def estimate_bw(self, P):
 
-        # Estimate bandwidth of last segment -> self.past_bandwidth_ests
-        # e bitrate of channel v for multimedia segment i ->
-        #  the time consumed to download segment i ->
-        # bandwidth and throughput ?
-
-        past_bandwidths = np.array(self.past_bandwidth)
-
-        self.avg_bandwidth = sum(past_bandwidths)/len(past_bandwidths)
-        future_bandw = past_bandwidths[0]
-        for bandwidth in past_bandwidths:
-            future_bandw = future_bandw*0.8 + bandwidth*0.2
-
+        past_bandwidth = self.past_bandwidth[:]
+        while past_bandwidth[0] == 0:
+            past_bandwidth = past_bandwidth[1:]
+        self.avg_bandwidth = sum(past_bandwidth)/len(past_bandwidth)
+        future_bandw = 0
+        for past_val in range(len(past_bandwidth)):
+            if (past_val == 0):
+                future_bandw = past_bandwidth[0]
+            else:
+                future_bandw = future_bandw*0.8 + past_bandwidth[past_val]*0.2
         self.future_bandwidth = future_bandw
-
+        # future bandwidth prediction
+        # divide by 1 + max of last 5 (or up to 5) errors
+        # max_error = 0
+        # error_pos = -5
+        # if ( len(self.past_errors) < 5 ):
+        #     error_pos = -len(self.past_errors)
+        # max_error = float(max(self.past_errors[error_pos:]))
+        # self.future_bandwidth = harmonic_bandwidth/(1+max_error)  # robustMPC here
         self.past_bandwidth_ests.append(self.future_bandwidth)
 
     def estimate_bw2(self, P):
@@ -121,11 +132,13 @@ class Algorithm:
 
         self.avg_bandwidth = sum(past_bandwidths)/len(past_bandwidths)
 
-        ema_short = self._ewma(past_bandwidths, 5)
-        ema_long = self._ewma(past_bandwidths, 20)
+        # EMA_LONG_WINDOW, EMA_SHORT_WINDOW, K, P_ZERO = read_network_params()
+        # print('Network Param when estimate', [
+        #       EMA_LONG_WINDOW, EMA_SHORT_WINDOW, K, P_ZERO])
+        ema_short = self._ewma(past_bandwidths, EMA_SHORT_WINDOW)
+        ema_long = self._ewma(past_bandwidths, EMA_LONG_WINDOW)
         macd = ema_short[-1] - ema_long[-1]
-        k = 21
-        P_ZERO = 0.5
+
         last_bandwidth_est = self.past_bandwidth_ests[-1]
         last_bandwidth = past_bandwidths[-1]
 
@@ -133,7 +146,7 @@ class Algorithm:
 
             p_param = abs(last_bandwidth -
                           last_bandwidth_est)/last_bandwidth_est
-            weight1 = 1 / (1 + np.exp(-k * (p_param - P_ZERO)))
+            weight1 = 1 / (1 + np.exp(-K * (p_param - P_ZERO)))
             harmonic_mean = self.calc_harmonic_mean(
                 past_bandwidths, self.harmonic_samples)
 
@@ -144,7 +157,7 @@ class Algorithm:
             triangle_param = (
                 past_bandwidths[-1] - past_bandwidth_avg) / past_bandwidth_avg
             
-            weight2 = 1 / (1 + np.exp(k*triangle_param))
+            weight2 = 1 / (1 + np.exp(K*triangle_param))
             
             future_bandw = weight2*last_bandwidth_est + \
                 (1-weight2)*last_bandwidth
@@ -204,7 +217,7 @@ class Algorithm:
 
             # update past_errors and past_bandwidth_ests
             # TODO Change back and forth between 2 version of estimate bw
-            self.estimate_bw2(P[seq])
+            self.estimate_bw(P[seq])
             # next_id = 0
             if seq == 0 and len(Players) > 1:
                 for i in range(1, min(len(Players), PLAYER_NUM)):

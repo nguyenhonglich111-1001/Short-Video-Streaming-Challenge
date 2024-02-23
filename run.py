@@ -95,7 +95,11 @@ def test(isBaseline, isQuickstart, user_id, trace_id, user_sample_id):
             LOG_FILE = 'logs/log_Network_based.txt'
             log_file = open(LOG_FILE, 'w')
         elif user_id == 'Phong_v2':
+            print('Import Phong_v2')
             import quickstart.Phong_v2 as Solution
+            Solution.reimport_network_params()
+            import simulator.mpc_module as mpc_module
+            mpc_module.reimport_reward_hyper()
             LOG_FILE = 'logs/log_Phong_v2.txt'
             # log_file = open(LOG_FILE, 'w')
         elif user_id == 'Phong_v3':
@@ -299,9 +303,9 @@ def test_all_traces(isBaseline, isQuickstart, user_id, trace, user_sample_id):
     all_cooked_time, all_cooked_bw = short_video_load_trace.load_trace(cooked_trace_folder)
 
     # TODO return back when testing complete
-    all_cooked_time = [all_cooked_time[0]]
+    all_cooked_time = all_cooked_time[:10]
     for i in range(len(all_cooked_time)):
-        print('------------trace ', i, '--------------')
+        # print('------------trace ', i, '--------------')
         avg += test(isBaseline, isQuickstart, user_id, i, user_sample_id)
         print('---------------------------------------\n\n')
     avg /= len(all_cooked_time)
@@ -341,8 +345,10 @@ def test_user_samples(isBaseline, isQuickstart, user_id, trace, sample_cnt):  # 
     print("Sum Wasted Bytes: ", avgs[3]/1000)
     print("Wasted time ratio: ", avgs[4])
 
+    return avgs[2]
+
+SAMPLE_COUNT = 10
 if __name__ == '__main__':
-    
     assert args.trace in ["mixed", "high", "low", "medium"]
     if args.baseline == '' and args.quickstart == '':
         # test_all_traces(False, False, args.solution, args.trace, 0)  # 0 means the first user sample.
@@ -351,7 +357,8 @@ if __name__ == '__main__':
     elif args.quickstart != '':
         # test_all_traces(False, True, args.quickstart, args.trace, 0)
         startTime = time.time()
-        test_user_samples(False, True, args.quickstart, args.trace, 10)
+        test_user_samples(False, True, args.quickstart,
+                          args.trace, SAMPLE_COUNT)
         print('Running time:', time.time() - startTime)
     else:
         # test_all_traces(True, False, args.baseline, args.trace, 0)

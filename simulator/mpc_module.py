@@ -5,14 +5,21 @@ import sys
 from video_player import VIDEO_CHUNCK_LEN
 from video_player import Player
 from constant.constants import VIDEO_BIT_RATE, VIDEO_BIT_RATE_INDEX, BITRATE_LEVELS
+import constant.reward_hyper_params as reward_hyper_params
+
+BITRATE_SUM_HYPER, REBUFFER_HYPER, SMOOTH_DIFF_HYPER, WASTE_HYPER = reward_hyper_params.read_reward_hyper_params()
 sys.path.append("..")
-import math
 
 BITS_IN_BYTE = 8
 REBUF_PENALTY = 4.3  # 1 sec rebuffering -> 3 Mbps
 SMOOTH_PENALTY = 1
 MILLISECONDS_IN_SECOND = 1000.0
 PLAYER_NUM = 5  
+
+
+def reimport_reward_hyper():
+    global BITRATE_SUM_HYPER, REBUFFER_HYPER, SMOOTH_DIFF_HYPER, WASTE_HYPER
+    BITRATE_SUM_HYPER, REBUFFER_HYPER, SMOOTH_DIFF_HYPER, WASTE_HYPER = reward_hyper_params.read_reward_hyper_params()
 class State:
 
     def __init__(self, 
@@ -40,12 +47,14 @@ class State:
     
     def make_a_copy(self,
                     ):
+        rebuffer = 0
+        waste = 0
         new_state = State(self.bitrate_sum,
                           self.rebuffer,
                           self.smoothness_diffs,
                           self.waste,
                           self.cost_sum,
-                          self.combo[:],
+                          self.combo,
                           self.curr_buffer,
                           self.buffer_video_next,
                           self.current_play_chunk,
@@ -125,11 +134,10 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
 
         )
     send_data = 0 
-
+    # print("In MPC",BITRATE_SUM_HYPER, REBUFFER_HYPER, SMOOTH_DIFF_HYPER, WASTE_HYPER)
     for p_index in range(P):
         new_states = []
         for state in states:
-
             # combo = full_combo[0:future_chunk_length]
             # calculate total rebuffer time for this combination (start with start_buffer and subtract
             # each download time and add 2 seconds in that order)
@@ -159,8 +167,9 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
             # else:
             #     cond_p = float(user_retent_rate[Players[download_video_id - play_video_id].get_chunk_counter()+position]) / float(user_retent_rate[start_chunk])
             state.bitrate_sum += VIDEO_BIT_RATE[chunk_quality] #cond_p* VIDEO_BIT_RATE[chunk_quality]
-            if position == 1:
-                state.smoothness_diffs += abs(VIDEO_BIT_RATE[chunk_quality] - VIDEO_BIT_RATE[last_quality]) #cond_p*abs(VIDEO_BIT_RATE[chunk_quality] - VIDEO_BIT_RATE[last_quality])
+            if position == 0:
+                # pass
+                state.smoothness_diffs += abs(VIDEO_BIT_RATE[chunk_quality] - VIDEO_BIT_RATE[last_quality]) 
             else:
                 left_position = position - 1
                 left_chunk_quality = state.combo[left_position]
@@ -169,34 +178,33 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
             p_leave =1
             
             # possibility user scroll => cause rebuff on the next video
-            if len(state.combo) >= P:
-                for i in range(min(2,len(Players))):
-                    start_chunk = int(Players[i].get_play_chunk())
-                    _, user_retent_rate = Players[i].get_user_model()
-                    
-                    if start_chunk+k > Players[i].get_chunk_sum():
-                        k = Players[i].get_chunk_sum()-start_chunk
+            for i in range(min(2,len(Players))):
+                start_chunk = int(Players[i].get_play_chunk())
+                _, user_retent_rate = Players[i].get_user_model()
+                
+                if start_chunk+k > Players[i].get_chunk_sum():
+                    k = Players[i].get_chunk_sum()-start_chunk
 
-                    p_stay=float(user_retent_rate[start_chunk+k]) / float(user_retent_rate[start_chunk]) 
-                    if i==0:
-                        if state.current_play_chunk+k > Players[i].get_chunk_sum():
-                            k = Players[i].get_chunk_sum()-state.current_play_chunk
-                        p_stay=float(user_retent_rate[state.current_play_chunk+k]) / float(user_retent_rate[state.current_play_chunk])
-                        state.rebuffer += p_leave*p_stay*max(download_time-state.curr_buffer,0)
+                p_stay=float(user_retent_rate[start_chunk+k]) / float(user_retent_rate[start_chunk]) 
+                if i==0:
+                    if state.current_play_chunk+k > Players[i].get_chunk_sum():
+                        k = Players[i].get_chunk_sum()-state.current_play_chunk
+                    p_stay=float(user_retent_rate[state.current_play_chunk+k]) / float(user_retent_rate[state.current_play_chunk])
+                    state.rebuffer += p_leave*p_stay*max(download_time-state.curr_buffer,0)
+                else:
+                    start_chunk = int(Players[i-1].get_play_chunk())
+                    _, user_retent_rate = Players[i-1].get_user_model()
+                    if state.current_play_chunk+k > Players[i-1].get_chunk_sum():
+                        k = Players[i-1].get_chunk_sum()-state.current_play_chunk
+                        
+                    p_leave=p_leave*(1-(float(user_retent_rate[state.current_play_chunk+k])  / float(user_retent_rate[state.current_play_chunk])))
+                    if i == (download_video_id - play_video_id):   
+                        state.rebuffer += p_leave*p_stay*max(download_time-state.buffer_video_next,0)
                     else:
-                        start_chunk = int(Players[i-1].get_play_chunk())
-                        _, user_retent_rate = Players[i-1].get_user_model()
-                        if state.current_play_chunk+k > Players[i-1].get_chunk_sum():
-                            k = Players[i-1].get_chunk_sum()-state.current_play_chunk
-                            
-                        p_leave=p_leave*(1-(float(user_retent_rate[state.current_play_chunk+k])  / float(user_retent_rate[state.current_play_chunk])))
-                        if i == (download_video_id - play_video_id):   
-                            state.rebuffer += p_leave*p_stay*max(download_time-state.buffer_video_next,0)
-                        else:
-                            state.rebuffer += p_leave*p_stay*max(download_time-Players[i].get_buffer_size(),0)
-                        if download_video_id == play_video_id:
-                            state.waste += p_leave*all_future_chunks_size[chunk_quality][position]
-                            
+                        state.rebuffer += p_leave*p_stay*max(download_time-Players[i].get_buffer_size(),0)
+                    if download_video_id == play_video_id:
+                        state.waste += p_leave*all_future_chunks_size[chunk_quality][position]
+                        
             #buffer and played chunk change each step in future
             if ( state.curr_buffer < download_time ):
                 # state.rebuffer += cond_p*(download_time - state.curr_buffer)
@@ -215,16 +223,29 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
                 
             # compute reward for this combination (one reward per 5-chunk state.combo)
             # bitrates are in Mbits/s, state.rebuffer in seconds, and state.smoothness_diffs in Mbits/s
-            # reward = (state.bitrate_sum/1000.) - (1.85*state.rebuffer/1000.) - (state.smoothness_diffs/1000.)
-            # reward = (state.bitrate_sum/1000.) - (1.85*state.rebuffer/1000.) - (state.smoothness_diffs/1000.) - 0.5*state.cost_sum*8/1000000.
-            # reward = state.bitrate_sum - (8*curr_rebuffer_time) - (state.smoothness_diffs)
-            reward = (state.bitrate_sum/1000.) - (1.85*state.rebuffer/1000.) - (state.smoothness_diffs/1000.) - (state.waste*8/1000000.)
-            if ( reward >= max_reward and len(state.combo) >= P):
+            
+            # reward = (state.bitrate_sum/1000.) - (1.85*state.rebuffer/1000.) - (state.smoothness_diffs/1000.) - (state.waste*8/1000000.)
+            reward = (state.bitrate_sum*BITRATE_SUM_HYPER) + (state.rebuffer*REBUFFER_HYPER) + (state.smoothness_diffs*SMOOTH_DIFF_HYPER) + (state.waste*WASTE_HYPER)
+            reward_component = [state.bitrate_sum,
+                                state.rebuffer,
+                                state.smoothness_diffs,
+                                state.waste]
+            # if len(state.combo) >= P:
+            #     print("Combo", state.combo, reward)
+            #     print(reward_component)
+            #     print('....')
+            # if state.combo == [3, 3, 3, 3, 0]:
+            #     print("Combo",state.combo, reward)
+            #     print(reward_component)
+            #     print('....')
+            if ( reward >= max_reward and len(state.combo) >= P-1):
 
                 # WHAT ???
                 if (best_combo != ()) and best_combo[0] < state.combo[0]:
+                    best_reward_component = reward_component
                     best_combo = state.combo
                 else:
+                    best_reward_component = reward_component
                     best_combo = state.combo
                 max_reward = reward
                 # send data to html side (first chunk of best state.combo)
@@ -242,5 +263,7 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
         states = new_states
         
     bit_rate = send_data
-
+    # print("Best Combo", best_combo, max_reward)
+    # print(best_reward_component)
+    # print('....')
     return bit_rate
