@@ -178,33 +178,34 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
             p_leave =1
             
             # possibility user scroll => cause rebuff on the next video
-            for i in range(min(2,len(Players))):
-                start_chunk = int(Players[i].get_play_chunk())
-                _, user_retent_rate = Players[i].get_user_model()
-                
-                if start_chunk+k > Players[i].get_chunk_sum():
-                    k = Players[i].get_chunk_sum()-start_chunk
+            if len(state.combo) >= P:
+                for i in range(min(2,len(Players))):
+                    start_chunk = int(Players[i].get_play_chunk())
+                    _, user_retent_rate = Players[i].get_user_model()
+                    
+                    if start_chunk+k > Players[i].get_chunk_sum():
+                        k = Players[i].get_chunk_sum()-start_chunk
 
-                p_stay=float(user_retent_rate[start_chunk+k]) / float(user_retent_rate[start_chunk]) 
-                if i==0:
-                    if state.current_play_chunk+k > Players[i].get_chunk_sum():
-                        k = Players[i].get_chunk_sum()-state.current_play_chunk
-                    p_stay=float(user_retent_rate[state.current_play_chunk+k]) / float(user_retent_rate[state.current_play_chunk])
-                    state.rebuffer += p_leave*p_stay*max(download_time-state.curr_buffer,0)
-                else:
-                    start_chunk = int(Players[i-1].get_play_chunk())
-                    _, user_retent_rate = Players[i-1].get_user_model()
-                    if state.current_play_chunk+k > Players[i-1].get_chunk_sum():
-                        k = Players[i-1].get_chunk_sum()-state.current_play_chunk
-                        
-                    p_leave=p_leave*(1-(float(user_retent_rate[state.current_play_chunk+k])  / float(user_retent_rate[state.current_play_chunk])))
-                    if i == (download_video_id - play_video_id):   
-                        state.rebuffer += p_leave*p_stay*max(download_time-state.buffer_video_next,0)
+                    p_stay=float(user_retent_rate[start_chunk+k]) / float(user_retent_rate[start_chunk]) 
+                    if i==0:
+                        if state.current_play_chunk+k > Players[i].get_chunk_sum():
+                            k = Players[i].get_chunk_sum()-state.current_play_chunk
+                        p_stay=float(user_retent_rate[state.current_play_chunk+k]) / float(user_retent_rate[state.current_play_chunk])
+                        state.rebuffer += p_leave*p_stay*max(download_time-state.curr_buffer,0)
                     else:
-                        state.rebuffer += p_leave*p_stay*max(download_time-Players[i].get_buffer_size(),0)
-                    if download_video_id == play_video_id:
-                        state.waste += p_leave*all_future_chunks_size[chunk_quality][position]
-                        
+                        start_chunk = int(Players[i-1].get_play_chunk())
+                        _, user_retent_rate = Players[i-1].get_user_model()
+                        if state.current_play_chunk+k > Players[i-1].get_chunk_sum():
+                            k = Players[i-1].get_chunk_sum()-state.current_play_chunk
+                            
+                        p_leave=p_leave*(1-(float(user_retent_rate[state.current_play_chunk+k])  / float(user_retent_rate[state.current_play_chunk])))
+                        if i == (download_video_id - play_video_id):   
+                            state.rebuffer += p_leave*p_stay*max(download_time-state.buffer_video_next,0)
+                        else:
+                            state.rebuffer += p_leave*p_stay*max(download_time-Players[i].get_buffer_size(),0)
+                        if download_video_id == play_video_id:
+                            state.waste += p_leave*all_future_chunks_size[chunk_quality][position]
+                            
             #buffer and played chunk change each step in future
             if ( state.curr_buffer < download_time ):
                 # state.rebuffer += cond_p*(download_time - state.curr_buffer)

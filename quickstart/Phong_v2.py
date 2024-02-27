@@ -217,7 +217,7 @@ class Algorithm:
 
             # update past_errors and past_bandwidth_ests
             # TODO Change back and forth between 2 version of estimate bw
-            self.estimate_bw(P[seq])
+            self.estimate_bw2(P[seq])
             # next_id = 0
             if seq == 0 and len(Players) > 1:
                 for i in range(1, min(len(Players), PLAYER_NUM)):

@@ -13,7 +13,8 @@ def read_params():
             lines[i] = float(lines[i].split('\n')[0])
 
         print(lines)
-        return lines
+        # get fist 4 line trainable
+        return lines[:4]
     
 
 def sign_array(a):
@@ -74,7 +75,7 @@ run_params = [False, True, run.args.quickstart,
               run.args.trace, run.SAMPLE_COUNT]
 initial_params = np.array(read_params())
 learning_rates = np.array([1,1,1,1])
-epsilon_params = np.array([1e-4,1e-4,1e-4,1e-6])
+epsilon_params = np.array([1e-4,1e-4,1e-4,1e-5])
 
 print('Start',initial_params*learning_rates)
 if __name__ == '__main__':
