@@ -67,7 +67,7 @@ def test(isBaseline, isQuickstart, user_id, trace_id, user_sample_id):
             import baseline.no_save as Solution
             LOG_FILE = 'logs/log_nosave.txt'
             log_file = open(LOG_FILE, 'w')
-        sys.path.remove('./baseline/')
+        # sys.path.remove('./baseline/')
     elif isQuickstart:  # Testing quickstart algorithm
         sys.path.append('./quickstart/')
         if user_id == 'fixed_preload':
@@ -344,7 +344,8 @@ def test_user_samples(isBaseline, isQuickstart, user_id, trace, sample_cnt):  # 
     print("QoE: ", avgs[2])
     print("Sum Wasted Bytes: ", avgs[3]/1000)
     print("Wasted time ratio: ", avgs[4])
-
+    print("Algorithm running time: ", np.sum(Time_run)/len(Time_run))
+    print()
     return avgs[2]
 
 SAMPLE_COUNT = 10

@@ -2,6 +2,7 @@
 # No saving algorithm downloads the current playing video first.
 # When the current playing video download ends, it preloads the videos in the following players periodically, with 800KB for each video.
 import importlib
+import time
 from simulator.video_player import Player
 from simulator import mpc_module
 from simulator.video_player import BITRATE_LEVELS
@@ -24,6 +25,7 @@ PLAYER_NUM = 5
 PROLOAD_SIZE = 800000.0   # B
 PRELOAD_CHUNK_NUM = 4
 RETENTION_THRESHOLD = 0.65
+running_time_log_file = open("./logs/comparing/running_times/Phong_v2", 'w')
 
 def reimport_network_params():
     global EMA_LONG_WINDOW, EMA_SHORT_WINDOW, K, P_ZERO
@@ -296,10 +298,17 @@ class Algorithm:
             # if((max(future_chunks_highest_size[seq])/1000000)/self.avg_bandwidth) < 0.8:
             #     bit_rate = 2
             # else:
+            # startTime = time.time()
             bit_rate = mpc_module.mpc(self.past_bandwidth, self.past_bandwidth_ests, self.past_errors, all_future_chunks_size[download_video_seq], P[
                                       download_video_seq], buffer_size, chunk_sum, video_chunk_remain, last_quality, Players, download_video_id, play_video_id, self.future_bandwidth)
             # bit_rate = 0
-
+                
+            # print(time.time()-startTime, file=running_time_log_file)
             self.sleep_time = 0.0
+        
 
+        # with open('./bandwidth_plot','w') as f:
+        #     for bandwidth in self.past_bandwidth:
+        #         f.write(f"{bandwidth}\n")
+        #     f.write("...\n")
         return download_video_id, bit_rate, self.sleep_time

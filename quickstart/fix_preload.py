@@ -21,6 +21,7 @@ PLAYER_NUM = 5
 RETENTION_THRESHOLD = 0.65
 # fixed preload chunk num
 PRELOAD_CHUNK_NUM = 4
+running_time_log_file = open("./logs/comparing/running_times/fix_preload", 'w')
 
 class Algorithm:
     def __init__(self):

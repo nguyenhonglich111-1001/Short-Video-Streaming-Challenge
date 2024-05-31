@@ -1,6 +1,0 @@
-------------trace  0 --------------
-Download Video  0  chunk ( 1  /  17 ) with bitrate  2
-Causing smooth penalty:  0
-Playing Video  0  chunk ( 0.0  /  17 ) with bitrate  2
-You caused rebuf for Video  0  of  1107.0  ms
-*****************
