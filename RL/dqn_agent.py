@@ -39,6 +39,7 @@ class ModifiedTensorBoard(TensorBoard):
         super().__init__(**kwargs)
         self.step = 1
         self.writer = tf.summary.create_file_writer(self.log_dir)
+        # self._log_write_dir = self.log_dir
 
     def set_model(self, model):
         pass
@@ -56,7 +57,13 @@ class ModifiedTensorBoard(TensorBoard):
         with self.writer.as_default():
             for key, value in stats.items():
                 tf.summary.scalar(key, value, step=self.step)
+                # tf.summary.scalar('loss', stats['loss'], step=self.step)
                 self.writer.flush()
+
+        # with self.writer.as_default():
+        #     for key, value in stats.items():
+        #         tf.summary.scalar(key, value, step=self.step)
+        #         self.writer.flush()
 
 
 class DQNAgent:
@@ -129,6 +136,7 @@ ep_rewards = [-200]
 random.seed(1)
 np.random.seed(1)
 tf.random.set_seed(1)
+# tf.random.set_seed(1)
 
 for episode in tqdm(range(1, EPISODES + 1), ascii=True, unit='episodes'):
     agent.tensorboard.step = episode
@@ -147,7 +155,8 @@ for episode in tqdm(range(1, EPISODES + 1), ascii=True, unit='episodes'):
         episode_reward += reward
 
         if SHOW_PREVIEW and not episode % AGGREGATE_STATS_EVERY:
-            env.render()
+            pass
+            # env.render()
 
         agent.update_replay_memory(
             (current_state, action, reward, new_state, done))
