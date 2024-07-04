@@ -1,7 +1,7 @@
 import numpy as np
 import gymnasium as gym
 from gymnasium import spaces
-
+from simulator import mpc_module
 
 class BitrateEnv(gym.Env):
     def __init__(self):
@@ -31,18 +31,27 @@ class BitrateEnv(gym.Env):
         return self.state
 
     def step(self, action):
+        # Implement your MPC integration here
+        bit_rate = mpc_module.mpc(past_bandwidth, past_bandwidth_ests, past_errors,
+                       all_future_chunks_size, P, buffer_size,
+                       chunk_sum, video_chunk_remain, last_quality,
+                       Players, download_video_id, play_video_id,
+                       future_bandwidth)
+
         # Simulate the download of a chunk with the selected bitrate
-        download_time = np.random.uniform(0.1, 1) / (action + 1)
+        download_time = MILLISECONDS_IN_SECOND * \
+            (all_future_chunks_size[bit_rate]
+             [self.current_chunk] / 1000000.0) / future_bandwidth
 
         # Update buffer
         self.buffer += self.last_chunk_time - download_time
         self.last_chunk_time = download_time
 
         # Update state
-        self.state = np.array([self.buffer, self.last_chunk_time, action])
+        self.state = np.array([self.buffer, self.last_chunk_time, bit_rate])
 
-        # Calculate reward
-        reward = self.calculate_reward(action, download_time)
+        # Calculate reward (assuming you have a method calculate_reward)
+        reward = self.calculate_reward(bit_rate, download_time)
 
         # Check if episode is done
         done = self.current_chunk >= self.total_chunks
@@ -50,11 +59,17 @@ class BitrateEnv(gym.Env):
 
         return self.state, reward, done, {}
 
-    def calculate_reward(self, action, download_time):
-        # Example reward calculation
-        # Higher bitrates get higher reward, penalize for rebuffering
-        if self.buffer < 0:
-            reward = -1  # Rebuffering penalty
-        else:
-            reward = action - download_time  # Reward for bitrate level minus download time
+    def calculate_mpc_reward(self, bit_rate, download_time):
+        # Implement reward calculation based on MPC module's reward formula
+        bitrate_sum = ...  # Calculate bitrate sum based on selected bitrate
+        rebuffer = ...  # Calculate rebuffer penalty based on download time
+        smoothness_diffs = ...  # Calculate smoothness difference penalty
+        waste = ...  # Calculate waste penalty (if applicable)
+
+        # Use MPC hyperparameters from your module
+        reward = (bitrate_sum * BITRATE_SUM_HYPER +
+                  rebuffer * REBUFFER_HYPER +
+                  smoothness_diffs * SMOOTH_DIFF_HYPER +
+                  waste * WASTE_HYPER)
+
         return reward

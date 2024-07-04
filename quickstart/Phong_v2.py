@@ -293,15 +293,12 @@ class Algorithm:
             last_quality = DEFAULT_QUALITY
             if len(download_chunk_bitrate) > 0:
                 last_quality = download_chunk_bitrate[-1]
-            # print("choosing bitrate for: ", download_video_id, ", chunk: ", Players[download_video_seq].get_chunk_counter())
-            # print("past_bandwidths:", self.past_bandwidth[-5:], "past_ests:", self.past_bandwidth_ests[-5:])
-            # if((max(future_chunks_highest_size[seq])/1000000)/self.avg_bandwidth) < 0.8:
-            #     bit_rate = 2
-            # else:
+            
             # startTime = time.time()
+
+            # Instead of using MPC, using RL to get the output bitrate
             bit_rate = mpc_module.mpc(self.past_bandwidth, self.past_bandwidth_ests, self.past_errors, all_future_chunks_size[download_video_seq], P[
                                       download_video_seq], buffer_size, chunk_sum, video_chunk_remain, last_quality, Players, download_video_id, play_video_id, self.future_bandwidth)
-            # bit_rate = 0
                 
             # print(time.time()-startTime, file=running_time_log_file)
             self.sleep_time = 0.0

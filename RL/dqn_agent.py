@@ -2,13 +2,14 @@ import numpy as np
 import tensorflow as tf
 from collections import deque
 import random
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.callbacks import TensorBoard
+from tensorflow.python.keras.models import Sequential
+from tensorflow.python.keras.layers import Dense
+from tensorflow.python.keras.optimizer_v2 import adam as adam_v2
+from tensorflow.python.keras.callbacks import TensorBoard
 import time
 import os
 from tqdm import tqdm
+from bitrate_env import BitrateEnv
 
 # Define constants
 DISCOUNT = 0.99
@@ -39,10 +40,18 @@ class ModifiedTensorBoard(TensorBoard):
         super().__init__(**kwargs)
         self.step = 1
         self.writer = tf.summary.create_file_writer(self.log_dir)
-        # self._log_write_dir = self.log_dir
+        self._log_write_dir = self.log_dir
 
     def set_model(self, model):
-        pass
+        self.model = model
+
+        self._train_dir = os.path.join(self._log_write_dir, 'train')
+        self._train_step = self.model._train_counter
+
+        self._val_dir = os.path.join(self._log_write_dir, 'validation')
+        self._val_step = self.model._test_counter
+
+        self._should_write_train_graph = False
 
     def on_epoch_end(self, epoch, logs=None):
         self.update_stats(**logs)
@@ -81,8 +90,8 @@ class DQNAgent:
         model.add(Dense(256, input_shape=(3,), activation='relu'))
         model.add(Dense(256, activation='relu'))
         model.add(Dense(env.action_space.n, activation='linear'))
-        model.compile(loss="mse", optimizer=Adam(
-            lr=0.001), metrics=['accuracy'])
+        model.compile(loss="mse", optimizer=adam_v2.Adam(
+            learning_rate=0.001), metrics=['accuracy'])
         return model
 
     def update_replay_memory(self, transition):

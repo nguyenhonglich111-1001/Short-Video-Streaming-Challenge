@@ -24,3 +24,4 @@ xunit-reports/
 .idea
 .vscode/
 testing/
+RL/models/
