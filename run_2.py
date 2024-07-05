@@ -1,7 +1,6 @@
 import time
 import sys
 import os
-import argparse
 import random
 import numpy as np
 import psutil
@@ -10,17 +9,6 @@ from timeit import default_timer as timer
 from simulator import controller as env, short_video_load_trace
 from constant.constants import VIDEO_BIT_RATE
 
-# Argument parsing
-parser = argparse.ArgumentParser()
-parser.add_argument('--quickstart', type=str, default='',
-                    help='Is testing quickstart')
-parser.add_argument('--baseline', type=str, default='',
-                    help='Is testing baseline')
-parser.add_argument('--solution', type=str, default='./',
-                    help='The relative path of your file dir, default is current dir')
-parser.add_argument('--trace', type=str, default='mixed',
-                    help='The network trace you are testing (fixed, high, low, medium, middle)')
-args = parser.parse_args()
 
 # Constants
 RANDOM_SEED = 42
@@ -156,7 +144,7 @@ def perform_action(solution, net_env):
     sum_wasted_bytes = 0
     QoE = 0 
     T_run = []
-
+    
     download_video_id, bit_rate, sleep_time = solution.run(
         0, 0, 0, False, 0, net_env.players, True)  # take the first step
 
@@ -202,10 +190,10 @@ def perform_action(solution, net_env):
             break
 
         start = timer()
-        mem_before = get_process_memory()
+        # mem_before = get_process_memory()
         download_video_id, bit_rate, sleep_time = solution.run(
             delay, rebuf, video_size, end_of_video, play_video_id, net_env.players, False)
-        mem_after = get_process_memory()
+        # mem_after = get_process_memory()
         end = timer()
         T_run.append(end - start)
 
@@ -232,22 +220,20 @@ def perform_action(solution, net_env):
 
 SAMPLE_COUNT = 5
 if __name__ == '__main__':
-    assert args.trace in ["mixed", "high", "low", "medium"]
 
-    if args.quickstart != '':
-        isBaseline = False
-        isQuickstart = True
-        startTime = time.time()
-        trace_type = "high"
-        trace_id, user_sample_id = 1, 1
+    isBaseline = False
+    isQuickstart = True
+    startTime = time.time()
+    trace_type = "high"
+    trace_id, user_sample_id = 1, 1
 
-        load_trace(trace_type)
+    load_trace(trace_type)
+    # reset the sample random seeds
+    seeds = np.random.randint(10000, size=(7, 2))
 
-        solution = initialize_algorithm(isBaseline, isQuickstart, args.quickstart)
-        net_env = initialize_environment(trace_id, user_sample_id)
+    solution = initialize_algorithm(isBaseline, isQuickstart, "Phong_v2")
+    net_env = initialize_environment(trace_id, user_sample_id)
 
-        perform_action(solution,net_env)
-        
-        print('Running time:', time.time() - startTime)
-    else:
-        print("Things gone wrong mate!")
+    perform_action(solution,net_env)
+    
+    print('Running time:', time.time() - startTime)
