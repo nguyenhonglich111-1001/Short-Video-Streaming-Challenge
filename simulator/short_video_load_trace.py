@@ -1,6 +1,6 @@
 import os
 import matplotlib.pyplot as plt
-from testing.macd_test import _ewma
+# from testing.macd_test import _ewma
 import numpy as np
 COOKED_TRACE_FOLDER = './data/network_traces/middle/'
 BW_ADJUST_PARA = 1

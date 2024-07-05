@@ -5,6 +5,7 @@ import argparse
 import random
 import numpy as np
 import psutil
+sys.path.append('./simulator/')
 from timeit import default_timer as timer
 from simulator import controller as env, short_video_load_trace
 from constant.constants import VIDEO_BIT_RATE
@@ -143,10 +144,16 @@ def take_first_step(solution, net_env):
     return download_video_id, bit_rate, sleep_time
 
 
-def perform_action(solution, net_env, download_video_id, bit_rate, sleep_time, sum_wasted_bytes, QoE, T_run):
+def perform_action(solution, net_env):
     global last_chunk_bitrate
     global W
     global Time_run
+    sum_wasted_bytes = 0
+    QoE = 0 
+    T_run = []
+
+    download_video_id, bit_rate, sleep_time = solution.run(
+        0, 0, 0, False, 0, net_env.players, True)  # take the first step
 
     bandwidth_usage = 0
     while True:
@@ -226,8 +233,12 @@ if __name__ == '__main__':
         isBaseline = False
         isQuickstart = True
         startTime = time.time()
-        solution = initialize_algorithm(isBaseline, isQuickstart, args.quickstart)
+        trace_id, user_sample_id = 1, 1
 
+        solution = initialize_algorithm(isBaseline, isQuickstart, args.quickstart)
+        net_env = initialize_environment(trace_id, user_sample_id)
+
+        perform_action(solution,net_env, )
         
         print('Running time:', time.time() - startTime)
     else:
