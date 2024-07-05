@@ -21,7 +21,6 @@ def reimport_reward_hyper():
     global BITRATE_SUM_HYPER, REBUFFER_HYPER, SMOOTH_DIFF_HYPER, WASTE_HYPER
     BITRATE_SUM_HYPER, REBUFFER_HYPER, SMOOTH_DIFF_HYPER, WASTE_HYPER = reward_hyper_params.read_reward_hyper_params()
 class State:
-
     def __init__(self, 
         bitrate_sum,
         rebuffer,

@@ -6,5 +6,5 @@ def read_reward_hyper_params():
         rebuffer = float(lines[1].split('\n')[0])
         smoothness_diffs = float(lines[2].split('\n')[0])
         waste = float(lines[3].split('\n')[0])
-        print('Reward Hyper',bitrate_sum, rebuffer, smoothness_diffs, waste)
+        # print('Reward Hyper',bitrate_sum, rebuffer, smoothness_diffs, waste)
         return bitrate_sum, rebuffer, smoothness_diffs, waste

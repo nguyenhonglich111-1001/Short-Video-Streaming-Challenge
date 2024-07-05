@@ -25,7 +25,7 @@ PLAYER_NUM = 5
 PROLOAD_SIZE = 800000.0   # B
 PRELOAD_CHUNK_NUM = 4
 RETENTION_THRESHOLD = 0.65
-running_time_log_file = open("./logs/comparing/running_times/Phong_v2", 'w')
+# running_time_log_file = open("./logs/comparing/running_times/Phong_v2", 'w')
 
 def reimport_network_params():
     global EMA_LONG_WINDOW, EMA_SHORT_WINDOW, K, P_ZERO

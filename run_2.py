@@ -62,6 +62,11 @@ def get_smooth(net_env, download_video_id, chunk_id, quality):
                                        net_env.get_start_video_id()].get_downloaded_bitrate()[chunk_id - 1]
     return abs(quality - VIDEO_BIT_RATE[last_bitrate])
 
+def load_trace(trace_id):
+    cooked_trace_folder = 'data/network_traces/' + str(trace_id) + '/'
+    global all_cooked_time, all_cooked_bw
+    all_cooked_time, all_cooked_bw = short_video_load_trace.load_trace(cooked_trace_folder)
+
 
 def initialize_algorithm(isBaseline, isQuickstart, user_id):
     global LOG_FILE
@@ -233,12 +238,15 @@ if __name__ == '__main__':
         isBaseline = False
         isQuickstart = True
         startTime = time.time()
+        trace_type = "high"
         trace_id, user_sample_id = 1, 1
+
+        load_trace(trace_type)
 
         solution = initialize_algorithm(isBaseline, isQuickstart, args.quickstart)
         net_env = initialize_environment(trace_id, user_sample_id)
 
-        perform_action(solution,net_env, )
+        perform_action(solution,net_env)
         
         print('Running time:', time.time() - startTime)
     else:
