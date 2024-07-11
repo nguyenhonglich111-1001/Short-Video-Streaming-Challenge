@@ -2,7 +2,7 @@
 import numpy as np
 import math
 import os
-from constant.constants import VIDEO_BIT_RATE, BITRATE_LEVELS
+from constant.constants import BITRATE_LEVELS
 
 VIDEO_CHUNCK_LEN = 1000.0
 MILLISECONDS_IN_SECOND = 1000.0

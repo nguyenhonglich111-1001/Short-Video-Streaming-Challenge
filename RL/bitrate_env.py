@@ -1,9 +1,12 @@
+# RL\bitrate_env.py
 
+from constant.constants import BITRATE_LEVELS
+import os
+print("Current Working Directory:", os.getcwd())
 import sys
-sys.path.append('../simulator/')
+sys.path.append(
+    'C:\\Users\\LichNH\\Coding\\Short-Video-Streaming-Challenge')
 
-from simulator import controller
-from constant.constants import VIDEO_BIT_RATE
 from simulator import controller as env, short_video_load_trace
 from timeit import default_timer as timer
 import numpy as np

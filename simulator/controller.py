@@ -1,14 +1,15 @@
+# simulator\controller.py
 # input: download_video_id, bitrate, sleep_time
 # output: info needed by schedule algorithm
 # buffer: ms
 
+from constant.constants import VIDEO_BIT_RATE
 import numpy as np
 import math
 from numpy.lib.utils import _split_line
-from video_player import Player, VIDEO_CHUNCK_LEN
-from user_module import Retention
-from network_module import Network
-from constant.constants import VIDEO_BIT_RATE
+from simulator.video_player import Player, VIDEO_CHUNCK_LEN
+from simulator.user_module import Retention
+from simulator.network_module import Network
 
 USER_FILE = 'logs/sample_user/user.txt'
 # user_file = open(USER_FILE, 'wb')
