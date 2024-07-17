@@ -1,3 +1,11 @@
+import sys
+import os
+print("Current Working Directory:", os.getcwd())
+# sys.path.append(
+#     'C:\\Users\\LichNH\\Coding\\Short-Video-Streaming-Challenge')
+sys.path.append(
+    'D:\\Future_Internet_Lab\\Short-Video-Streaming-Challenge')
+
 import numpy as np
 import tensorflow as tf
 from collections import deque

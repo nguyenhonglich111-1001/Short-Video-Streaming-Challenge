@@ -2,8 +2,8 @@ import itertools
 import numpy as np
 import copy
 import sys
-from video_player import VIDEO_CHUNCK_LEN
-from video_player import Player
+from simulator.video_player import VIDEO_CHUNCK_LEN
+from simulator.video_player import Player
 from constant.constants import VIDEO_BIT_RATE, VIDEO_BIT_RATE_INDEX, BITRATE_LEVELS
 import constant.reward_hyper_params as reward_hyper_params
 
