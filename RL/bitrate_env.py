@@ -87,26 +87,36 @@ class BitrateEnv(gym.Env):
     
 
     def reset(self):
+        # Initialize environment state
         self.state = np.zeros(3)
-        self.last_chunk_time = np.random.uniform(0.1, 1)
+        self.last_chunk_time = 1
+        self.total_chunks = 10
         self.current_chunk = 0
 
-        # isBaseline = False
-        # isQuickstart = True
-        # startTime = time.time()
-        # trace_type = "high"
-        # trace_id, user_sample_id = 1, 1
+        isBaseline = False
+        isQuickstart = True
+        trace_type = "high"
+        trace_id, user_sample_id = 1, 1
 
-        # load_trace(trace_type)
-        # # reset the sample random seeds
-        # self.seeds = np.random.randint(10000, size=(7, 2))
+        self.load_trace(trace_type)
+        # reset the sample random seeds
+        self.seeds = np.random.randint(10000, size=(7, 2))
 
-        # self.sum_wasted_bytes = 0
-        # self.QoE = 0
-        # self.T_run = []
-        # self.bandwidth_usage = 0
-        # self.quality = 0
-        # self.smooth = 0
+        self.solution = self.initialize_algorithm(
+            isBaseline, isQuickstart, "Inter_RL")
+        self.net_env = self.initialize_environment(trace_id, user_sample_id)
+
+        self.sum_wasted_bytes = 0
+        self.QoE = 0
+        self.T_run = []
+        self.bandwidth_usage = 0
+        self.quality = 0
+        self.smooth = 0
+
+        download_video_id, sleep_time = self.take_first_step(
+            self.solution, self.net_env)
+        self.download_video_id = download_video_id
+        self.sleep_time = sleep_time
 
 
         return self.state
@@ -183,17 +193,18 @@ class BitrateEnv(gym.Env):
         global W
         global Time_run
 
+        print(f'Take a slep of {action}')
         bit_rate = action
 
         if self.sleep_time == 0:
             max_watch_chunk_id = self.net_env.user_models[
-                download_video_id - self.net_env.get_start_video_id()].get_watch_chunk_cnt()
-            download_chunk = self.net_env.players[download_video_id -
+                self.download_video_id - self.net_env.get_start_video_id()].get_watch_chunk_cnt()
+            download_chunk = self.net_env.players[self.download_video_id -
                                                 self.net_env.get_start_video_id()].get_chunk_counter()
             if max_watch_chunk_id >= download_chunk:
                 if download_chunk == max_watch_chunk_id:
-                    last_chunk_bitrate[download_video_id] = bit_rate
-                    rel_id = download_video_id - self.net_env.get_start_video_id()
+                    last_chunk_bitrate[self.download_video_id] = bit_rate
+                    rel_id = self.download_video_id - self.net_env.get_start_video_id()
                     if rel_id + 1 < len(self.net_env.user_models):
                         if self.net_env.players[rel_id + 1].get_chunk_counter() != 0:
                             next_bitrate = self.net_env.players[rel_id + 1].get_downloaded_bitrate()[
@@ -201,11 +212,11 @@ class BitrateEnv(gym.Env):
                             self.smooth += abs(self.quality -
                                             VIDEO_BIT_RATE[next_bitrate])
                 self.quality = VIDEO_BIT_RATE[bit_rate]
-                self.smooth += self.get_smooth(self.net_env, download_video_id,
+                self.smooth += self.get_smooth(self.net_env, self.download_video_id,
                                             download_chunk, self.quality)
 
         delay, rebuf, video_size, end_of_video, play_video_id, waste_bytes = self.net_env.buffer_management(
-            download_video_id, bit_rate, sleep_time)
+            self.download_video_id, bit_rate, self.sleep_time)
         self.bandwidth_usage += video_size
         self.sum_wasted_bytes += waste_bytes
 
@@ -231,11 +242,12 @@ class BitrateEnv(gym.Env):
         download_video_id, sleep_time = self.solution.run(
             delay, rebuf, video_size, end_of_video, play_video_id, self.net_env.players, False)
         # mem_after = get_process_memory()
-        
+        self.download_video_id = download_video_id
+        self.sleep_time = sleep_time
         end = timer()
         self.T_run.append(end - start)
 
-        assert 0 <= download_video_id - play_video_id < len(self.net_env.players), "The video you choose is not in the current Recommend Queue. \
+        assert 0 <= self.download_video_id - play_video_id < len(self.net_env.players), "The video you choose is not in the current Recommend Queue. \
                 \n   % You can only choose the current play video and its following four videos %"
         self.sleep_time = sleep_time
         if self.sleep_time != 0:
