@@ -21,13 +21,13 @@ from bitrate_env import BitrateEnv
 
 # Define constants
 DISCOUNT = 0.99
-REPLAY_MEMORY_SIZE = 50_000
-MIN_REPLAY_MEMORY_SIZE = 1_000
+REPLAY_MEMORY_SIZE = 10_000
+MIN_REPLAY_MEMORY_SIZE = 500
 MINIBATCH_SIZE = 64
 UPDATE_TARGET_EVERY = 5
 MODEL_NAME = '256x2'
 MIN_REWARD = -200
-EPISODES = 20_000
+EPISODES = 1000
 
 # Exploration settings
 epsilon = 1
@@ -111,9 +111,9 @@ class DQNAgent:
 
         minibatch = random.sample(self.replay_memory, MINIBATCH_SIZE)
         current_states = np.array([transition[0] for transition in minibatch])
-        current_qs_list = self.model.predict(current_states)
         new_current_states = np.array(
             [transition[3] for transition in minibatch])
+        current_qs_list = self.model.predict(current_states)
         future_qs_list = self.target_model.predict(new_current_states)
 
         X = []
@@ -192,9 +192,11 @@ for episode in tqdm(range(1, EPISODES + 1), ascii=True, unit='episodes'):
             reward_avg=average_reward, reward_min=min_reward, reward_max=max_reward, epsilon=epsilon)
 
         if min_reward >= MIN_REWARD:
-            agent.model.save(
-                f'models/{MODEL_NAME}__{max_reward:_>7.2f}max_{average_reward:_>7.2f}avg_{min_reward:_>7.2f}min__{int(time.time())}.model')
+            pass
 
     if epsilon > MIN_EPSILON:
         epsilon *= EPSILON_DECAY
         epsilon = max(MIN_EPSILON, epsilon)
+
+agent.model.save(
+    f'models/{MODEL_NAME}__{max_reward:_>7.2f}max_{average_reward:_>7.2f}avg_{min_reward:_>7.2f}min__{int(time.time())}.model')

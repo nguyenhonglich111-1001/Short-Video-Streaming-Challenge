@@ -305,7 +305,7 @@ def test_all_traces(isBaseline, isQuickstart, user_id, trace, user_sample_id):
     all_cooked_time, all_cooked_bw = short_video_load_trace.load_trace(cooked_trace_folder)
 
     # TODO return back when testing complete
-    all_cooked_time = all_cooked_time[:10]
+    all_cooked_time = all_cooked_time[:1]
     for i in range(len(all_cooked_time)):
         # print('------------trace ', i, '--------------')
         avg += test(isBaseline, isQuickstart, user_id, i, user_sample_id)
@@ -350,7 +350,8 @@ def test_user_samples(isBaseline, isQuickstart, user_id, trace, sample_cnt):  # 
     print()
     return avgs[2]
 
-SAMPLE_COUNT = 10
+# TODO TUNING
+SAMPLE_COUNT = 1
 if __name__ == '__main__':
     assert args.trace in ["mixed", "high", "low", "medium"]
     if args.baseline == '' and args.quickstart == '':

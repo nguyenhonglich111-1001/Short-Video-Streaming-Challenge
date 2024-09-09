@@ -18,7 +18,9 @@ import os
 import random
 import numpy as np
 import psutil
-
+from numba import int64
+from numba import float64
+from numba import jit
 
 # Constants
 RANDOM_SEED = 42
@@ -64,7 +66,7 @@ class BitrateEnv(gym.Env):
         isBaseline = False
         isQuickstart = True
         trace_type = "high"
-        trace_id, user_sample_id = 1, 1
+        trace_id, user_sample_id = 0, 0
 
         self.load_trace(trace_type)
         # reset the sample random seeds
@@ -84,7 +86,48 @@ class BitrateEnv(gym.Env):
         self.download_video_id = download_video_id
         self.sleep_time = sleep_time
 
+        self.past_bandwidth = []
     
+    @staticmethod
+    @jit((float64[:], int64), nopython=True, nogil=True)
+    def _ewma(arr_in, window):
+        r"""Exponentialy weighted moving average specified by a decay ``window``
+        to provide better adjustments for small windows via:
+
+            y[t] = (x[t] + (1-a)*x[t-1] + (1-a)^2*x[t-2] + ... + (1-a)^n*x[t-n]) /
+                (1 + (1-a) + (1-a)^2 + ... + (1-a)^n).
+
+        Parameters
+        ----------
+        arr_in : np.ndarray, float64
+            A single dimenisional numpy array
+        window : int64
+            The decay window, or 'span'
+
+        Returns
+        -------
+        np.ndarray
+            The EWMA vector, same length / shape as ``arr_in``
+
+        Examples
+        --------
+        >>> import pandas as pd
+        >>> a = np.arange(5, dtype=float)
+        >>> exp = pd.DataFrame(a).ewm(span=10, adjust=True).mean()
+        >>> np.array_equal(_ewma_infinite_hist(a, 10), exp.values.ravel())
+        True
+        """
+        n = arr_in.shape[0]
+        ewma = np.empty(n, dtype=float64)
+        alpha = 2 / float(window + 1)
+        w = 1
+        ewma_old = arr_in[0]
+        ewma[0] = ewma_old
+        for i in range(1, n):
+            w += (1-alpha)**i
+            ewma_old = ewma_old*(1-alpha) + arr_in[i]
+            ewma[i] = ewma_old / w
+        return ewma
 
     def reset(self):
         # Initialize environment state
@@ -96,7 +139,7 @@ class BitrateEnv(gym.Env):
         isBaseline = False
         isQuickstart = True
         trace_type = "high"
-        trace_id, user_sample_id = 1, 1
+        trace_id, user_sample_id = 0, 0
 
         self.load_trace(trace_type)
         # reset the sample random seeds
@@ -118,6 +161,7 @@ class BitrateEnv(gym.Env):
         self.download_video_id = download_video_id
         self.sleep_time = sleep_time
 
+        self.past_bandwidth=[]
 
         return self.state
 
@@ -193,7 +237,10 @@ class BitrateEnv(gym.Env):
         global W
         global Time_run
 
-        print(f'Take a slep of {action}')
+
+
+
+        # print(f'Take a step of {action}')
         bit_rate = action
 
         if self.sleep_time == 0:
@@ -229,12 +276,26 @@ class BitrateEnv(gym.Env):
                 'Your self.QoE is too low...(Your video seems to have stuck forever) Please check for errors!')
             return np.array([-1e9, self.bandwidth_usage, self.QoE, self.sum_wasted_bytes, self.net_env.get_wasted_time_ratio()])
 
+        if self.sleep_time == 0:
+            # self.past_bandwidth = np.roll(self.past_bandwidth, -1)
+            # self.past_bandwidth[-1] = (float(video_size)/1000000.0) /(float(delay) / 1000.0)  # MB / s
+            # if len(self.past_bandwidth_ests) == 0:
+            #     self.past_bandwidth_ests = [(
+            #         video_size/1000000.0) / (delay / 1000.0)]
+            self.past_bandwidth.append((
+                video_size/1000000.0) / (delay / 1000.0))   # MB / s
         # Update State
+        # Current network
+        # MACD
+        past_bandwidths: np.ndarray = np.array(self.past_bandwidth)
+        ema_short = self._ewma(past_bandwidths, 12)
+        ema_long = self._ewma(past_bandwidths, 26)
+        macd = ema_short[-1] - ema_long[-1]
         self.state = np.array(
-            [alpha * self.quality, beta * rebuf, gamma * self.smooth])
+            [macd, rebuf, past_bandwidths[-1]])
 
         if play_video_id >= ALL_VIDEO_NUM:
-            print("The user leaves.")
+            print(f"The user leaves. Qoe = {self.QoE}")
             return self.state, one_step_QoE, True, {}
 
         start = timer()
@@ -258,19 +319,3 @@ class BitrateEnv(gym.Env):
                 \n   % You can only choose the current play video and its following four videos %"
 
         return self.state, one_step_QoE, False, {}
-        # S = QoE - theta * self.bandwidth_usage * 8 / 1000000.
-        # print("Your score is: ", S)
-        # print("Your QoE is: ", QoE)
-        # print("Your sum of wasted bytes is: ", self.sum_wasted_bytes)
-        # W.append(self.sum_wasted_bytes * 8 / 1000000)
-        # if len(W) == 1000:
-        #     print("my avg waste: ", np.sum(W) / len(W))
-        #     print("my full waste: ", W)
-        # print("Your download/watch ratio (downloaded time / total watch time) is: ",
-        #       self.net_env.get_wasted_time_ratio())
-
-        # Time_run.append(np.sum(self.T_run) / len(self.T_run))
-        # if len(Time_run) == 1000:
-        #     print('Time: ', Time_run)
-
-        # return np.array([S, bandwidth_usage,  QoE, sum_wasted_bytes, self.net_env.get_wasted_time_ratio()])
