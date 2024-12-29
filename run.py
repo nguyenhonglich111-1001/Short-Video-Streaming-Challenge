@@ -250,6 +250,7 @@ def test(isBaseline, isQuickstart, user_id, trace_id, user_sample_id):
         start = timer()
         mem_before = get_process_memory()
         # print("start: ", start)
+    
         download_video_id, bit_rate, sleep_time = solution.run(delay, rebuf, video_size, end_of_video, play_video_id, net_env.players, False)
         mem_after = get_process_memory()
         end = timer()
@@ -274,7 +275,7 @@ def test(isBaseline, isQuickstart, user_id, trace_id, user_sample_id):
     # Score
     S = QoE - theta * bandwidth_usage * 8 / 1000000.
     print("Your score is: ", S)
-
+    
     # QoE
     print("Your QoE is: ", QoE)
     # wasted_bytes
@@ -305,7 +306,7 @@ def test_all_traces(isBaseline, isQuickstart, user_id, trace, user_sample_id):
     all_cooked_time, all_cooked_bw = short_video_load_trace.load_trace(cooked_trace_folder)
 
     # TODO return back when testing complete
-    all_cooked_time = all_cooked_time[:1]
+    all_cooked_time = all_cooked_time[:10]
     for i in range(len(all_cooked_time)):
         # print('------------trace ', i, '--------------')
         avg += test(isBaseline, isQuickstart, user_id, i, user_sample_id)
@@ -324,7 +325,7 @@ def test_all_traces(isBaseline, isQuickstart, user_id, trace, user_sample_id):
     # print( avg[4])
     return avg
 
-
+# False, True, args.quickstart, args.trace, SAMPLE_COUNT
 def test_user_samples(isBaseline, isQuickstart, user_id, trace, sample_cnt):  # test 50 user sample
     seed_for_sample = np.random.randint(10000, size=(1001, 1))
     avgs = np.zeros(5)
@@ -351,7 +352,7 @@ def test_user_samples(isBaseline, isQuickstart, user_id, trace, sample_cnt):  # 
     return avgs[2]
 
 # TODO TUNING
-SAMPLE_COUNT = 1
+SAMPLE_COUNT = 10
 if __name__ == '__main__':
     assert args.trace in ["mixed", "high", "low", "medium"]
     if args.baseline == '' and args.quickstart == '':

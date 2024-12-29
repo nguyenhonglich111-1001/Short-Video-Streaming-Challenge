@@ -102,6 +102,7 @@ class DQNAgent:
             learning_rate=0.001), metrics=['accuracy'])
         return model
 
+
     def update_replay_memory(self, transition):
         self.replay_memory.append(transition)
 
@@ -173,7 +174,7 @@ for episode in tqdm(range(1, EPISODES + 1), ascii=True, unit='episodes'):
 
         if SHOW_PREVIEW and not episode % AGGREGATE_STATS_EVERY:
             pass
-            # env.render()
+      
 
         agent.update_replay_memory(
             (current_state, action, reward, new_state, done))

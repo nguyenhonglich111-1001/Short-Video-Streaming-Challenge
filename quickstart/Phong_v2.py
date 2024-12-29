@@ -262,7 +262,7 @@ class Algorithm:
             #     b_max =4
             # elif b_max < 1+TAU/1000:
             #     b_max = 1+TAU/1000
-
+            
             b_max = min(b_max, 4)
             # TODO Tuning
             b_max = max(b_max, 1+TAU/1000)

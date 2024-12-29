@@ -238,6 +238,7 @@ def mpc(past_bandwidth, past_bandwidth_ests, past_errors, all_future_chunks_size
             #     print("Combo",state.combo, reward)
             #     print(reward_component)
             #     print('....')
+            
             if ( reward >= max_reward and len(state.combo) >= P-1):
 
                 # WHAT ???
