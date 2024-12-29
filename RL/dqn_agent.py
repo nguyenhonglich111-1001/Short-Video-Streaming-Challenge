@@ -17,7 +17,7 @@ from tensorflow.python.keras.callbacks import TensorBoard
 import time
 import os
 from tqdm import tqdm
-from bitrate_env import BitrateEnv
+from RL.dqn_env import BitrateEnv
 
 # Define constants
 DISCOUNT = 0.99
@@ -82,7 +82,6 @@ class ModifiedTensorBoard(TensorBoard):
         #         tf.summary.scalar(key, value, step=self.step)
         #         self.writer.flush()
 
-
 class DQNAgent:
     def __init__(self):
         self.model = self.create_model()
@@ -101,7 +100,6 @@ class DQNAgent:
         model.compile(loss="mse", optimizer=adam_v2.Adam(
             learning_rate=0.001), metrics=['accuracy'])
         return model
-
 
     def update_replay_memory(self, transition):
         self.replay_memory.append(transition)
